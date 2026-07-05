@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.py[cod]
+
+# Local editor and OS files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Local run output
+research runs/
+validation-output/
+*.log
+
+# Secrets and local config
+.env
+.env.*
+*.local.*

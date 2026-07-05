@@ -1,0 +1,4 @@
+interface:
+  display_name: "AIWF Avoid AI Pushes"
+  short_description: "Prevent ignored or local-only files from being staged or pushed."
+  default_prompt: "Use $aiwf-avoid-ai-pushes to audit this repo before committing or pushing."
