@@ -21,7 +21,7 @@ Use Reddit and similar communities only when they answer a practitioner-context 
 
 ## Hard Limits
 
-- Maximum 20 Reddit threads per research run unless the user expands scope.
+- Maximum 20 Reddit threads per research run unless Shawn expands scope.
 - Maximum 5 quoted comments, each short and citation-bound.
 - No personal data extraction.
 - No training on raw Reddit comment text by default.

@@ -57,8 +57,8 @@ Use this skill as the coordinator for local-first dataset intake, validation, cl
 Use the bundled validator before and after cleanup work:
 
 ```powershell
-python .\skills\aiwf-dataset\scripts\validate_dataset_receipts.py .\datasets
-python .\skills\aiwf-dataset\scripts\validate_dataset_receipts.py .\datasets --strict --json
+python C:\Users\Shawn\.codex\skills\aiwf-dataset\scripts\validate_dataset_receipts.py .\datasets
+python C:\Users\Shawn\.codex\skills\aiwf-dataset\scripts\validate_dataset_receipts.py .\datasets --strict --json
 ```
 
 The script is read-only. It checks root existence, manifest/source-registry parseability, JSONL parseability, duplicate IDs, missing IDs, common placeholder leaks, common AI citation leaks, and expected receipt files.

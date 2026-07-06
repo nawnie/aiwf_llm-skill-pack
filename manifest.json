@@ -1,0 +1,228 @@
+{
+  "project_id": "agent-skills",
+  "display_name": "Agent Skills",
+  "owner": "Shawn",
+  "created": "2026-06-30",
+  "root": "C:/Users/Shawn/Desktop/AI_Projects/Agent Skills",
+  "purpose": "Project-local source workspace for AIWF and agent workflow Codex skills.",
+  "global_source_root": "C:/Users/Shawn/.codex/skills",
+  "naming_policy": {
+    "aiwf_owned_canonical_prefix": "aiwf-",
+    "aiwf_owned_display_prefix": "aiwf_",
+    "pack_boundary": "Only Shawn-owned AIWF skills are vendored in this repository."
+  },
+  "skills": [
+    {
+      "canonical_name": "aiwf-orchestrator",
+      "local_path": "skills/aiwf-orchestrator",
+      "install_path": "C:/Users/Shawn/.codex/skills/aiwf-orchestrator",
+      "display_name": "aiwf_orchestrator",
+      "ownership": "shawn-aiwf",
+      "implicit_invocation": true,
+      "role": "Always-on prompt routing across AIWF skill-pack workflows."
+    },
+    {
+      "canonical_name": "aiwf-orchestration",
+      "local_path": "skills/aiwf-orchestration",
+      "install_path": "C:/Users/Shawn/.codex/skills/aiwf-orchestration",
+      "original_source": "nawnie/aiwf_llm-skill-pack:skills/aiwf-orchestration",
+      "display_name": "aiwf_orchestration",
+      "ownership": "shawn-aiwf",
+      "implicit_invocation": true,
+      "role": "Portable AIWF pack control layer with configurable route variables, avoidance level, loop limits, and provider-adapter policy."
+    },
+    {
+      "canonical_name": "aiwf-deep-research",
+      "local_path": "skills/aiwf-deep-research",
+      "install_path": "C:/Users/Shawn/.codex/skills/aiwf-deep-research",
+      "display_name": "aiwf_deep-research",
+      "ownership": "shawn-aiwf",
+      "implicit_invocation": true,
+      "role": "Weighted source-backed deep research with source plans, claim ledgers, evidence weights, Civitai/resource handling, open-source library checks, academic-source weighting, Reddit limits, and multi-domain science research."
+    },
+    {
+      "canonical_name": "aiwf-dataset",
+      "local_path": "skills/aiwf-dataset",
+      "install_path": "C:/Users/Shawn/.codex/skills/aiwf-dataset",
+      "original_source": "C:/Users/Shawn/.codex/skills/aiwf-dataset",
+      "display_name": "aiwf_dataset",
+      "ownership": "shawn-aiwf",
+      "implicit_invocation": true,
+      "role": "AIWF and MoK dataset research, provenance, curation, validation, reporting, and synthetic guardrail dataset boundaries."
+    },
+    {
+      "canonical_name": "aiwf-avoid-ai-illustrations",
+      "local_path": "skills/aiwf-avoid-ai-illustrations",
+      "install_path": "C:/Users/Shawn/.codex/skills/aiwf-avoid-ai-illustrations",
+      "display_name": "aiwf_avoid-ai-illustrations",
+      "ownership": "shawn-aiwf",
+      "implicit_invocation": true,
+      "role": "Generated-image artifact guardrails for AI illustrations, logos, icons, diagrams, charts, infographics, visual text, photoreal people, hands, anatomy, skin texture, and final image QA."
+    },
+    {
+      "canonical_name": "aiwf-avoid-ai-design",
+      "local_path": "skills/aiwf-avoid-ai-design",
+      "install_path": "C:/Users/Shawn/.codex/skills/aiwf-avoid-ai-design",
+      "original_source": "C:/Users/Shawn/.codex/skills/aiwf-avoid-ai-design",
+      "display_name": "aiwf_avoid-ai-design",
+      "ownership": "shawn-aiwf",
+      "implicit_invocation": true,
+      "role": "AIWF design audit and rewrite workflow for AI-looking UI, Gradio, React/web, dashboard, PDF, and document layout tells."
+    },
+    {
+      "canonical_name": "aiwf-avoid-ai-pushes",
+      "local_path": "skills/aiwf-avoid-ai-pushes",
+      "install_path": "C:/Users/Shawn/.codex/skills/aiwf-avoid-ai-pushes",
+      "original_source": "C:/Users/Shawn/.codex/skills/aiwf-avoid-ai-pushes",
+      "display_name": "aiwf_avoid-ai-pushes",
+      "ownership": "shawn-aiwf",
+      "implicit_invocation": true,
+      "role": "Commit and push hygiene for ignored files, local-only artifacts, public prose scans, staged diffs, remotes, and branches."
+    },
+    {
+      "canonical_name": "aiwf-ai-coding-guardrails",
+      "local_path": "skills/aiwf-ai-coding-guardrails",
+      "install_path": "C:/Users/Shawn/.codex/skills/aiwf-ai-coding-guardrails",
+      "original_source": "codex_ai_coding_guardrails_skill_pack.zip:skills/ai-coding-guardrails",
+      "display_name": "aiwf_ai-coding-guardrails",
+      "ownership": "shawn-aiwf",
+      "implicit_invocation": true,
+      "role": "Repo-safe coding guardrails for AI-generated edits and existing-repository code work."
+    },
+    {
+      "canonical_name": "aiwf-repo-sentinel",
+      "local_path": "skills/aiwf-repo-sentinel",
+      "install_path": "C:/Users/Shawn/.codex/skills/aiwf-repo-sentinel",
+      "original_source": "codex_ai_coding_guardrails_skill_pack.zip:skills/repo-sentinel",
+      "display_name": "aiwf_repo-sentinel",
+      "ownership": "shawn-aiwf",
+      "implicit_invocation": false,
+      "role": "Repository preflight, package-manager, shell, test-integrity, and diff-discipline guardrails."
+    },
+    {
+      "canonical_name": "aiwf-security-guardrails",
+      "local_path": "skills/aiwf-security-guardrails",
+      "install_path": "C:/Users/Shawn/.codex/skills/aiwf-security-guardrails",
+      "display_name": "aiwf_security-guardrails",
+      "ownership": "shawn-aiwf",
+      "implicit_invocation": false,
+      "role": "Security guardrails for auth, CORS, secrets, injection, unsafe serialization, dependency supply chain, and model-source trust."
+    },
+    {
+      "canonical_name": "aiwf-gpu-runtime-diagnostics",
+      "local_path": "skills/aiwf-gpu-runtime-diagnostics",
+      "install_path": "C:/Users/Shawn/.codex/skills/aiwf-gpu-runtime-diagnostics",
+      "display_name": "aiwf_gpu-runtime-diagnostics",
+      "ownership": "shawn-aiwf",
+      "implicit_invocation": false,
+      "role": "GPU runtime diagnostics for CUDA, ROCm, NVIDIA drivers, PyTorch, TensorRT, VRAM, DLL/PATH, and local AI smoke failures."
+    },
+    {
+      "canonical_name": "aiwf-web-api-ui-guardian",
+      "local_path": "skills/aiwf-web-api-ui-guardian",
+      "install_path": "C:/Users/Shawn/.codex/skills/aiwf-web-api-ui-guardian",
+      "original_source": "codex_ai_coding_guardrails_skill_pack.zip:skills/web-api-ui-guardian",
+      "display_name": "aiwf_web-api-ui-guardian",
+      "ownership": "shawn-aiwf",
+      "implicit_invocation": false,
+      "role": "FastAPI, Gradio, React, TypeScript, JavaScript, HTML, CSS, API-contract, and UI validation guardrails."
+    },
+    {
+      "canonical_name": "aiwf-python-cpp-hardener",
+      "local_path": "skills/aiwf-python-cpp-hardener",
+      "install_path": "C:/Users/Shawn/.codex/skills/aiwf-python-cpp-hardener",
+      "original_source": "codex_ai_coding_guardrails_skill_pack.zip:skills/python-cpp-hardener",
+      "display_name": "aiwf_python-cpp-hardener",
+      "ownership": "shawn-aiwf",
+      "implicit_invocation": false,
+      "role": "Python, C++, CMake, async, serialization, typing, toolchain, and memory-safety guardrails."
+    },
+    {
+      "canonical_name": "aiwf-ai-pipelines",
+      "local_path": "skills/aiwf-ai-pipelines",
+      "install_path": "C:/Users/Shawn/.codex/skills/aiwf-ai-pipelines",
+      "original_source": "C:/Users/Shawn/.codex/skills/ai-pipelines",
+      "display_name": "aiwf_ai-pipelines",
+      "ownership": "shawn-aiwf",
+      "role": "Backend pipeline, engine, model-runtime, and source-alignment audit."
+    },
+    {
+      "canonical_name": "aiwf-ui-electrician",
+      "local_path": "skills/aiwf-ui-electrician",
+      "install_path": "C:/Users/Shawn/.codex/skills/aiwf-ui-electrician",
+      "original_source": "C:/Users/Shawn/.codex/skills/ui-electrician",
+      "display_name": "aiwf_ui-electrician",
+      "ownership": "shawn-aiwf",
+      "role": "Middle-layer UI/API connector audit and debug-pass reporting."
+    },
+    {
+      "canonical_name": "aiwf-model-loader",
+      "local_path": "skills/aiwf-model-loader",
+      "install_path": "C:/Users/Shawn/.codex/skills/aiwf-model-loader",
+      "original_source": "C:/Users/Shawn/.codex/skills/model-loader",
+      "display_name": "aiwf_model-loader",
+      "ownership": "shawn-aiwf",
+      "role": "Loader contracts for precision, quantization, GGUF, safetensors, backend choice, and LoRA compatibility."
+    },
+    {
+      "canonical_name": "aiwf-local-ai-training",
+      "local_path": "skills/aiwf-local-ai-training",
+      "install_path": "C:/Users/Shawn/.codex/skills/aiwf-local-ai-training",
+      "display_name": "aiwf_local-ai-training",
+      "ownership": "shawn-aiwf",
+      "role": "QLoRA, LoRA, fine-tune, dataset readiness, VRAM budget, checkpoint, export, and validation planning."
+    },
+    {
+      "canonical_name": "aiwf-ai-evals",
+      "local_path": "skills/aiwf-ai-evals",
+      "install_path": "C:/Users/Shawn/.codex/skills/aiwf-ai-evals",
+      "display_name": "aiwf_ai-evals",
+      "ownership": "shawn-aiwf",
+      "role": "lm-eval readiness, custom prompt suites, smoke receipts, before/after comparisons, and promotion gates."
+    },
+    {
+      "canonical_name": "aiwf-inference-serving",
+      "local_path": "skills/aiwf-inference-serving",
+      "install_path": "C:/Users/Shawn/.codex/skills/aiwf-inference-serving",
+      "display_name": "aiwf_inference-serving",
+      "ownership": "shawn-aiwf",
+      "role": "vLLM, llama.cpp server, Ollama, OpenAI-compatible APIs, telemetry, queueing, reloads, unloads, latency, and stability checks."
+    },
+    {
+      "canonical_name": "aiwf-debug-agent-swarm",
+      "local_path": "skills/aiwf-debug-agent-swarm",
+      "install_path": "C:/Users/Shawn/.codex/skills/aiwf-debug-agent-swarm",
+      "original_source": "C:/Users/Shawn/.codex/skills/debug-agent-swarm",
+      "display_name": "aiwf_debug-agent-swarm",
+      "ownership": "shawn-aiwf",
+      "role": "Read-only subagent debug-pass coordination."
+    },
+    {
+      "canonical_name": "aiwf-atlas-cartographer",
+      "local_path": "skills/aiwf-atlas-cartographer",
+      "install_path": "C:/Users/Shawn/.codex/skills/aiwf-atlas-cartographer",
+      "original_source": "C:/Users/Shawn/.codex/skills/atlas-cartographer",
+      "display_name": "aiwf_atlas-cartographer",
+      "ownership": "shawn-aiwf",
+      "role": "Atlas continuity capture and retrieval."
+    },
+    {
+      "canonical_name": "aiwf-atlas-reader",
+      "local_path": "skills/aiwf-atlas-reader",
+      "install_path": "C:/Users/Shawn/.codex/skills/aiwf-atlas-reader",
+      "original_source": "nawnie/atlas-lora-adapter:plugins/aiwf-atlas-protocol/skills/atlas-reader",
+      "display_name": "aiwf_atlas-reader",
+      "ownership": "shawn-aiwf",
+      "role": "Atlas Reader LoRA repo, source protocol, training records, evaluation plans, measured-result claims, and context-pack guardrails."
+    },
+    {
+      "canonical_name": "aiwf-agent-mok",
+      "local_path": "skills/aiwf-agent-mok",
+      "install_path": "C:/Users/Shawn/.codex/skills/aiwf-agent-mok",
+      "original_source": "C:/Users/Shawn/.codex/skills/agent-mok",
+      "display_name": "aiwf_agent-mok",
+      "ownership": "shawn-aiwf",
+      "role": "MoK structured planning, research verification, and findings."
+    }
+  ]
+}

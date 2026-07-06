@@ -119,7 +119,7 @@ Fix:
 - Put the primary action and required inputs in the main flow.
 - Group optional controls by frequency of use.
 - Make status, errors, and outputs visually distinct.
-- Keep copy short and concrete. Use `avoid-ai-writing` for long helper text.
+- Keep copy short and concrete. Use the AIWF prose scan from `aiwf-avoid-ai-pushes` for long helper text.
 
 ## PDF And Document Tells
 

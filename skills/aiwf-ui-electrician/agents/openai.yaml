@@ -1,0 +1,4 @@
+interface:
+  display_name: "aiwf_ui-electrician"
+  short_description: "Audit AIWF UI/API connector wiring."
+  default_prompt: "Use $aiwf-ui-electrician to audit the AIWF middle layer between backend APIs and frontend UI state, logging subagent findings to debug_pass."

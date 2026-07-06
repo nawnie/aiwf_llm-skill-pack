@@ -1,41 +1,65 @@
-# AIWF LLM Skill Pack
+# Agent Skills
 
-AIWF LLM Skill Pack is a small set of Codex skills for local open-source AI work. It is built around an always-on orchestration skill, then routes into focused skills for deep research, dataset work, design cleanup, and push hygiene.
+Shareable source workspace for Shawn's AIWF and agent-workflow Codex skills.
 
-The pack is meant for Windows-first local AI work, but the skill files are plain `SKILL.md` files and can be adapted by any agent runtime that reads that format.
+This repository vendors Shawn-owned `aiwf-` skills only. It does not bundle outside skill folders, external licenses, or external branding. Public prose, design, and push hygiene are handled by AIWF-owned skills and scans in this pack.
 
-## Included Skills
+## Layout
 
-| Skill | Purpose |
-| --- | --- |
-| `aiwf-orchestration` | Always-on control layer. Reads variables, chooses downstream skills, sets loop and agent limits, and applies the AI-avoidance level. |
-| `aiwf-deep-research` | Source-backed research with source plans, claim ledgers, evidence weights, contradictions, and receipt validation. |
-| `aiwf-dataset` | Dataset intake, provenance checks, curation, validation, reporting, and synthetic guardrail boundaries. |
-| `aiwf-avoid-ai-design` | Design audit for AI-looking UI, PDF, dashboard, document, Gradio, and web layouts. |
-| `aiwf-avoid-ai-pushes` | Git and GitHub hygiene before commits or pushes, with checks for ignored files, generated files, and public prose. |
-
-`avoid-ai-writing` is not vendored in this repo. The install script downloads it from its upstream project and this README acknowledges it below.
+```text
+Agent Skills/
+  AGENTS.md
+  HANDOFF.md
+  PROJECT_SKILLS.md
+  README.md
+  LICENSE
+  install.ps1
+  manifest.json
+  skillfindings.md
+  docs/
+    github-skill-inventory.md
+    projectskill-list.use-cases.json
+    receipt-schema.md
+    receipt-schema.v1.json
+    skill-authoring-policy.md
+  skills/
+    aiwf-orchestration/
+    aiwf-orchestrator/
+    aiwf-deep-research/
+    aiwf-dataset/
+    aiwf-avoid-ai-design/
+    aiwf-avoid-ai-illustrations/
+    aiwf-avoid-ai-pushes/
+    aiwf-ai-coding-guardrails/
+    aiwf-repo-sentinel/
+    aiwf-security-guardrails/
+    aiwf-gpu-runtime-diagnostics/
+    aiwf-web-api-ui-guardian/
+    aiwf-python-cpp-hardener/
+    aiwf-ai-pipelines/
+    aiwf-ui-electrician/
+    aiwf-model-loader/
+    aiwf-local-ai-training/
+    aiwf-ai-evals/
+    aiwf-inference-serving/
+    aiwf-debug-agent-swarm/
+    aiwf-atlas-cartographer/
+    aiwf-atlas-reader/
+    aiwf-agent-mok/
+  scripts/
+    validate_skills.ps1
+    validate_pack.py
+    test_orchestrator_routes.py
+    validate_receipt.py
+    export_agent_skills_pack.ps1
+```
 
 ## Install
 
-From PowerShell:
-
 ```powershell
-git clone https://github.com/Nawnie/aiwf_llm-skill-pack.git
+git clone https://github.com/nawnie/aiwf_llm-skill-pack.git
 cd aiwf_llm-skill-pack
 .\install.ps1
-```
-
-By default, the installer copies this pack to:
-
-```powershell
-$env:USERPROFILE\.codex\skills
-```
-
-It also downloads `avoid-ai-writing` into:
-
-```powershell
-$env:USERPROFILE\.codex\skills\avoid-ai-writing
 ```
 
 Replace existing installed copies:
@@ -50,183 +74,49 @@ Install to a custom skills directory:
 .\install.ps1 -CodexSkillsDir "D:\codex-skills"
 ```
 
-Skip the external `avoid-ai-writing` download:
+Restart Codex after installation so the loaded skill list refreshes.
+
+## Core Routes
+
+- `aiwf-orchestration`: portable pack control layer with route variables, loop limits, and AI-avoidance level.
+- `aiwf-orchestrator`: local always-on router across the broader AIWF guardrail pack.
+- `aiwf-deep-research`: weighted research with source plans, claim ledgers, citations, and receipt validation.
+- `aiwf-dataset`: AIWF and MoK dataset intake, provenance checks, curation, validation, and reporting.
+- `aiwf-avoid-ai-design`: design cleanup for AI-looking UI, Gradio, React/web, dashboards, PDFs, and documents.
+- `aiwf-avoid-ai-illustrations`: generated-image artifact guardrails for logos, diagrams, charts, people, hands, skin texture, and visual text.
+- `aiwf-avoid-ai-pushes`: commit, staging, ignored-file, public-prose, remote, and branch hygiene.
+- `aiwf-atlas-cartographer`: Atlas continuity capture, retrieval, cards, lanes, and handoff state.
+- `aiwf-atlas-reader`: Atlas Reader LoRA, source protocol, training record, eval-plan, context-pack, and measured-result guardrails.
+- `aiwf-agent-mok`: MoK planning, source verification, research findings, and findings-dataset capture.
+
+The remaining AIWF skills cover repo-safe coding, security, GPU/runtime diagnostics, web/API/UI validation, Python/C++ hardening, AI pipelines, UI/API wiring, model loading, local training, evals, inference serving, and debug-agent swarms.
+
+## Authoring Policy
+
+Use `skillfindings.md` and `docs/skill-authoring-policy.md` when changing skills. Keep `SKILL.md` provider-neutral, use `agents/openai.yaml` for OpenAI-facing metadata, and put deterministic checks in scripts.
+
+Runtime defaults are declared in the relevant skill files. `aiwf-orchestration` and `aiwf-orchestrator` use highest available reasoning and maximum context. `aiwf-deep-research` uses highest available reasoning plus `/goal` with no fixed token ceiling, maximum context, and expanded or unlimited tool calls when available. Avoid-AI skills use the same `/goal` budget defaults without forcing highest reasoning.
+
+Expanded budgets are for active work: source checks, edits, validation, packaging, and publishing. Use standard context length to decide which prior chat instructions matter.
+
+## Validate
 
 ```powershell
-.\install.ps1 -SkipAvoidAiWriting
-```
-
-Restart Codex after installation so the skill list refreshes.
-
-## Validate The Pack
-
-Run the local validator before publishing changes:
-
-```powershell
+.\scripts\validate_skills.ps1
 python .\scripts\validate_pack.py
+python .\scripts\test_orchestrator_routes.py
 ```
 
-The validator checks that:
-
-- all packaged skill names start with `aiwf-`
-- required skill folders exist
-- `avoid-ai-writing` is not vendored
-- orchestration variables are present
-- generated Python cache folders are absent
-
-## Basic Use
-
-Start with orchestration:
-
-```text
-Use $aiwf-orchestration to route this task.
-```
-
-Then let it choose downstream skills.
-
-Examples:
-
-```text
-Use $aiwf-orchestration to inspect this local image-generation repo and tell me which smoke checks to run.
-```
-
-```text
-Use $aiwf-deep-research to compare these two model-loading approaches. Include https://example.com/paper and https://github.com/example/repo.
-```
-
-```text
-Use $aiwf-avoid-ai-design at avoidance level 2.0 to audit this Gradio UI.
-```
-
-```text
-Use $aiwf-avoid-ai-pushes before committing these README changes.
-```
-
-## Orchestration Variables
-
-The main control block lives at the top of:
-
-```text
-skills/aiwf-orchestration/SKILL.md
-```
-
-Default values:
-
-```yaml
-AIWF_ORCHESTRATION_VERSION: 1
-AIWF_MAX_AGENT_SPAWN: 3
-AIWF_MAX_LOOPS_WITHOUT_PROGRESS: 2
-AIWF_AI_AVOIDANCE_LEVEL: 1.0
-AIWF_DEEP_RESEARCH_EXTRA_URLS: ""
-AIWF_ALWAYS_ON_SKILLS:
-  aiwf-orchestration: true
-  aiwf-deep-research: false
-  aiwf-dataset: false
-  aiwf-avoid-ai-design: false
-  aiwf-avoid-ai-pushes: false
-  avoid-ai-writing: false
-```
-
-### `AIWF_MAX_AGENT_SPAWN`
-
-Caps helper agents or parallel research workers for one task.
-
-- `0`: no spawned helpers
-- `1`: one helper
-- `3`: default bounded worker count
-
-### `AIWF_MAX_LOOPS_WITHOUT_PROGRESS`
-
-Stops work after repeated loops with no new evidence, no passing check, no useful diff, or the same blocker.
-
-Default: `2`.
-
-### `AIWF_ALWAYS_ON_SKILLS`
-
-Controls which skills should be considered on every non-trivial task.
-
-`aiwf-orchestration` must stay `true`. Keep the rest `false` unless you want that skill considered all the time.
-
-Example: make deep research always considered.
-
-```yaml
-AIWF_ALWAYS_ON_SKILLS:
-  aiwf-orchestration: true
-  aiwf-deep-research: true
-  aiwf-dataset: false
-  aiwf-avoid-ai-design: false
-  aiwf-avoid-ai-pushes: false
-  avoid-ai-writing: false
-```
-
-### `AIWF_DEEP_RESEARCH_EXTRA_URLS`
-
-Adds required seed URLs for `aiwf-deep-research`.
-
-```yaml
-AIWF_DEEP_RESEARCH_EXTRA_URLS: "https://arxiv.org/abs/2405.00000, https://github.com/example/project"
-```
-
-The deep-research initializer also reads this environment variable:
+Validate workflow receipts with:
 
 ```powershell
-$env:AIWF_DEEP_RESEARCH_EXTRA_URLS = "https://arxiv.org/abs/2405.00000, https://github.com/example/project"
-python .\skills\aiwf-deep-research\scripts\init_research_run.py --title "wan attention research" --request "Compare WAN attention runtimes."
+python .\scripts\validate_receipt.py <receipt.json>
 ```
 
-Or pass a URL directly:
+## Export
 
 ```powershell
-python .\skills\aiwf-deep-research\scripts\init_research_run.py --title "wan attention research" --request "Compare WAN attention runtimes." --extra-url "https://arxiv.org/abs/2405.00000"
+.\scripts\export_agent_skills_pack.ps1
 ```
 
-Those URLs are written into `source_plan.json` as `required_seed_urls`.
-
-### `AIWF_AI_AVOIDANCE_LEVEL`
-
-Shared strictness level for:
-
-- `avoid-ai-writing`
-- `aiwf-avoid-ai-design`
-- `aiwf-avoid-ai-pushes`
-
-Levels:
-
-- `0.1`: effectively off. Only use the AI-avoidance skills when explicitly requested or when a credibility or secret-risk issue is obvious.
-- `1.0`: default practical level. Fix clear AI-looking writing, design, and repo hygiene issues.
-- `2.0`: extreme level. Treat borderline AI-looking output as a failure. This can be too strict for normal work, but it is useful when you want a stress test.
-
-Example:
-
-```yaml
-AIWF_AI_AVOIDANCE_LEVEL: 2.0
-```
-
-Then call:
-
-```text
-Use $aiwf-orchestration with AIWF_AI_AVOIDANCE_LEVEL 2.0 to review this README and UI.
-```
-
-## External Acknowledgements
-
-This pack downloads `avoid-ai-writing` from:
-
-https://github.com/conorbronsdon/avoid-ai-writing
-
-`avoid-ai-writing` is authored by Conor Bronsdon and is MIT licensed. It is a separate project and is not copied into this repo.
-
-The `aiwf-avoid-ai-design` skill was created after reviewing the public MIT-licensed `funboy322/avoid-ai-design` project and adapts the idea of pattern-based cleanup for AI-looking interfaces and documents.
-
-## Publish Hygiene
-
-Before pushing changes to this repo:
-
-```powershell
-git status --short --branch --untracked-files=all
-git diff --stat
-git diff --check
-python .\scripts\validate_pack.py
-```
-
-For public prose, run the AI-avoidance scan at level `1.0` unless you intentionally need `0.1` or `2.0`.
+The export zip is written to `dist/`.

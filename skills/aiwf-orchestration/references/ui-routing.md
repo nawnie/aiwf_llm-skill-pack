@@ -9,7 +9,7 @@ Use this reference when the user asks for Gradio, React, frontend, tabs, control
 - `aiwf-avoid-ai-design`: AI-looking design cleanup for Gradio, React/web, dashboards, PDFs, and document layouts, including teal-everywhere and generic generated-layout complaints.
 - `product-design:research`: current user pain, UX friction, onboarding, docs/help, support pain, or product complaints for a named product.
 - `local-ai-dev`: backend API and local app integration.
-- `avoid-ai-writing`: required for UI copy written to non-gitignored files.
+- `aiwf-avoid-ai-pushes`: required for public UI copy written to non-gitignored files.
 
 ## AIWF UI Split
 
@@ -30,6 +30,6 @@ Use this reference when the user asks for Gradio, React, frontend, tabs, control
 
 - Keep defaults aligned with validated pipeline/service defaults.
 - Use `aiwf-avoid-ai-design` when the UI or document complaint is about visual AI tells, default themes, teal-heavy styling, generic cards, or generated-looking layout.
-- Audit new UI copy, labels, empty states, helper text, and docs with `avoid-ai-writing` when written to non-gitignored files.
+- Audit new UI copy, labels, empty states, helper text, and docs with `aiwf-avoid-ai-pushes` when written to non-gitignored files.
 - Avoid UI expansion before engine and no-GUI smoke validation.
 - Prefer page-level obvious controls for persistent settings.

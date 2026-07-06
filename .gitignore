@@ -1,19 +1,12 @@
-# Python
-__pycache__/
-*.py[cod]
-
-# Local editor and OS files
-.DS_Store
-Thumbs.db
-.idea/
-.vscode/
-
-# Local run output
+.codex/
+debug_pass/
+dist/
+moks findings/
+plan.md
 research runs/
-validation-output/
-*.log
-
-# Secrets and local config
-.env
-.env.*
-*.local.*
+shawn ai lab config/
+_trash/
+__pycache__/
+*.pyc
+*.pyo
+*.zip

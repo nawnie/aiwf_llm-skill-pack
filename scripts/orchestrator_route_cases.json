@@ -1,0 +1,62 @@
+[
+  {
+    "name": "fastapi-react-bug",
+    "prompt": "fix a FastAPI React bug in this repo without breaking tests",
+    "must_include": ["aiwf-ai-coding-guardrails", "aiwf-repo-sentinel", "aiwf-web-api-ui-guardian"]
+  },
+  {
+    "name": "python-cmake-debug",
+    "prompt": "debug a Python CMake extension and avoid unsafe serialization",
+    "must_include": ["aiwf-ai-coding-guardrails", "aiwf-security-guardrails", "aiwf-python-cpp-hardener"]
+  },
+  {
+    "name": "gpu-runtime",
+    "prompt": "audit CUDA TensorRT install and fix failing GPU inference",
+    "must_include": ["aiwf-ai-coding-guardrails", "aiwf-gpu-runtime-diagnostics"]
+  },
+  {
+    "name": "security-auth-cors",
+    "prompt": "check security issue in FastAPI auth and CORS",
+    "must_include": ["aiwf-security-guardrails", "aiwf-web-api-ui-guardian"]
+  },
+  {
+    "name": "training-serving-evals",
+    "prompt": "train a qlora then serve it with vllm and run evals",
+    "must_include": ["aiwf-local-ai-training", "aiwf-ai-evals", "aiwf-inference-serving"]
+  },
+  {
+    "name": "gguf-serve",
+    "prompt": "quantize a model to gguf and serve with llama.cpp",
+    "must_include": ["aiwf-model-loader", "aiwf-inference-serving"]
+  },
+  {
+    "name": "deep-research-civitai-academic",
+    "prompt": "deep research Civitai LoRA metadata against arxiv github open source libraries and graduate lab sources",
+    "must_include": ["aiwf-deep-research", "aiwf-agent-mok"]
+  },
+  {
+    "name": "avoid-ai-illustrations",
+    "prompt": "generate an image of a woman with natural skin texture, avoid bad hands, extra fingers, pimple-like pores, and make sure the logo text is not misspelled",
+    "must_include": ["aiwf-avoid-ai-illustrations"]
+  },
+  {
+    "name": "dataset-provenance",
+    "prompt": "validate dataset source provenance and clean synthetic guardrail rows without overwriting existing folders",
+    "must_include": ["aiwf-dataset"]
+  },
+  {
+    "name": "avoid-ai-design",
+    "prompt": "audit this default Gradio dashboard for teal everywhere and generated-looking document layout",
+    "must_include": ["aiwf-avoid-ai-design"]
+  },
+  {
+    "name": "push-hygiene",
+    "prompt": "check README release notes, ignored files, staging, commit, and push hygiene before uploading to GitHub",
+    "must_include": ["aiwf-avoid-ai-pushes", "aiwf-repo-sentinel"]
+  },
+  {
+    "name": "atlas-reader-protocol",
+    "prompt": "review Atlas Reader LoRA training records, context-pack construction, and measured logs before claiming a win",
+    "must_include": ["aiwf-atlas-reader", "aiwf-local-ai-training"]
+  }
+]

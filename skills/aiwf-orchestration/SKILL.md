@@ -21,7 +21,6 @@ AIWF_ALWAYS_ON_SKILLS:
   aiwf-dataset: false
   aiwf-avoid-ai-design: false
   aiwf-avoid-ai-pushes: false
-  avoid-ai-writing: false
 ```
 
 Variable meanings:
@@ -43,6 +42,14 @@ Strictness scale:
 Use this skill first for AIWF skill-pack work and for local AI work that touches models, generation, training, datasets, research, UI, docs, repo edits, or GitHub publishing.
 
 Start by reading the variable block. Then classify the task, choose only the needed downstream skills, and stop when progress stalls beyond `AIWF_MAX_LOOPS_WITHOUT_PROGRESS`.
+
+## Runtime Defaults
+
+Use the highest available reasoning and maximum available context length whenever this orchestration skill is active.
+
+Expanded budgets and expanded tool-call usage apply to the working phase after routing: repo inspection, source checks, edits, validation, packaging, and publish steps. Do not spend expanded budget mining old chat. Use standard context length to decide which prior instructions matter, then focus on the current files, active git state, selected skills, and requested output.
+
+When updating skills, keep the portable skill contract in `SKILL.md` and put provider-specific affordances in `agents/openai.yaml`, scripts, or direct references. Use `skillfindings.md` and `docs/skill-authoring-policy.md` as the project-local policy for universal agentic skills and provider adapters.
 
 ## Activation Callout
 
@@ -80,7 +87,7 @@ Common downstream selections:
 - AI-looking UI, Gradio, React, web, dashboard, PDF, or document layout cleanup: `aiwf-avoid-ai-design`
 - Deep research, source weighting, literature review, source plans, claim ledgers, arXiv, Hugging Face, GitHub, Civitai, Reddit limits, open-source library checks, academic sources, quantum physics, robotics, or mechanical engineering: `aiwf-deep-research`
 - Dataset intake, validation, curation, reporting, or synthetic guardrail datasets: `aiwf-dataset`
-- GitHub-facing README, docs, commit messages, PR text, release notes, or non-ignored repo prose: `avoid-ai-writing`
+- GitHub-facing README, docs, commit messages, PR text, release notes, or non-ignored repo prose: `aiwf-avoid-ai-pushes`
 - AIWF commit or push scope checks: `aiwf-avoid-ai-pushes`
 
 ## Always-On Toggles
@@ -106,7 +113,7 @@ AIWF_DEEP_RESEARCH_EXTRA_URLS: "https://arxiv.org/abs/2405.00000, https://github
 
 Apply `AIWF_AI_AVOIDANCE_LEVEL` to:
 
-- `avoid-ai-writing` when installed as an external dependency.
+- public prose scans in `aiwf-avoid-ai-pushes`.
 - `aiwf-avoid-ai-design` for UI, PDF, dashboard, and document layout cleanup.
 - `aiwf-avoid-ai-pushes` for public repo, commit, and push hygiene.
 

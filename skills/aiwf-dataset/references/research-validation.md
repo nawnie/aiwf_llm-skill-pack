@@ -53,7 +53,7 @@ For each candidate source:
 2. Confirm author/organization, date, license, and access path.
 3. Identify the exact claims or examples being used.
 4. Check whether the source supports those claims without speculation.
-5. Check for AI-writing tells with `avoid-ai-writing` when source quality is uncertain.
+5. Check public-prose and provenance tells with `aiwf-avoid-ai-pushes` when source quality is uncertain.
 6. Reject detector-only conclusions. Use the writing check to trigger manual review, not to prove authorship.
 7. Record status as `accepted`, `rejected`, `quarantined`, or `needs_review`.
 

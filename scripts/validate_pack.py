@@ -8,10 +8,15 @@ from pathlib import Path
 
 REQUIRED_SKILLS = {
     "aiwf-orchestration",
+    "aiwf-orchestrator",
     "aiwf-deep-research",
     "aiwf-dataset",
     "aiwf-avoid-ai-design",
+    "aiwf-avoid-ai-illustrations",
     "aiwf-avoid-ai-pushes",
+    "aiwf-atlas-cartographer",
+    "aiwf-atlas-reader",
+    "aiwf-agent-mok",
 }
 
 REQUIRED_ORCHESTRATION_TOKENS = {
@@ -43,9 +48,6 @@ def validate(root: Path) -> list[str]:
     missing = sorted(REQUIRED_SKILLS - found_dirs)
     if missing:
         errors.append(f"missing skill folders: {', '.join(missing)}")
-
-    if "avoid-ai-writing" in found_dirs:
-        errors.append("avoid-ai-writing must not be vendored; install.ps1 downloads it")
 
     for skill_dir in sorted(skills_root.iterdir()):
         if not skill_dir.is_dir():

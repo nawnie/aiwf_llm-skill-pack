@@ -4,8 +4,11 @@ import argparse
 import json
 import os
 import re
+import sys
 from datetime import datetime, timezone
 from pathlib import Path
+
+sys.dont_write_bytecode = True
 
 from source_target_router import route
 
@@ -29,16 +32,13 @@ def write_json(path: Path, value: dict) -> None:
     path.write_text(json.dumps(value, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 
 
-def parse_extra_urls(values: list[str]) -> list[str]:
+def split_urls(values: list[str]) -> list[str]:
     urls: list[str] = []
-    seen: set[str] = set()
     for value in values:
-        for raw_url in value.split(","):
-            url = raw_url.strip()
-            if not url or url in seen:
-                continue
-            urls.append(url)
-            seen.add(url)
+        for item in value.split(","):
+            item = item.strip()
+            if item and item not in urls:
+                urls.append(item)
     return urls
 
 
@@ -49,8 +49,9 @@ def create_run(title: str, request: str, root: Path, extra_urls: list[str] | Non
     run_dir = unique_run_dir(root, title, created)
     run_dir.mkdir(parents=True)
 
+    required_seed_urls = split_urls([os.environ.get("AIWF_DEEP_RESEARCH_EXTRA_URLS", ""), *(extra_urls or [])])
+
     source_plan = route(request)
-    required_seed_urls = parse_extra_urls(extra_urls or [])
     source_plan.update(
         {
             "created_at": created.isoformat(),
@@ -110,19 +111,9 @@ def main() -> int:
     parser.add_argument("--title", required=True)
     parser.add_argument("--request", required=True)
     parser.add_argument("--root", default="research runs")
-    parser.add_argument(
-        "--extra-urls",
-        default=os.environ.get("AIWF_DEEP_RESEARCH_EXTRA_URLS", ""),
-        help="Comma-separated URLs that must be included as seed sources.",
-    )
-    parser.add_argument(
-        "--extra-url",
-        action="append",
-        default=[],
-        help="A URL that must be included as a seed source. May be repeated.",
-    )
+    parser.add_argument("--extra-url", action="append", default=[], help="Required seed URL. Repeat or pass comma-separated URLs.")
     args = parser.parse_args()
-    result = create_run(args.title, args.request, Path(args.root), [args.extra_urls, *args.extra_url])
+    result = create_run(args.title, args.request, Path(args.root), args.extra_url)
     print(json.dumps(result, indent=2, sort_keys=True))
     return 0
 

@@ -5,7 +5,7 @@ Use this map to compose existing skills instead of duplicating their instruction
 ## Core companions
 
 - `nemo-curator`: Use for GPU-scale curation, fuzzy/exact/semantic deduplication, quality filters, PII redaction, NSFW filtering, and text/image/video/audio corpus cleanup. Verify installed package APIs before running code because NeMo Curator versions move.
-- `avoid-ai-writing`: Use in detect mode for original research prose, source descriptions, generated summaries, and public-facing dataset notes. Treat results as signal only. Do not use it as an authorship verdict.
+- `aiwf-avoid-ai-pushes`: Use the public-prose scan for original research prose, source descriptions, generated summaries, and public-facing dataset notes. Treat results as signal only. Do not use style as an authorship verdict.
 - `dataAnalyticsWidgets`: Use for dataset QA reports and dashboards when the user should inspect charts or tables. Always call `validate_artifact` before `render_artifact`.
 
 ## Useful local companions

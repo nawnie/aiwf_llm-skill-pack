@@ -5,25 +5,19 @@ description: AIWF deep research workflow for source-backed, weighted, multi-doma
 
 # AIWF Deep Research
 
-## Research Variables
-
-Set this at the top of the skill or in the calling `aiwf-orchestration` variable block when a research run must include known sources.
-
-```yaml
-AIWF_DEEP_RESEARCH_EXTRA_URLS: ""
-```
-
-Use a comma-separated list:
-
-```yaml
-AIWF_DEEP_RESEARCH_EXTRA_URLS: "https://arxiv.org/abs/2405.00000, https://github.com/example/project"
-```
-
-When this value is not empty, split on commas, trim spaces, and add every URL to `source_plan.json` as a required seed source before searching elsewhere.
-
 ## Overview
 
 Use this skill to run research as an evidence pipeline, not a search session. Build a source plan first, weight every source by what it can actually prove, keep a claim ledger, and validate the receipt before using findings in an answer, plan, code change, or training data.
+
+## Runtime Defaults
+
+Default to the highest available reasoning for every non-trivial deep-research run.
+
+When the host supports `/goal`, create or continue a goal for the active research run. Use no fixed token ceiling, the largest available context limit, and unlimited or expanded tool-call limits where those controls exist. If the host requires finite settings, choose the highest available values. If the host does not expose those controls, proceed with the same intent and do not block the research workflow.
+
+Apply expanded budgets to active research work: source planning, source retrieval, evidence review, claim ledgers, contradictions, synthesis, and validation. Do not spend expanded budget on broad chat-history review. Use standard context length to decide how much past chat is relevant, then rely on the user's current request, local receipts, and source-backed research artifacts.
+
+Use `AIWF_DEEP_RESEARCH_EXTRA_URLS` for required seed URLs that must appear in the source plan. The value is comma-separated. `scripts/init_research_run.py` also accepts repeated `--extra-url` flags and writes all required seed URLs to `source_plan.json`.
 
 ## Routing
 
@@ -70,18 +64,6 @@ Create a run:
 
 ```powershell
 python .\skills\aiwf-deep-research\scripts\init_research_run.py --title "wan attention research" --request "Compare WAN attention runtimes for AIWF Studio."
-```
-
-Create a run with required seed URLs:
-
-```powershell
-$env:AIWF_DEEP_RESEARCH_EXTRA_URLS = "https://arxiv.org/abs/2405.00000, https://github.com/example/project"
-python .\skills\aiwf-deep-research\scripts\init_research_run.py --title "wan attention research" --request "Compare WAN attention runtimes for AIWF Studio."
-```
-
-Or pass URLs directly:
-
-```powershell
 python .\skills\aiwf-deep-research\scripts\init_research_run.py --title "wan attention research" --request "Compare WAN attention runtimes for AIWF Studio." --extra-url "https://arxiv.org/abs/2405.00000"
 ```
 

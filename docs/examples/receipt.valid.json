@@ -1,0 +1,26 @@
+{
+  "schema": "aiwf.receipt.v1",
+  "receipt_id": "example-route-test-001",
+  "created_at": "2026-06-30T00:00:00Z",
+  "skill": "aiwf-orchestrator",
+  "task": "Validate orchestrator route fixture coverage.",
+  "status": "passed",
+  "scope": [
+    "scripts/orchestrator_route_cases.json",
+    "skills/aiwf-orchestrator/scripts/route_prompt.py"
+  ],
+  "commands": [
+    {
+      "command": "python .\\scripts\\test_orchestrator_routes.py",
+      "status": "passed",
+      "summary": "All route fixtures selected their required skills."
+    }
+  ],
+  "artifacts": [
+    "scripts/orchestrator_route_cases.json"
+  ],
+  "evidence": [
+    "Route fixtures cover coding, security, GPU runtime, training, serving, and eval prompts."
+  ],
+  "risks": []
+}

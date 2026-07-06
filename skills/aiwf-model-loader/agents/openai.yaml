@@ -1,0 +1,4 @@
+interface:
+  display_name: "aiwf_model-loader"
+  short_description: "Choose AIWF precision, quants, and LoRAs."
+  default_prompt: "Use $aiwf-model-loader to build a source-backed AIWF loader contract for a local AI model."

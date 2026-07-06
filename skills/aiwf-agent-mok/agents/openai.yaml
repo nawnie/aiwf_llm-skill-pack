@@ -1,0 +1,6 @@
+interface:
+  display_name: "aiwf_agent-mok"
+  short_description: "AIWF planning plus findings datasets"
+  default_prompt: "Use $aiwf-agent-mok to maintain an Atlas-style plan.md, verify the request, tools, route, and project files, then capture reusable findings into a MoK findings dataset before acting."
+policy:
+  allow_implicit_invocation: false

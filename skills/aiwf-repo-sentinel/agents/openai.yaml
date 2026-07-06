@@ -1,0 +1,6 @@
+interface:
+  display_name: "aiwf_repo-sentinel"
+  short_description: "Repository preflight and diff discipline"
+  default_prompt: "Use $aiwf-repo-sentinel to inspect repository state before making a narrow patch."
+policy:
+  allow_implicit_invocation: false

@@ -6,7 +6,7 @@ Use this reference for tests, smoke runs, preflight checks, and no-GUI validatio
 
 - `local-ai-dev`: repo commands, venv, Windows execution, focused tests.
 - `ml-training-recipes`: validation discipline for performance and precision changes.
-- `avoid-ai-writing`: required whenever GitHub skills are used or non-gitignored files are written.
+- `aiwf-avoid-ai-pushes`: required whenever GitHub skills are used or non-gitignored public prose is written.
 - Add domain skills only for the changed surface, such as `stable-diffusion-image-generation` for pipeline behavior or `hugging-face:huggingface-gradio` for Gradio.
 
 ## Preferred Commands
@@ -30,6 +30,6 @@ venv\Scripts\python.exe -m pytest tests\individual_tests\test_pipeline_preflight
 
 - Prefer narrow tests first, then broaden only when shared behavior changed.
 - Use list/preflight/dry-run/probe modes when GPU generation or training is not required.
-- For any changed path whose ignored status is unclear, run `git check-ignore -q -- <path>`. If it is not ignored, audit new or edited prose with `avoid-ai-writing` before finalizing.
-- For GitHub skill work, audit PR text, comments, reviews, commit messages, release notes, and issue text with `avoid-ai-writing`.
+- For any changed path whose ignored status is unclear, run `git check-ignore -q -- <path>`. If it is not ignored, audit new or edited prose with `aiwf-avoid-ai-pushes` before finalizing.
+- For GitHub skill work, audit PR text, comments, reviews, commit messages, release notes, and issue text with `aiwf-avoid-ai-pushes`.
 - Report skipped or unrun tests honestly.

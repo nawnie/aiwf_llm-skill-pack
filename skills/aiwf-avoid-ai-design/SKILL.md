@@ -5,20 +5,6 @@ description: AIWF design-audit and rewrite workflow for removing generic AI-desi
 
 # AIWF Avoid AI Design
 
-## AI Avoidance Variables
-
-Read this value from `aiwf-orchestration` when it is present:
-
-```yaml
-AIWF_AI_AVOIDANCE_LEVEL: 1.0
-```
-
-Apply the level like this:
-
-- `0.1`: only fix P0 issues that block trust, readability, or core use. Otherwise report that design cleanup is effectively disabled.
-- `1.0`: normal mode. Fix P0 and P1 issues, preserve behavior, and avoid over-polishing.
-- `2.0`: extreme mode. Treat borderline AI-looking layout, color, typography, and copy patterns as failures. Warn that this can make the result too strict for normal product work.
-
 ## What This Is
 
 Use this skill to audit and fix design patterns that make local AI tools, reports, and websites look machine-generated.
@@ -26,6 +12,14 @@ Use this skill to audit and fix design patterns that make local AI tools, report
 This is a design-quality tool, not a verdict. A teal button, centered hero, or rounded card is not proof that a model made the artifact. The signal matters when defaults cluster: teal on every control, Inter everywhere, identical cards, generic PDF covers, decorative gradients, no layout rhythm, and no clear reason for any choice.
 
 The job is simple: replace defaults with decisions while preserving the product, code behavior, data, accessibility, and document meaning.
+
+## Runtime Defaults
+
+Use normal reasoning by default; raise reasoning only for high-risk public surfaces, cross-file design systems, repeated failed visual passes, or source-backed design research.
+
+When the host supports `/goal`, create or continue a goal for active design audit, rendering, edit, and verification work. Use no fixed token ceiling, the largest available context limit, and unlimited or expanded tool-call limits where those controls exist. If the host requires finite settings, choose the highest available values except for reasoning, which stays normal unless the task warrants escalation.
+
+Apply expanded budgets to the working phase: inspecting screenshots or files, rendering, editing, comparing before/after output, and verifying the result. Do not use expanded budget just to review old chat. Use standard context length to decide which prior instructions matter, then focus on the current artifact, files, design direction, and acceptance gates.
 
 ## Modes
 
@@ -101,7 +95,7 @@ State which profile you are using and why.
 - Do not invent brand claims, metrics, testimonials, or product features.
 - Do not hide core AIWF controls in advanced accordions when they should be obvious near Generate or Run.
 - Do not add heavy dependencies or start GPU work unless the user asked for it.
-- Use `avoid-ai-writing` for prose-heavy copy, README/docs text, PDF narrative, or public-facing UI copy.
+- For prose-heavy copy, README/docs text, PDF narrative, or public-facing UI copy, run the AIWF prose scan from `aiwf-avoid-ai-pushes` before finalizing.
 - If the artifact is already intentional, say so and stop. A clean audit is a valid result.
 
 ## Output Format
@@ -120,7 +114,3 @@ For `rewrite` or `edit`:
 5. Second-pass audit, especially whether any P0 tells remain.
 
 Keep the final report short. The files and screenshots are the proof.
-
-## Source Note
-
-This AIWF skill was created after reviewing the public MIT-licensed `funboy322/avoid-ai-design` skill. It keeps the same useful idea as `avoid-ai-writing`: flag patterns, preserve intent, and rewrite only what needs rewriting. This AIWF version expands the scope to Gradio, PDFs, document layout, dashboards, and local AI tool surfaces, with repeated teal-default styling treated as a first-class P0 signal.

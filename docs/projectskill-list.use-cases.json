@@ -1,0 +1,122 @@
+{
+  "schema_version": 1,
+  "project": "Agent Skills",
+  "generated_on": "2026-07-06",
+  "routing_policy": {
+    "standing_rule": "Evaluate implicit skill triggers on every non-trivial task before acting.",
+    "selection_rule": "Use the smallest useful skill set, with project-local AIWF skills preferred for this workspace.",
+    "conflict_rule": "Project instructions in AGENTS.md and HANDOFF.md override generic skill advice.",
+    "runtime_budget_rule": "aiwf-orchestration and aiwf-orchestrator use highest available reasoning and maximum context; aiwf-deep-research uses highest available reasoning plus /goal with no fixed token ceiling, maximum context, and expanded or unlimited tool calls when available; avoid-AI skills use the same /goal budget defaults without forcing highest reasoning."
+  },
+  "project_signals": [
+    "Project-local source workspace for Shawn-owned AIWF and agent workflow Codex skills.",
+    "Skills live under skills/ and are validated with scripts/validate_skills.ps1.",
+    "Exportable packages are produced with scripts/export_agent_skills_pack.ps1.",
+    "Global Codex sync is deliberate and should not happen unless requested.",
+    "Only Shawn-owned aiwf- skills are vendored in this repository."
+  ],
+  "scenarios": [
+    {
+      "id": "skill-pack-routing",
+      "signals": ["learn project", "skill routing", "PROJECT_SKILLS.md", "new session", "Codex Build"],
+      "skills": ["projectskill-list", "aiwf-orchestration", "aiwf-orchestrator"],
+      "use_when": "Use when orienting in this workspace or updating project-local skill routing.",
+      "project_guardrails": ["Read AGENTS.md and HANDOFF.md first.", "Do not sync to global skills unless explicitly requested."],
+      "outputs": ["PROJECT_SKILLS.md", "docs/projectskill-list.use-cases.json"],
+      "verification": ["python -m json.tool docs\\projectskill-list.use-cases.json"]
+    },
+    {
+      "id": "skill-authoring-packaging",
+      "signals": ["add skill", "rename skill", "frontmatter", "agents/openai.yaml", "export pack", "manifest", "provider adapters"],
+      "skills": ["skill-creator", "aiwf-orchestration", "aiwf-orchestrator"],
+      "use_when": "Use when creating, renaming, packaging, or documenting skills in this project.",
+      "project_guardrails": ["AIWF-owned skill names should use the aiwf- frontmatter prefix.", "AIWF display names should use the aiwf_ prefix.", "Keep provider-specific adapters outside the portable SKILL.md core.", "Do not vendor outside skill folders or external branding."],
+      "outputs": ["skills/<skill>/SKILL.md", "skills/<skill>/agents/openai.yaml", "manifest.json", "docs/skill-authoring-policy.md"],
+      "verification": [".\\scripts\\validate_skills.ps1", "python .\\scripts\\validate_pack.py"]
+    },
+    {
+      "id": "deep-research-source-weighting",
+      "signals": ["deep research", "source weighting", "source plan", "claim ledger", "arXiv", "Hugging Face", "GitHub", "Civitai", "Reddit", "open-source libraries", "college", "graduate", "postgraduate", "quantum physics", "robotics", "mechanical engineering"],
+      "skills": ["aiwf-deep-research", "aiwf-agent-mok"],
+      "use_when": "Use when a task requires source-backed research with evidence weights, citations, domain source targeting, claim ledgers, or research receipts.",
+      "project_guardrails": ["Do not use Civitai as scientific evidence.", "Do not use Reddit as sole support for final claims.", "Store summaries and citations, not long copyrighted source text.", "Validate research receipts before relying on final claims."],
+      "outputs": ["research runs/<timestamp-topic>/source_plan.json", "research runs/<timestamp-topic>/claims.jsonl", "research runs/<timestamp-topic>/validation.json"],
+      "verification": ["python .\\skills\\aiwf-deep-research\\scripts\\source_target_router.py --prompt \"deep research Civitai LoRA metadata\"", "python .\\skills\\aiwf-deep-research\\scripts\\validate_research_receipt.py <run_dir>"]
+    },
+    {
+      "id": "dataset-provenance",
+      "signals": ["dataset", "datasets", "source provenance", "curation", "synthetic guardrail", "dataset card", "captioning", "receipt validation", "MoK dataset"],
+      "skills": ["aiwf-dataset", "aiwf-agent-mok", "aiwf-deep-research"],
+      "use_when": "Use for dataset intake, source provenance, curation, validation, reporting, multimodal caption QA, or synthetic guardrail boundaries.",
+      "project_guardrails": ["Do not delete, truncate, overwrite, or append into existing subject dataset folders.", "Separate factual source-backed rows from synthetic rows.", "Record source URLs, access dates, licenses, hashes when available, and validation status."],
+      "outputs": ["dataset manifests", "source registers", "quarantine reports", "validation receipts"],
+      "verification": ["python .\\skills\\aiwf-dataset\\scripts\\validate_dataset_receipts.py <dataset-root>"]
+    },
+    {
+      "id": "avoid-ai-design",
+      "signals": ["AI-looking design", "default Gradio", "default shadcn", "teal everywhere", "generated-looking PDF", "document layout", "dashboard design", "de-slop UI"],
+      "skills": ["aiwf-avoid-ai-design", "aiwf-web-api-ui-guardian"],
+      "use_when": "Use for AI-looking UI, Gradio, React/web, dashboard, PDF, or document layout cleanup.",
+      "project_guardrails": ["Render visual output when practical.", "Preserve behavior, data, accessibility, and meaningful labels.", "Run a public-prose scan when public copy changes."],
+      "outputs": ["design audit findings", "narrow UI or document edits", "render/build verification"],
+      "verification": ["screenshot, PDF render, local build, lint, focused test, or source diff"]
+    },
+    {
+      "id": "avoid-ai-illustrations",
+      "signals": ["image generation", "generated image", "AI illustration", "AI artifacts", "logo", "icon", "signage", "visual text", "diagram", "flowchart", "chart", "infographic", "portrait", "hands", "fingers", "anatomy", "skin texture", "pores", "pimple", "cyst", "photorealism", "final image QA"],
+      "skills": ["aiwf-avoid-ai-illustrations", "aiwf-deep-research"],
+      "use_when": "Use when planning, prompting, reviewing, editing, or accepting generated image deliverables that must avoid common AI artifacts or preserve exact image semantics.",
+      "project_guardrails": ["Do not accept generated charts without checking data, axes, labels, title, and scale.", "Do not ship generated bitmap logo text as final typography.", "Use structured or vector artifacts for diagrams that need labels, arrows, logic, or editability.", "Inspect hands, faces, skin texture, shadows, and prompt-critical object relationships before final acceptance."],
+      "outputs": ["surface-specific prompt/review guidance", "pass/revise/reject image QA findings"],
+      "verification": ["python .\\scripts\\test_orchestrator_routes.py", ".\\scripts\\validate_skills.ps1"]
+    },
+    {
+      "id": "push-hygiene",
+      "signals": ["commit", "push", "GitHub", "README", "release notes", "public docs", "ignored files", "staging", "remote", "branch"],
+      "skills": ["aiwf-avoid-ai-pushes", "aiwf-repo-sentinel"],
+      "use_when": "Use before committing or pushing source, docs, release text, or public-pack updates.",
+      "project_guardrails": ["Stage explicit intended paths only.", "Check ignored/local-only files before staging.", "Run public-prose scans on edited docs and commit text.", "Report commit hash, branch, and validation results after push."],
+      "verification": ["git status --short --branch --untracked-files=all", "git diff --check", "git diff --cached --check"]
+    },
+    {
+      "id": "repo-safe-coding",
+      "signals": ["code edit", "debug", "refactor", "review", "generated code cleanup"],
+      "skills": ["aiwf-ai-coding-guardrails", "aiwf-repo-sentinel"],
+      "use_when": "Use before and during coding work in an existing repository.",
+      "project_guardrails": ["Inspect repo state before editing.", "Patch narrowly.", "Prove success with relevant checks."],
+      "verification": ["Use repo-native tests, lint, typecheck, build, or smoke commands."]
+    },
+    {
+      "id": "web-api-ui",
+      "signals": ["FastAPI", "Gradio", "React", "TypeScript", "JavaScript", "HTML", "CSS", "UI/API"],
+      "skills": ["aiwf-web-api-ui-guardian", "aiwf-ui-electrician"],
+      "use_when": "Use when UI, API, types, callbacks, or frontend/backend contracts are involved.",
+      "project_guardrails": ["Check framework versions and contracts first.", "Verify rendered UI when changing visible behavior."],
+      "verification": ["Run app-native checks and browser or screenshot validation when relevant."]
+    },
+    {
+      "id": "aiwf-pipeline-model-runtime",
+      "signals": ["AIWF", "pipeline", "model loader", "quantization", "LoRA", "GGUF", "safetensors", "runtime"],
+      "skills": ["aiwf-ai-pipelines", "aiwf-model-loader"],
+      "use_when": "Use for AIWF backend pipeline, model loading, precision, quantization, and runtime-routing work.",
+      "project_guardrails": ["Do not download large models or run VRAM-heavy generation unless requested.", "Prefer receipts and source-alignment checks over README claims."],
+      "verification": ["Use targeted route smokes, model preflight checks, and artifact receipts."]
+    },
+    {
+      "id": "training-evals-serving",
+      "signals": ["training", "QLoRA", "LoRA", "fine-tune", "eval", "smoke receipt", "vLLM", "llama.cpp", "Ollama"],
+      "skills": ["aiwf-local-ai-training", "aiwf-ai-evals", "aiwf-inference-serving"],
+      "use_when": "Use for local training plans, eval gates, serving endpoints, and promotion readiness.",
+      "project_guardrails": ["No training, large downloads, or public service exposure unless explicitly requested.", "Keep eval gates tied to artifacts and receipts."],
+      "verification": ["Run bounded evals, endpoint health checks, or latency smokes when requested and feasible."]
+    },
+    {
+      "id": "atlas-mok-continuity",
+      "signals": ["Atlas", "cartographer", "continuity", "cards", "lanes", "handoff", "MoK", "research verification", "findings dataset", "mental model", "Atlas Reader", "Atlas LoRA", "context-pack", "Qwen LoRA", "measured logs"],
+      "skills": ["aiwf-atlas-cartographer", "aiwf-atlas-reader", "aiwf-agent-mok", "aiwf-debug-agent-swarm"],
+      "use_when": "Use when work needs durable handoff, local continuity capture, Atlas-style cards, Atlas Reader protocol checks, MoK planning, verified findings, or broad read-only investigation.",
+      "project_guardrails": ["Keep subagents read-only unless a downstream edit is explicitly scoped.", "Store continuity locally when requested.", "Preserve exact source paths and evidence."],
+      "verification": ["Summarize reviewed paths, evidence, findings, and unresolved items."]
+    }
+  ]
+}

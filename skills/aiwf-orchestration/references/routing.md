@@ -19,7 +19,7 @@ Use this file first, then load only the focused reference files that match the u
 | User pain, UX friction, onboarding issues, docs/help problems, support pain, current complaints for a named product | `product-design:research` plus [ui-routing.md](ui-routing.md) when UI changes may follow |
 | Smoke tests, preflight, model validation, pipeline registry, backend list mode | [validation.md](validation.md) |
 | AI chat code, RAG, chat memory, LLM APIs, LLM serving, fine-tuning, training engines | [chat-training-serving.md](chat-training-serving.md) |
-| GitHub skills, PR/issue text, commit/release notes, docs, README, non-gitignored repo file edits | `avoid-ai-writing` plus the relevant focused reference |
+| GitHub skills, PR/issue text, commit/release notes, docs, README, non-gitignored repo file edits | `aiwf-avoid-ai-pushes` plus the relevant focused reference |
 
 ## Base Stock Skills
 
@@ -44,16 +44,16 @@ Always prefer the smallest useful set:
 - LLM prompt/programming helpers: `instructor`, `outlines`, `guidance`, `dspy`
 - LLM serving: `llama-cpp`, `serving-llms-vllm`
 - AI training/fine-tuning: `peft-fine-tuning`, `fine-tuning-with-trl`, `axolotl`, `llama-factory`, `unsloth`, `huggingface-accelerate`
-- GitHub-facing or non-gitignored file writing: `avoid-ai-writing`
+- GitHub-facing or non-gitignored file writing: `aiwf-avoid-ai-pushes`
 
 ## GitHub And Non-Ignored File Guard
 
-Select `avoid-ai-writing` whenever any GitHub skill is selected or a task writes to a file that is not ignored by `.gitignore`.
+Select `aiwf-avoid-ai-pushes` whenever any GitHub skill is selected or a task writes public prose to a file that is not ignored by `.gitignore`.
 
 Use `git check-ignore -q -- <path>` when status is unclear:
 
-- exit code 0: ignored, route through `avoid-ai-writing` only if the content is still public-facing prose.
-- non-zero: not ignored, route through `avoid-ai-writing` for new or edited prose.
+- exit code 0: ignored, route through `aiwf-avoid-ai-pushes` only if the content is still public-facing prose.
+- non-zero: not ignored, route through `aiwf-avoid-ai-pushes` for new or edited prose.
 
 For code files, audit only prose-bearing spans such as comments, docstrings, UI copy, prompt templates, generated messages, markdown, and docs.
 

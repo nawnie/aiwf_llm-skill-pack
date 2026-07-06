@@ -1,0 +1,6 @@
+interface:
+  display_name: "aiwf_debug-agent-swarm"
+  short_description: "Coordinate AIWF debug-pass agents"
+  default_prompt: "Use $aiwf-debug-agent-swarm to crawl this AIWF project with parallel debugging agents and write prioritized findings to debug_pass."
+policy:
+  allow_implicit_invocation: false

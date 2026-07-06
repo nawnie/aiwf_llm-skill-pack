@@ -1,0 +1,6 @@
+interface:
+  display_name: "aiwf_python-cpp-hardener"
+  short_description: "Python, C++, and CMake safety checks"
+  default_prompt: "Use $aiwf-python-cpp-hardener to harden Python, C++, or CMake changes before validation."
+policy:
+  allow_implicit_invocation: false

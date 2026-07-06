@@ -1,64 +1,60 @@
-# AIWF LLM Skill Pack Agent Guide
+# Agent Skills Project Instructions
 
-Use `aiwf-orchestration` first for any non-trivial task in this pack. It is the always-on control skill.
+## Scope
 
-## Control Variables
+This project is the shareable workspace for Shawn's AIWF and agent workflow Codex skills.
 
-The orchestration variables live near the top of `skills/aiwf-orchestration/SKILL.md`.
+Work inside this folder unless Shawn explicitly asks to sync changes back into global Codex skills.
 
-```yaml
-AIWF_ORCHESTRATION_VERSION: 1
-AIWF_MAX_AGENT_SPAWN: 3
-AIWF_MAX_LOOPS_WITHOUT_PROGRESS: 2
-AIWF_AI_AVOIDANCE_LEVEL: 1.0
-AIWF_DEEP_RESEARCH_EXTRA_URLS: ""
-AIWF_ALWAYS_ON_SKILLS:
-  aiwf-orchestration: true
-  aiwf-deep-research: false
-  aiwf-dataset: false
-  aiwf-avoid-ai-design: false
-  aiwf-avoid-ai-pushes: false
-  avoid-ai-writing: false
-```
+## Rules
 
-`aiwf-orchestration` stays always on. Do not turn it off.
+- Shawn-owned AIWF skills use canonical folder names and `SKILL.md` frontmatter names prefixed with `aiwf-`.
+- Shawn-owned AIWF skills use `aiwf_` display names in `agents/openai.yaml`.
+- This repository vendors Shawn-owned `aiwf-` skills only. Do not add outside skill folders, outside license files, or external branding.
+- Prefer editing the project-local copies first, then sync or export deliberately.
+- Do not include generated zip files, caches, debug passes, or temporary work in source control.
+- Validate changed skills with `scripts/validate_skills.ps1`.
+- Validate orchestrator route behavior with `scripts/test_orchestrator_routes.py` after route changes.
+- Validate durable workflow receipts with `scripts/validate_receipt.py` when receipt files are produced.
+- Export shareable packages with `scripts/export_agent_skills_pack.ps1`.
 
-## How To Use The Pack
+## Runtime Budget Defaults
 
-Call `aiwf-orchestration` first, then let it choose the smallest useful downstream skill set.
+- `aiwf-orchestrator` should use the highest available reasoning and maximum available context length.
+- `aiwf-deep-research` should use the highest available reasoning and, when available, `/goal` with no fixed token ceiling, maximum context, and unlimited or expanded tool-call limits.
+- Avoid-AI skills should use `/goal` with no fixed token ceiling, maximum context, and unlimited or expanded tool-call limits when available, but should not force highest reasoning unless the task warrants it.
+- Expanded budgets apply to active working phases, not to reviewing old chat. Use standard context length to decide how much prior conversation is relevant.
 
-Common calls:
+## Included AIWF Skill Lanes
 
-- `Use $aiwf-orchestration to route this local AI task.`
-- `Use $aiwf-deep-research with these extra URLs: <url>, <url>.`
-- `Use $aiwf-dataset to validate this dataset intake folder.`
-- `Use $aiwf-avoid-ai-design at avoidance level 2.0 on this UI.`
-- `Use $aiwf-avoid-ai-pushes before committing these docs.`
+- `aiwf-orchestrator`: always-on prompt routing across the pack.
+- `aiwf-orchestration`: portable pack control layer with route variables, AI-avoidance level, loop limits, and provider-adapter policy.
+- `aiwf-deep-research`: weighted source-backed deep research across papers, model resources, open-source libraries, academic sources, Reddit with limits, quantum physics, robotics, and mechanical engineering.
+- `aiwf-dataset`: AIWF and MoK dataset intake, provenance checks, curation, validation, reporting, and synthetic guardrail boundaries.
+- `aiwf-avoid-ai-design`: design cleanup for AI-looking UI, Gradio, React/web, dashboards, PDFs, and document layouts.
+- `aiwf-avoid-ai-illustrations`: generated-image artifact guardrails for logos, diagrams, charts, visual text, photoreal people, hands, anatomy, skin texture, and final image QA.
+- `aiwf-avoid-ai-pushes`: commit, staging, ignored-file, public-prose, remote, and branch hygiene.
+- `aiwf-ai-coding-guardrails`: repo-safe coding guardrails for AI-generated edits.
+- `aiwf-repo-sentinel`: repository preflight, package-manager, shell, test-integrity, and diff-discipline guardrails.
+- `aiwf-security-guardrails`: auth, CORS, secrets, injection, unsafe serialization, dependency supply-chain, and model-source trust guardrails.
+- `aiwf-gpu-runtime-diagnostics`: CUDA, ROCm, NVIDIA driver, PyTorch, TensorRT, VRAM, DLL/PATH, and GPU smoke diagnostics.
+- `aiwf-web-api-ui-guardian`: FastAPI, Gradio, React, TypeScript, JavaScript, HTML, CSS, API-contract, and UI validation guardrails.
+- `aiwf-python-cpp-hardener`: Python, C++, CMake, async, serialization, typing, toolchain, and memory-safety guardrails.
+- `aiwf-ai-pipelines`: backend pipeline and runtime audit.
+- `aiwf-ui-electrician`: UI/API connector and debug-pass audit.
+- `aiwf-model-loader`: precision, quantization, backend, and LoRA loader contracts.
+- `aiwf-local-ai-training`: LoRA, QLoRA, fine-tune, dataset, checkpoint, export, and validation planning.
+- `aiwf-ai-evals`: eval suites, smoke receipts, before/after comparisons, and promotion gates.
+- `aiwf-inference-serving`: vLLM, llama.cpp, Ollama, OpenAI-compatible APIs, telemetry, queueing, and latency checks.
+- `aiwf-debug-agent-swarm`: read-only subagent debug-pass coordination.
+- `aiwf-atlas-cartographer`: Atlas continuity capture and retrieval.
+- `aiwf-atlas-reader`: Atlas Reader LoRA, source protocol, training record, eval-plan, context-pack, and measured-result guardrails.
+- `aiwf-agent-mok`: MoK structured planning, research verification, and findings.
 
-## Always-On Skill Toggles
+## Pack Boundary
 
-Set a skill to `true` in `AIWF_ALWAYS_ON_SKILLS` only when it should be considered for every non-trivial task.
+No outside skills are bundled. Use installed external helpers only as working tools when Shawn asks for them or when local routing has already loaded them; do not copy their files into this repository.
 
-Keep most skills off by default. Too many always-on skills make the agent slower and stricter than needed.
+## Handoff
 
-## AI-Avoidance Level
-
-`AIWF_AI_AVOIDANCE_LEVEL` applies to writing cleanup, UI design cleanup, and push hygiene.
-
-- `0.1`: effectively off unless the user explicitly asks.
-- `1.0`: normal practical cleanup.
-- `2.0`: extreme cleanup. This is intentionally strict and may be too high for everyday work.
-
-The external `avoid-ai-writing` skill is downloaded by `install.ps1`; it is not vendored in this repo.
-
-## Deep Research URL Seeds
-
-Set `AIWF_DEEP_RESEARCH_EXTRA_URLS` to a comma-separated list when research must include known sources.
-
-Example:
-
-```yaml
-AIWF_DEEP_RESEARCH_EXTRA_URLS: "https://arxiv.org/abs/2405.00000, https://github.com/example/project"
-```
-
-`aiwf-deep-research` must preserve those URLs in the source plan as required seed sources.
+Read `HANDOFF.md` before starting a new session here.

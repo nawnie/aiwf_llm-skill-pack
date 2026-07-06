@@ -41,9 +41,9 @@ Do not use AI-written material as the factual source when it:
 
 Find the primary source instead, or quarantine the item.
 
-## Using avoid-ai-writing
+## Public Prose Scan
 
-Use `avoid-ai-writing` in detect mode for:
+Use the AIWF public-prose scan from `aiwf-avoid-ai-pushes` for:
 
 - source descriptions that feel generic,
 - generated research briefs before they become public notes,

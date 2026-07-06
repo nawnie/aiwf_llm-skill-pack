@@ -1,25 +1,19 @@
 ---
 name: aiwf-avoid-ai-pushes
-description: AIWF commit and push hygiene skill, alias aiwf_avoid-ai-pushes. Use before committing or pushing AIWF Studio changes, especially when ignored local files, agent notes, root-layout cleanup, README edits, release docs, or GitHub-facing updates are involved. Prevents accidentally staging ignored/local-only files and pairs scope checks with avoid-ai-writing for public prose.
+description: AIWF commit and push hygiene skill, alias aiwf_avoid-ai-pushes. Use before committing or pushing AIWF Studio changes, especially when ignored local files, agent notes, root-layout cleanup, README edits, release docs, or GitHub-facing updates are involved. Prevents accidentally staging ignored/local-only files and pairs scope checks with public prose scans.
 ---
 
 # Aiwf Avoid AI Pushes
 
-## AI Avoidance Variables
-
-Read this value from `aiwf-orchestration` when it is present:
-
-```yaml
-AIWF_AI_AVOIDANCE_LEVEL: 1.0
-```
-
-Apply the level like this:
-
-- `0.1`: check only for secrets, ignored local files, generated caches, and obvious wrong-remote pushes.
-- `1.0`: normal mode. Run the required checks below and audit new public prose.
-- `2.0`: extreme mode. Treat any ambiguous staged file, local-only note, generated artifact, AI-looking prose, or unexplained remote/branch mismatch as a blocker until it is explicitly justified.
-
 Use this skill before any AIWF Studio commit or push that touches docs, root files, release notes, or agent guidance.
+
+## Runtime Defaults
+
+Use normal reasoning by default; raise reasoning only for complex release hygiene, messy staged changes, or repeated CI/review failures.
+
+When the host supports `/goal`, create or continue a goal for active commit, push, or release-hygiene work. Use no fixed token ceiling, the largest available context limit, and unlimited or expanded tool-call limits where those controls exist. If the host requires finite settings, choose the highest available values except for reasoning, which stays normal unless the task warrants escalation.
+
+Expanded budgets apply to the active repo inspection, staging, prose audit, validation, and push workflow, not to broad chat-history review. Use standard context length to decide which prior chat instructions matter, then focus on the live git state, changed files, ignore rules, and requested release scope.
 
 ## Required Checks
 
@@ -58,11 +52,11 @@ If a file is ignored but already tracked by mistake, remove only the tracked cop
 git rm --cached <path>
 ```
 
-Do not delete the local file unless the user explicitly asks.
+Do not delete the local file unless Shawn explicitly asks.
 
 ## Staging Rule
 
-Stage explicit intended paths only. Do not use `git add -A` in AIWF unless the user confirms the whole worktree belongs in the push.
+Stage explicit intended paths only. Do not use `git add -A` in AIWF unless Shawn confirms the whole worktree belongs in the push.
 
 Good:
 
@@ -70,11 +64,11 @@ Good:
 git add README.md docs/FEATURES.md
 ```
 
-Use `git add -f` only when the user explicitly wants an ignored path tracked. If that happens, say which ignore rule is being bypassed.
+Use `git add -f` only when Shawn explicitly wants an ignored path tracked. If that happens, say which ignore rule is being bypassed.
 
 ## Public Prose Rule
 
-For README, docs, UI copy, release notes, commit messages, and PR text, also use `avoid-ai-writing`.
+For README, docs, UI copy, release notes, commit messages, and PR text, run a public-prose scan before staging or publishing. Keep it narrow: fix newly edited prose and leave quoted examples, code, and source text alone.
 
 At minimum scan for:
 
@@ -82,7 +76,7 @@ At minimum scan for:
 rg -n 'delve|robust|comprehensive|leverage|seamless|pivotal|at its core|worth noting|game-changer|transformative|cutting-edge|utilize|showcasing|foster|empower|moreover|furthermore|additionally|in conclusion|to summarize|--' <files>
 ```
 
-Fix only the new or edited prose unless the user asks for a broader rewrite.
+Fix only the new or edited prose unless Shawn asks for a broader rewrite.
 
 ## Pre-Push Receipt
 

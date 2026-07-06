@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "aiwf.receipt.v1",
+  "title": "AIWF Workflow Receipt",
+  "type": "object",
+  "required": ["schema", "receipt_id", "created_at", "skill", "task", "status", "evidence"],
+  "properties": {
+    "schema": {
+      "const": "aiwf.receipt.v1"
+    },
+    "receipt_id": {
+      "type": "string",
+      "minLength": 3
+    },
+    "created_at": {
+      "type": "string",
+      "description": "ISO-8601 timestamp, preferably UTC."
+    },
+    "skill": {
+      "type": "string",
+      "pattern": "^aiwf-"
+    },
+    "task": {
+      "type": "string",
+      "minLength": 3
+    },
+    "status": {
+      "enum": ["passed", "failed", "partial", "skipped", "blocked"]
+    },
+    "scope": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "commands": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["command", "status"],
+        "properties": {
+          "command": {
+            "type": "string"
+          },
+          "status": {
+            "enum": ["passed", "failed", "not_run"]
+          },
+          "summary": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "risks": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": true
+}
