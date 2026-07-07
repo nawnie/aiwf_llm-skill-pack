@@ -6,6 +6,7 @@ Updated: 2026-07-06
 ## What This Is
 
 This is a Desktop project for Shawn's custom Codex skills and skill-pack work.
+It is also a skills-only Codex plugin package through `.codex-plugin/plugin.json`.
 
 Project path:
 
@@ -70,6 +71,7 @@ Use this folder as the clean project workspace for:
 - Exportable/shareable skill bundles.
 - Iterating skills before syncing them back to global Codex installs.
 - Keeping provider-neutral skill cores plus provider-specific adapters.
+- Shipping the same pack as a skills-only Codex plugin without MCP servers or apps.
 - Clean handoff between Codex sessions.
 
 ## Runtime Budget Defaults

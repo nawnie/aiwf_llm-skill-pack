@@ -1,0 +1,37 @@
+{
+  "name": "aiwf-llm-skill-pack",
+  "version": "0.1.0",
+  "description": "Skills-only Codex plugin for Shawn's AIWF local open-source AI workflow pack.",
+  "author": {
+    "name": "Shawn",
+    "url": "https://github.com/nawnie"
+  },
+  "homepage": "https://github.com/nawnie/aiwf_llm-skill-pack",
+  "repository": "https://github.com/nawnie/aiwf_llm-skill-pack",
+  "license": "MIT",
+  "keywords": [
+    "aiwf",
+    "local-ai",
+    "codex-skills",
+    "workflow",
+    "machine-learning"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "AIWF LLM Skill Pack",
+    "shortDescription": "AIWF skills for local AI development, research, routing, and validation.",
+    "longDescription": "A skills-only Codex plugin for Shawn's AIWF local open-source AI workflow pack. It includes routing, research, dataset, model loading, training, serving, eval, design, push hygiene, Torchie voice, ComfyUI conversion, and guardrail skills without bundling MCP servers or apps.",
+    "developerName": "Shawn",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Skills"
+    ],
+    "websiteURL": "https://github.com/nawnie/aiwf_llm-skill-pack",
+    "defaultPrompt": [
+      "Use the AIWF skill router for this local AI task.",
+      "Plan and validate an AIWF model workflow.",
+      "Audit this AIWF change before I push it."
+    ],
+    "brandColor": "#2563EB"
+  }
+}

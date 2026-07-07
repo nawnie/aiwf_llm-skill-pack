@@ -4,9 +4,9 @@ Standing rule: on every non-trivial task in this project, evaluate implicit skil
 
 ## Project Signals
 
-- This is Shawn's project-local workspace for AIWF and agent workflow Codex skills.
+- This is Shawn's project-local workspace and skills-only Codex plugin package for AIWF and agent workflow Codex skills.
 - Work normally stays inside this folder. Syncing to `C:\Users\Shawn\.codex\skills` is deliberate, not automatic.
-- Source skills live under `skills/`; package scripts live under `scripts/`; generated zips belong in `dist/` and are ignored.
+- Source skills live under `skills/`; plugin metadata lives in `.codex-plugin/plugin.json`; package scripts live under `scripts/`; generated zips belong in `dist/` and are ignored.
 - Validate changed skills with `scripts/validate_skills.ps1`.
 - Validate orchestrator route behavior with `scripts/test_orchestrator_routes.py`.
 - Validate durable workflow receipts with `scripts/validate_receipt.py`.
@@ -22,6 +22,7 @@ Use `projectskill-list` first for project skill routing and map maintenance. For
 | Use case | Skills |
 | --- | --- |
 | Add, rename, validate, package, or document skills | `projectskill-list`, `skill-creator`, `aiwf-orchestration`, `aiwf-orchestrator` |
+| Add or update the Codex plugin wrapper, marketplace metadata, or plugin validation | `plugin-creator`, `projectskill-list`, `aiwf-orchestration` |
 | Deep research, source weighting, literature review, source plans, claim ledgers, citations, arXiv/Hugging Face/GitHub/Civitai/Reddit, open-source libraries, academic sources, quantum, robotics, or mechanical engineering | `aiwf-deep-research`, `aiwf-agent-mok` |
 | Dataset intake, source provenance, curation, validation, reporting, multimodal caption QA, or synthetic guardrail dataset boundaries | `aiwf-dataset`, `aiwf-agent-mok` |
 | ComfyUI workflow JSON, API prompts, node graph inspection, custom-node mapping, or Python pipeline skeleton conversion | `aiwf-comfy-workflow-pipeline`, `aiwf-ai-pipelines`, `aiwf-model-loader` |

@@ -5,6 +5,13 @@
   "created": "2026-06-30",
   "root": "C:/Users/Shawn/Desktop/AI_Projects/Agent Skills",
   "purpose": "Project-local source workspace for AIWF and agent workflow Codex skills.",
+  "plugin": {
+    "name": "aiwf-llm-skill-pack",
+    "manifest_path": ".codex-plugin/plugin.json",
+    "type": "skills-only",
+    "mcp_servers": false,
+    "apps": false
+  },
   "global_source_root": "C:/Users/Shawn/.codex/skills",
   "naming_policy": {
     "aiwf_owned_canonical_prefix": "aiwf-",

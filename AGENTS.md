@@ -2,7 +2,7 @@
 
 ## Scope
 
-This project is the shareable workspace for Shawn's AIWF and agent workflow Codex skills.
+This project is the shareable workspace and skills-only Codex plugin package for Shawn's AIWF and agent workflow Codex skills.
 
 Work inside this folder unless Shawn explicitly asks to sync changes back into global Codex skills.
 
@@ -11,6 +11,7 @@ Work inside this folder unless Shawn explicitly asks to sync changes back into g
 - Shawn-owned AIWF skills use canonical folder names and `SKILL.md` frontmatter names prefixed with `aiwf-`.
 - Shawn-owned AIWF skills use `aiwf_` display names in `agents/openai.yaml`.
 - This repository vendors Shawn-owned `aiwf-` skills only. Do not add outside skill folders, outside license files, or external branding.
+- The plugin wrapper is `.codex-plugin/plugin.json`. Keep it skills-only unless Shawn explicitly asks to add MCP servers or apps.
 - Prefer editing the project-local copies first, then sync or export deliberately.
 - Do not include generated zip files, caches, debug passes, or temporary work in source control.
 - Validate changed skills with `scripts/validate_skills.ps1`.

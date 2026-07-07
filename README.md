@@ -1,13 +1,15 @@
 # Agent Skills
 
-Shareable source workspace for Shawn's AIWF and agent-workflow Codex skills.
+Shareable source workspace and skills-only Codex plugin for Shawn's AIWF and agent-workflow Codex skills.
 
-This repository vendors Shawn-owned `aiwf-` skills only. It does not bundle outside skill folders, external licenses, or external branding. Public prose, design, and push hygiene are handled by AIWF-owned skills and scans in this pack.
+This repository vendors Shawn-owned `aiwf-` skills only. It does not bundle outside skill folders, external licenses, external branding, MCP servers, or apps. Public prose, design, and push hygiene are handled by AIWF-owned skills and scans in this pack.
 
 ## Layout
 
 ```text
 Agent Skills/
+  .codex-plugin/
+    plugin.json
   AGENTS.md
   HANDOFF.md
   PROJECT_SKILLS.md
@@ -57,6 +59,8 @@ Agent Skills/
 ```
 
 ## Install
+
+Use it as a skills-only Codex plugin through `.codex-plugin/plugin.json`, or install the skills directly with the script below.
 
 ```powershell
 git clone https://github.com/nawnie/aiwf_llm-skill-pack.git

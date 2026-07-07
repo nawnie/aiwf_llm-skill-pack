@@ -33,6 +33,11 @@ try {
     }
   }
 
+  $plugin = Join-Path $Root ".codex-plugin"
+  if (Test-Path -LiteralPath $plugin) {
+    Copy-Item -LiteralPath $plugin -Destination $stage -Recurse
+  }
+
   $docs = Join-Path $Root "docs"
   if (Test-Path -LiteralPath $docs) {
     Copy-Item -LiteralPath $docs -Destination $stage -Recurse
@@ -52,7 +57,8 @@ try {
     Remove-Item -LiteralPath $Out -Force
   }
 
-  Compress-Archive -Path (Join-Path $stage "*") -DestinationPath $Out -Force
+  $archiveItems = Get-ChildItem -LiteralPath $stage -Force
+  Compress-Archive -LiteralPath $archiveItems.FullName -DestinationPath $Out -Force
   if ($defaultOut) {
     $latest = Join-Path $outDir "agent-skills-latest.zip"
     Copy-Item -LiteralPath $Out -Destination $latest -Force
