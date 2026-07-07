@@ -151,18 +151,23 @@ P0:
 - Decorative cards nested in page sections without real interaction.
 - Hero section hides the actual product, state, gameplay, person, or place.
 - The page reads as one hue family.
+- The first viewport has no real product evidence: screenshot, artifact, data, demo state, place, or object.
+- The page looks trend-current but fails basic human signals: clear subject, scan path, trust, accessible contrast, visible focus, stable layout, and fast loading.
 
 P1:
 
 - Untouched shadcn `components.json`, default radius, default Button/Card/Badge.
 - Lucide `Sparkles`, `Zap`, `Rocket`, `ArrowRight`, `CheckCircle2` used in the same roles as every AI-built page.
 - Layout shifts because buttons, labels, tiles, or counters have no stable dimensions.
+- Feature cards, badges, and CTA strips repeat claims instead of helping a user decide.
+- Custom fonts, video, animation, or large imagery add weight without improving comprehension.
 
 Fix:
 
 - Render desktop and mobile. Check overlap, text fit, blank canvases, image loading, and state changes.
 - Use icons only where they clarify controls.
 - For tools and dashboards, put the work surface first, not a marketing hero.
+- For web pages, use `modern-web-appeal.md` to replace AI tells with hierarchy, credibility, product evidence, accessibility, responsiveness, and performance discipline.
 
 ## What Not To Over-Flag
 

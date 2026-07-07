@@ -36,11 +36,12 @@ Apply expanded budgets to the working phase: inspecting screenshots or files, re
 3. If the result is visual and a renderer is available, render it. Use screenshots for web/React/Gradio and page renders for PDFs before making visual judgments.
 4. Read `references/ai-design-tells.md` for the tell catalog.
 5. Read `references/surface-fix-playbooks.md` for the relevant surface: Gradio, PDF/document, React/web, or dashboard.
-6. Audit by severity. Mark findings as `code-certain`, `visual-certain`, or `inferred`.
-7. Commit to one direction before editing: palette stance, typography stance, layout stance, density, and one signature detail.
-8. Edit narrowly. Preserve behavior, props, callbacks, data flow, routing, validation, labels with functional meaning, and accessibility.
-9. Re-audit the result. Fix any P0 tells that survived.
-10. Verify with the cheapest useful proof: screenshot, PDF render, local build, lint, focused test, or source diff.
+6. For web pages, React surfaces, dashboards with public-facing areas, or marketing pages, read `references/modern-web-appeal.md` before judging what should replace the AI-looking design.
+7. Audit by severity. Mark findings as `code-certain`, `visual-certain`, or `inferred`.
+8. Commit to one direction before editing: palette stance, typography stance, layout stance, density, and one signature detail.
+9. Edit narrowly. Preserve behavior, props, callbacks, data flow, routing, validation, labels with functional meaning, and accessibility.
+10. Re-audit the result. Fix any P0 tells that survived.
+11. Verify with the cheapest useful proof: screenshot, PDF render, local build, lint, focused test, or source diff.
 
 ## Severity
 
@@ -87,6 +88,12 @@ Fix P0 and P1 in normal passes. Fix P2 when it is cheap or when the surface is p
 `marketing-page`: Use real product/place/object imagery or screenshots when possible. The first viewport should signal the actual subject, not a generic value prop wrapper.
 
 State which profile you are using and why.
+
+## Source-Backed Web Appeal
+
+For modern web pages, do not replace AI-looking design with trend-chasing. Use `references/modern-web-appeal.md` to ground the direction in human appeal, credibility, accessibility, responsiveness, and performance.
+
+The short rule: appealing human design makes the page easier to trust, scan, use, and revisit. It does not hide the real product behind generic gradients, identical cards, vague claims, or heavy animation.
 
 ## Guardrails
 

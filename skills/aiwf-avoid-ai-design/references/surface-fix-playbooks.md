@@ -62,6 +62,8 @@ Good document direction choices:
 
 Goal: a web surface with a specific purpose, not the median SaaS page.
 
+Before editing, read `modern-web-appeal.md` and choose which human signal is missing: hierarchy, credibility, product evidence, accessibility, responsiveness, performance, visible state, or audience fit.
+
 Inspect first:
 
 - `package.json`, framework, route files
@@ -77,8 +79,10 @@ Fix pattern:
 3. Replace default theme tokens before touching dozens of components.
 4. Remove repeated card shells. Use layout, type, and density to create hierarchy.
 5. Pick imagery or screenshots that show the real product or state.
-6. Build stable dimensions for buttons, boards, controls, counters, tiles, and charts.
-7. Verify with desktop and mobile screenshots. Check text fit and overlap.
+6. Check contrast, focus-visible states, target affordance, text scaling, and mobile reflow.
+7. Build stable dimensions for buttons, boards, controls, counters, tiles, and charts.
+8. Keep media, fonts, motion, and third-party scripts light enough that the page still feels fast.
+9. Verify with desktop and mobile screenshots. Check text fit, overlap, image loading, layout shift, and state changes.
 
 Good web direction choices:
 
@@ -98,6 +102,7 @@ Fix pattern:
 4. Avoid decorative chart colors. Series colors must carry grouping meaning.
 5. Make empty, loading, stale, and error states visible.
 6. Keep filters close to the data they affect.
+7. If the dashboard has a public or executive-facing surface, apply `modern-web-appeal.md` for credibility, source notes, readable hierarchy, and performance.
 
 ## Second-Pass Audit
 
