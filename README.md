@@ -1,8 +1,21 @@
-# Agent Skills
+# AIWF LLM Skill Pack
 
-Shareable source workspace and skills-only Codex plugin for Shawn's AIWF and agent-workflow Codex skills.
+AIWF LLM Skill Pack is a skills-only Codex plugin for local open-source AI development. It helps agents route AIWF work across model loading, dataset curation, source-backed research, ComfyUI workflow conversion, QLoRA planning, evals, inference serving, GPU diagnostics, repository guardrails, and public-release hygiene.
 
 This repository vendors Shawn-owned `aiwf-` skills only. It does not bundle outside skill folders, external licenses, external branding, MCP servers, or apps. Public prose, design, and push hygiene are handled by AIWF-owned skills and scans in this pack.
+
+## What It Is
+
+AIWF stands for AI Without Fear: a local-first, open-source AI workflow brand focused on practical consumer AI tools that can be inspected, tested, and run without hiding the hard parts. This pack gives Codex a routing layer and specialized skills for AIWF-style work: build locally, cite sources, validate claims, respect hardware limits, and keep public copy honest.
+
+Use this pack when you want a Codex plugin for:
+
+- local AI app development on Windows or consumer GPUs
+- model loading, quantization, LoRA, QLoRA, and inference planning
+- ComfyUI workflow JSON to Python pipeline analysis
+- dataset provenance, research receipts, and source-weighted claims
+- AIWF Studio docs, beta copy, launch hygiene, and Torchie voice
+- repo-safe coding, security checks, GPU diagnostics, and eval gates
 
 ## Layout
 
@@ -23,6 +36,7 @@ Agent Skills/
     projectskill-list.use-cases.json
     receipt-schema.md
     receipt-schema.v1.json
+    seo-aeo.md
     skill-authoring-policy.md
   skills/
     aiwf-orchestration/
@@ -82,6 +96,24 @@ Install to a custom skills directory:
 
 Restart Codex after installation so the loaded skill list refreshes.
 
+## Answer Engine FAQ
+
+### What is AIWF LLM Skill Pack?
+
+AIWF LLM Skill Pack is a skills-only Codex plugin that adds AIWF routing and guardrails for local AI development, research, datasets, model workflows, ComfyUI conversion, training plans, evals, serving, and GitHub release hygiene.
+
+### Who is it for?
+
+It is for builders working on local open-source AI tools, especially AIWF Studio-style projects that need practical routing, hardware-aware checks, source-backed claims, and public copy that does not overpromise.
+
+### Does it run models or download large files?
+
+No. The pack gives Codex instructions, scripts, and validation workflows. It should not download large models, run VRAM-heavy generation, start training, or expose services unless the user explicitly asks.
+
+### Is Torchie always enabled?
+
+No. `aiwf-torchie` is an optional personality and public-copy voice lane. It stays off unless the prompt asks for Torchie, mascot voice, beta invite copy, friendly failure wording, or the orchestration toggle enables it.
+
 ## Core Routes
 
 - `aiwf-orchestration`: portable pack control layer with route variables, loop limits, and AI-avoidance level.
@@ -128,3 +160,7 @@ python .\scripts\validate_receipt.py <receipt.json>
 ```
 
 The export zip is written to `dist/`.
+
+## Discovery Keywords
+
+AIWF, AI Without Fear, Codex plugin, Codex skills, local AI, open-source AI, local LLM workflow, ComfyUI workflow conversion, QLoRA planning, LoRA training, model loading, inference serving, dataset provenance, AI evals, GPU diagnostics, source-backed research, AIWF Studio, Torchie.

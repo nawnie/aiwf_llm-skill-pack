@@ -1,7 +1,7 @@
 {
   "name": "aiwf-llm-skill-pack",
   "version": "0.1.0",
-  "description": "Skills-only Codex plugin for Shawn's AIWF local open-source AI workflow pack.",
+  "description": "Skills-only Codex plugin for AIWF local open-source AI development, model workflows, research, datasets, evals, serving, and release hygiene.",
   "author": {
     "name": "Shawn",
     "url": "https://github.com/nawnie"
@@ -11,16 +11,29 @@
   "license": "MIT",
   "keywords": [
     "aiwf",
+    "ai-without-fear",
     "local-ai",
+    "open-source-ai",
+    "codex-plugin",
     "codex-skills",
+    "answer-engine-optimization",
+    "seo",
+    "local-llm",
+    "comfyui",
+    "qlora",
+    "lora",
+    "model-loading",
+    "dataset-provenance",
+    "ai-evals",
+    "gpu-diagnostics",
     "workflow",
     "machine-learning"
   ],
   "skills": "./skills/",
   "interface": {
     "displayName": "AIWF LLM Skill Pack",
-    "shortDescription": "AIWF skills for local AI development, research, routing, and validation.",
-    "longDescription": "A skills-only Codex plugin for Shawn's AIWF local open-source AI workflow pack. It includes routing, research, dataset, model loading, training, serving, eval, design, push hygiene, Torchie voice, ComfyUI conversion, and guardrail skills without bundling MCP servers or apps.",
+    "shortDescription": "AIWF skills for local AI development, model workflows, research, and validation.",
+    "longDescription": "A skills-only Codex plugin for AIWF local open-source AI development. It includes routing, source-backed research, dataset provenance, model loading, ComfyUI workflow conversion, QLoRA planning, inference serving, eval gates, GPU diagnostics, design cleanup, push hygiene, and Torchie voice without bundling MCP servers or apps.",
     "developerName": "Shawn",
     "category": "Developer Tools",
     "capabilities": [

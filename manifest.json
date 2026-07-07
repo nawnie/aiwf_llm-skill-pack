@@ -4,7 +4,30 @@
   "owner": "Shawn",
   "created": "2026-06-30",
   "root": "C:/Users/Shawn/Desktop/AI_Projects/Agent Skills",
-  "purpose": "Project-local source workspace for AIWF and agent workflow Codex skills.",
+  "purpose": "Project-local source workspace for AIWF and agent workflow Codex skills, packaged as a skills-only plugin for local open-source AI development.",
+  "discovery": {
+    "primary_query": "Codex plugin for local open-source AI development",
+    "answer_engine_summary": "AIWF LLM Skill Pack is a skills-only Codex plugin for routing and validating local AI work across research, datasets, model loading, ComfyUI conversion, training plans, evals, serving, GPU diagnostics, repo guardrails, and public-release hygiene.",
+    "brand_terms": [
+      "AIWF",
+      "AI Without Fear",
+      "AIWF Studio",
+      "Torchie"
+    ],
+    "topic_keywords": [
+      "aiwf",
+      "local-ai",
+      "open-source-ai",
+      "codex-plugin",
+      "codex-skills",
+      "local-llm",
+      "comfyui",
+      "qlora",
+      "dataset-provenance",
+      "ai-evals",
+      "gpu-diagnostics"
+    ]
+  },
   "plugin": {
     "name": "aiwf-llm-skill-pack",
     "manifest_path": ".codex-plugin/plugin.json",
