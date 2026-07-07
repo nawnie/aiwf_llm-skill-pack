@@ -31,9 +31,11 @@ Work inside this folder unless Shawn explicitly asks to sync changes back into g
 - `aiwf-orchestration`: portable pack control layer with route variables, AI-avoidance level, loop limits, and provider-adapter policy.
 - `aiwf-deep-research`: weighted source-backed deep research across papers, model resources, open-source libraries, academic sources, Reddit with limits, quantum physics, robotics, and mechanical engineering.
 - `aiwf-dataset`: AIWF and MoK dataset intake, provenance checks, curation, validation, reporting, and synthetic guardrail boundaries.
+- `aiwf-comfy-workflow-pipeline`: ComfyUI workflow JSON, API prompts, node graph inspection, custom-node mapping, and Python pipeline skeleton planning.
 - `aiwf-avoid-ai-design`: design cleanup for AI-looking UI, Gradio, React/web, dashboards, PDFs, and document layouts.
 - `aiwf-avoid-ai-illustrations`: generated-image artifact guardrails for logos, diagrams, charts, visual text, photoreal people, hands, anatomy, skin texture, and final image QA.
 - `aiwf-avoid-ai-pushes`: commit, staging, ignored-file, public-prose, remote, and branch hygiene.
+- `aiwf-torchie`: optional Torchie personality and public-copy voice lane that can be toggled on or off.
 - `aiwf-ai-coding-guardrails`: repo-safe coding guardrails for AI-generated edits.
 - `aiwf-repo-sentinel`: repository preflight, package-manager, shell, test-integrity, and diff-discipline guardrails.
 - `aiwf-security-guardrails`: auth, CORS, secrets, injection, unsafe serialization, dependency supply-chain, and model-source trust guardrails.

@@ -1,0 +1,7 @@
+interface:
+  display_name: "aiwf_torchie"
+  short_description: "Torchie voice for AIWF beta copy"
+  default_prompt: "Use $aiwf-torchie to rewrite this AIWF note in Torchie voice without reducing technical clarity."
+
+policy:
+  allow_implicit_invocation: true

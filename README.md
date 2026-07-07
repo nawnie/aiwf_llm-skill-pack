@@ -27,9 +27,11 @@ Agent Skills/
     aiwf-orchestrator/
     aiwf-deep-research/
     aiwf-dataset/
+    aiwf-comfy-workflow-pipeline/
     aiwf-avoid-ai-design/
     aiwf-avoid-ai-illustrations/
     aiwf-avoid-ai-pushes/
+    aiwf-torchie/
     aiwf-ai-coding-guardrails/
     aiwf-repo-sentinel/
     aiwf-security-guardrails/
@@ -82,9 +84,11 @@ Restart Codex after installation so the loaded skill list refreshes.
 - `aiwf-orchestrator`: local always-on router across the broader AIWF guardrail pack.
 - `aiwf-deep-research`: weighted research with source plans, claim ledgers, citations, and receipt validation.
 - `aiwf-dataset`: AIWF and MoK dataset intake, provenance checks, curation, validation, and reporting.
+- `aiwf-comfy-workflow-pipeline`: ComfyUI workflow JSON, API prompt, node graph, and custom-node conversion planning for AIWF pipeline skeletons.
 - `aiwf-avoid-ai-design`: design cleanup for AI-looking UI, Gradio, React/web, dashboards, PDFs, and documents.
 - `aiwf-avoid-ai-illustrations`: generated-image artifact guardrails for logos, diagrams, charts, people, hands, skin texture, and visual text.
 - `aiwf-avoid-ai-pushes`: commit, staging, ignored-file, public-prose, remote, and branch hygiene.
+- `aiwf-torchie`: optional Torchie personality and public-copy voice lane for beta invites, friendly local-AI failure wording, and mascot-style planning.
 - `aiwf-atlas-cartographer`: Atlas continuity capture, retrieval, cards, lanes, and handoff state.
 - `aiwf-atlas-reader`: Atlas Reader LoRA, source protocol, training record, eval-plan, context-pack, and measured-result guardrails.
 - `aiwf-agent-mok`: MoK planning, source verification, research findings, and findings-dataset capture.
@@ -95,7 +99,7 @@ The remaining AIWF skills cover repo-safe coding, security, GPU/runtime diagnost
 
 Use `skillfindings.md` and `docs/skill-authoring-policy.md` when changing skills. Keep `SKILL.md` provider-neutral, use `agents/openai.yaml` for OpenAI-facing metadata, and put deterministic checks in scripts.
 
-Runtime defaults are declared in the relevant skill files. `aiwf-orchestration` and `aiwf-orchestrator` use highest available reasoning and maximum context. `aiwf-deep-research` uses highest available reasoning plus `/goal` with no fixed token ceiling, maximum context, and expanded or unlimited tool calls when available. Avoid-AI skills use the same `/goal` budget defaults without forcing highest reasoning.
+Runtime defaults are declared in the relevant skill files. `aiwf-orchestration` and `aiwf-orchestrator` use highest available reasoning and maximum context. `aiwf-deep-research` uses highest available reasoning plus `/goal` with no fixed token ceiling, maximum context, and expanded or unlimited tool calls when available. Avoid-AI skills use the same `/goal` budget defaults without forcing highest reasoning. `aiwf-torchie` is an optional personality lane and stays off unless the prompt or orchestration toggle calls for it.
 
 Expanded budgets are for active work: source checks, edits, validation, packaging, and publishing. Use standard context length to decide which prior chat instructions matter.
 

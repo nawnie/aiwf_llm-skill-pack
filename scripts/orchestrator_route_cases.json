@@ -40,6 +40,16 @@
     "must_include": ["aiwf-avoid-ai-illustrations"]
   },
   {
+    "name": "comfy-workflow-conversion",
+    "prompt": "convert this ComfyUI workflow JSON API prompt with custom nodes into a Python pipeline skeleton",
+    "must_include": ["aiwf-comfy-workflow-pipeline"]
+  },
+  {
+    "name": "torchie-personality-copy",
+    "prompt": "write Torchie beta invite copy with friendly local-AI failure wording",
+    "must_include": ["aiwf-torchie"]
+  },
+  {
     "name": "dataset-provenance",
     "prompt": "validate dataset source provenance and clean synthetic guardrail rows without overwriting existing folders",
     "must_include": ["aiwf-dataset"]

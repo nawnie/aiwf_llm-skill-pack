@@ -51,6 +51,16 @@
       "role": "AIWF and MoK dataset research, provenance, curation, validation, reporting, and synthetic guardrail dataset boundaries."
     },
     {
+      "canonical_name": "aiwf-comfy-workflow-pipeline",
+      "local_path": "skills/aiwf-comfy-workflow-pipeline",
+      "install_path": "C:/Users/Shawn/.codex/skills/aiwf-comfy-workflow-pipeline",
+      "original_source": "C:/Users/Shawn/.codex/skills/aiwf-comfy-workflow-pipeline",
+      "display_name": "aiwf_comfy-workflow-pipeline",
+      "ownership": "shawn-aiwf",
+      "implicit_invocation": true,
+      "role": "ComfyUI workflow JSON, API prompt, node graph, custom-node mapping, and Python pipeline skeleton planning."
+    },
+    {
       "canonical_name": "aiwf-avoid-ai-illustrations",
       "local_path": "skills/aiwf-avoid-ai-illustrations",
       "install_path": "C:/Users/Shawn/.codex/skills/aiwf-avoid-ai-illustrations",
@@ -78,6 +88,16 @@
       "ownership": "shawn-aiwf",
       "implicit_invocation": true,
       "role": "Commit and push hygiene for ignored files, local-only artifacts, public prose scans, staged diffs, remotes, and branches."
+    },
+    {
+      "canonical_name": "aiwf-torchie",
+      "local_path": "skills/aiwf-torchie",
+      "install_path": "C:/Users/Shawn/.codex/skills/aiwf-torchie",
+      "original_source": "C:/Users/Shawn/.codex/skills/aiwf-torchie",
+      "display_name": "aiwf_torchie",
+      "ownership": "shawn-aiwf",
+      "implicit_invocation": false,
+      "role": "Optional Torchie personality and public-copy voice lane for AIWF beta copy, friendly local-AI failure wording, and mascot-style planning."
     },
     {
       "canonical_name": "aiwf-ai-coding-guardrails",

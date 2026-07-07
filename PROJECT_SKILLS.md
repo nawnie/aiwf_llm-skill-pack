@@ -24,8 +24,10 @@ Use `projectskill-list` first for project skill routing and map maintenance. For
 | Add, rename, validate, package, or document skills | `projectskill-list`, `skill-creator`, `aiwf-orchestration`, `aiwf-orchestrator` |
 | Deep research, source weighting, literature review, source plans, claim ledgers, citations, arXiv/Hugging Face/GitHub/Civitai/Reddit, open-source libraries, academic sources, quantum, robotics, or mechanical engineering | `aiwf-deep-research`, `aiwf-agent-mok` |
 | Dataset intake, source provenance, curation, validation, reporting, multimodal caption QA, or synthetic guardrail dataset boundaries | `aiwf-dataset`, `aiwf-agent-mok` |
+| ComfyUI workflow JSON, API prompts, node graph inspection, custom-node mapping, or Python pipeline skeleton conversion | `aiwf-comfy-workflow-pipeline`, `aiwf-ai-pipelines`, `aiwf-model-loader` |
 | AI-looking UI, default Gradio/shadcn styling, teal-heavy design, generated-looking dashboards, PDFs, document layouts, or web surfaces | `aiwf-avoid-ai-design`, `aiwf-web-api-ui-guardian` |
 | Generated images, AI illustrations, logos, diagrams, charts, visual text, photoreal people, hands, anatomy, skin texture, or final image QA | `aiwf-avoid-ai-illustrations`, `aiwf-deep-research` |
+| Torchie, mascot voice, beta invite copy, friendly local-AI failure wording, or AIWF public copy in the Torchie voice | `aiwf-torchie`, `aiwf-avoid-ai-pushes` |
 | Existing-repo coding or generated-code cleanup | `aiwf-ai-coding-guardrails`, `aiwf-repo-sentinel` |
 | Security, auth, secrets, unsafe inputs, dependency supply chain, or model-source trust | `aiwf-security-guardrails` |
 | CUDA, ROCm, NVIDIA driver, PyTorch GPU, TensorRT, VRAM, DLL/PATH, or GPU smoke failures | `aiwf-gpu-runtime-diagnostics` |
@@ -50,6 +52,7 @@ Use `projectskill-list` first for project skill routing and map maintenance. For
 - Do not include generated zips, caches, debug passes, or temporary work in source control.
 - If global skills are changed, restart Codex so the loaded skill list refreshes.
 - Runtime budget defaults: `aiwf-orchestrator` uses highest available reasoning and maximum context; `aiwf-deep-research` uses highest available reasoning plus `/goal` with no fixed token ceiling, maximum context, and expanded or unlimited tool calls when available; avoid-AI skills use the same `/goal` budget defaults without forcing highest reasoning.
+- `aiwf-torchie` is an optional personality lane. Keep it off unless Shawn asks for Torchie-style output or turns the personality toggle on.
 - Expanded budgets are for active work, not broad chat review. Use standard context length to choose relevant prior chat.
 
 ## Verification

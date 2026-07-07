@@ -53,6 +53,15 @@
       "verification": ["python .\\skills\\aiwf-dataset\\scripts\\validate_dataset_receipts.py <dataset-root>"]
     },
     {
+      "id": "comfy-workflow-pipeline",
+      "signals": ["ComfyUI", "workflow JSON", "API prompt", "node graph", "custom node", "object_info", "pipeline skeleton", "workflow conversion"],
+      "skills": ["aiwf-comfy-workflow-pipeline", "aiwf-ai-pipelines", "aiwf-model-loader"],
+      "use_when": "Use when converting or inspecting ComfyUI workflows, API prompts, UI save files, custom-node graphs, or AIWF pipeline skeletons.",
+      "project_guardrails": ["Do not start ComfyUI, queue prompts, import custom nodes, download models, or run generation unless Shawn explicitly asks.", "Keep original workflow JSON untouched and write generated analysis to a separate output directory.", "Report unresolved node ids and class types instead of guessing behavior."],
+      "outputs": ["workflow_analysis.json", "conversion_report.md", "pipeline_skeleton.py"],
+      "verification": ["python .\\skills\\aiwf-comfy-workflow-pipeline\\scripts\\comfy_workflow_to_pipeline.py <workflow.json> --output-dir <out>"]
+    },
+    {
       "id": "avoid-ai-design",
       "signals": ["AI-looking design", "default Gradio", "default shadcn", "teal everywhere", "generated-looking PDF", "document layout", "dashboard design", "de-slop UI"],
       "skills": ["aiwf-avoid-ai-design", "aiwf-web-api-ui-guardian"],
@@ -69,6 +78,15 @@
       "project_guardrails": ["Do not accept generated charts without checking data, axes, labels, title, and scale.", "Do not ship generated bitmap logo text as final typography.", "Use structured or vector artifacts for diagrams that need labels, arrows, logic, or editability.", "Inspect hands, faces, skin texture, shadows, and prompt-critical object relationships before final acceptance."],
       "outputs": ["surface-specific prompt/review guidance", "pass/revise/reject image QA findings"],
       "verification": ["python .\\scripts\\test_orchestrator_routes.py", ".\\scripts\\validate_skills.ps1"]
+    },
+    {
+      "id": "torchie-personality-copy",
+      "signals": ["Torchie", "tiny robot", "mascot voice", "beta invite", "friendly failure", "crash explanation", "OOM explanation", "local-AI humor", "AIWF public copy"],
+      "skills": ["aiwf-torchie", "aiwf-avoid-ai-pushes"],
+      "use_when": "Use when Shawn asks for Torchie voice, AIWF mascot copy, beta-testing invites, friendly local-AI failure wording, or public AIWF copy with candid technical warmth.",
+      "project_guardrails": ["Torchie is default-off unless explicitly requested or enabled in AIWF_PERSONALITY_SKILLS.", "Preserve exact facts, paths, commands, model names, caveats, and receipts.", "Do not use mascot humor for legal, licensing, privacy, safety, security, destructive-command, or source-verdict decisions."],
+      "outputs": ["Torchie-style copy", "voice critique", "planning summary with factual caveats"],
+      "verification": ["public-prose scan for README, docs, release, or GitHub-facing copy"]
     },
     {
       "id": "push-hygiene",

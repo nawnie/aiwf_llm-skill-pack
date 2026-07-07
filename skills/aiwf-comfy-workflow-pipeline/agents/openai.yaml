@@ -1,0 +1,4 @@
+interface:
+  display_name: "aiwf_comfy-workflow-pipeline"
+  short_description: "Convert ComfyUI graphs into Python pipeline skeletons"
+  default_prompt: "Use $aiwf-comfy-workflow-pipeline to analyze this ComfyUI workflow JSON and generate a Python pipeline skeleton."

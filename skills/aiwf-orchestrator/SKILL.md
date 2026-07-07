@@ -63,7 +63,9 @@ The helper is advisory. The agent remains responsible for checking project instr
 - Continuity cards or handoff state: `aiwf-atlas-cartographer`.
 - Atlas Reader LoRA repo, Atlas adapter, context-pack, eval plans, or measured-result claims: `aiwf-atlas-reader`.
 - Dataset intake, source provenance, curation, reporting, or synthetic guardrail datasets: `aiwf-dataset`.
+- ComfyUI workflow JSON, API prompts, node graph inspection, or Python pipeline skeleton conversion: `aiwf-comfy-workflow-pipeline`.
 - AI-looking UI, Gradio, React/web, PDF, document, or dashboard design cleanup: `aiwf-avoid-ai-design`.
+- Torchie, tiny robot, mascot voice, AIWF beta invite copy, or local-AI failure-mode humor: `aiwf-torchie`.
 - Public docs, release text, commit scope, or push hygiene: `aiwf-avoid-ai-pushes`.
 - Existing-repository coding, generated-code cleanup, or broad code review: `aiwf-ai-coding-guardrails`, then add focused guardrails as needed.
 - Repo preflight, dirty tree, package manager, shell, test integrity, or diff scope: `aiwf-repo-sentinel`.

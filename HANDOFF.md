@@ -42,9 +42,11 @@ New AIWF skills added in this workspace:
 - `aiwf-orchestration`, portable pack control layer with route variables, AI-avoidance level, loop limits, and provider-adapter policy
 - `aiwf-deep-research`, weighted source-backed deep research with source plans, claim ledgers, citations, source weights, Civitai/resource handling, open-source library checks, academic-source weighting, and Reddit limits
 - `aiwf-dataset`, AIWF and MoK dataset intake, provenance checks, curation, validation, reporting, and synthetic guardrail boundaries
+- `aiwf-comfy-workflow-pipeline`, ComfyUI workflow JSON, API prompt, node graph, custom-node mapping, and Python pipeline skeleton planning
 - `aiwf-avoid-ai-design`, design cleanup for AI-looking UI, Gradio, React/web, dashboards, PDFs, and document layouts
 - `aiwf-avoid-ai-illustrations`, generated-image artifact guardrails for logos, diagrams, charts, visual text, photoreal people, hands, anatomy, skin texture, and final image QA
 - `aiwf-avoid-ai-pushes`, commit, staging, ignored-file, public-prose, remote, and branch hygiene
+- `aiwf-torchie`, optional Torchie personality and public-copy voice lane for AIWF beta copy, friendly local-AI failure wording, and mascot-style planning
 - `aiwf-ai-coding-guardrails`, repo-safe coding guardrails for AI-generated edits and existing-repository code work
 - `aiwf-repo-sentinel`, repository preflight, package-manager, shell, test-integrity, and diff-discipline guardrails
 - `aiwf-security-guardrails`, auth, CORS, secrets, injection, unsafe serialization, dependency supply-chain, and model-source trust guardrails
@@ -75,6 +77,7 @@ Use this folder as the clean project workspace for:
 - `aiwf-orchestration` and `aiwf-orchestrator` default to highest available reasoning and maximum available context.
 - `aiwf-deep-research` defaults to highest available reasoning and `/goal` with no fixed token ceiling, maximum context, and expanded or unlimited tool calls when available.
 - Avoid-AI skills default to `/goal` with no fixed token ceiling, maximum context, and expanded or unlimited tool calls when available, without forcing highest reasoning unless the task warrants it.
+- `aiwf-torchie` is a personality lane and should stay off unless the prompt or orchestration toggle calls for it.
 - Expanded budgets apply to active work, not broad chat review. Use standard context length to decide which prior chat should be included.
 
 ## First Commands

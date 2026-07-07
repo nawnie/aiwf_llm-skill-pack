@@ -21,6 +21,8 @@ AIWF_ALWAYS_ON_SKILLS:
   aiwf-dataset: false
   aiwf-avoid-ai-design: false
   aiwf-avoid-ai-pushes: false
+AIWF_PERSONALITY_SKILLS:
+  aiwf-torchie: false
 ```
 
 Variable meanings:
@@ -30,6 +32,7 @@ Variable meanings:
 - `AIWF_AI_AVOIDANCE_LEVEL`: shared strictness for AI-looking writing, UI design, and push hygiene.
 - `AIWF_DEEP_RESEARCH_EXTRA_URLS`: optional comma-separated URLs that `aiwf-deep-research` must include in source planning.
 - `AIWF_ALWAYS_ON_SKILLS`: toggles for skills that should be considered on every non-trivial task. `aiwf-orchestration` is always on and should not be disabled in this pack.
+- `AIWF_PERSONALITY_SKILLS`: opt-in personality lanes. Keep `aiwf-torchie` off unless Shawn asks for Torchie, mascot voice, beta invite copy, friendly failure wording, or public AIWF copy in that style.
 
 Strictness scale:
 
@@ -78,6 +81,7 @@ Focused routing references:
 Common downstream selections:
 
 - Pipeline or local runtime work: `local-ai-dev`, `stable-diffusion-image-generation`
+- ComfyUI workflow JSON, API prompts, node graph inspection, or Python pipeline skeleton conversion: `aiwf-comfy-workflow-pipeline`
 - Audio generation: `audiocraft-audio-generation`
 - Speech or audio input: `whisper`
 - Vision helpers for masks, captions, image-text search, or VLM chat: `segment-anything-model`, `clip`, `blip-2-vision-language`, `llava`
@@ -85,6 +89,7 @@ Common downstream selections:
 - Gradio wiring only: `hugging-face:huggingface-gradio`
 - React frontend only: `build-web-apps:react-best-practices`
 - AI-looking UI, Gradio, React, web, dashboard, PDF, or document layout cleanup: `aiwf-avoid-ai-design`
+- Torchie, mascot voice, AIWF beta invite copy, or friendly local-AI failure-mode wording: `aiwf-torchie`
 - Deep research, source weighting, literature review, source plans, claim ledgers, arXiv, Hugging Face, GitHub, Civitai, Reddit limits, open-source library checks, academic sources, quantum physics, robotics, or mechanical engineering: `aiwf-deep-research`
 - Dataset intake, validation, curation, reporting, or synthetic guardrail datasets: `aiwf-dataset`
 - GitHub-facing README, docs, commit messages, PR text, release notes, or non-ignored repo prose: `aiwf-avoid-ai-pushes`
@@ -98,6 +103,13 @@ Read `AIWF_ALWAYS_ON_SKILLS` before choosing skills.
 - If a skill is `false`, load it only when the prompt, file type, or repo operation matches its trigger.
 - Do not disable `aiwf-orchestration`. It is the pack control layer.
 - Keep the always-on list small. Too many always-on skills slow down work and increase rule conflicts.
+
+## Personality Toggles
+
+Read `AIWF_PERSONALITY_SKILLS` before using a personality lane.
+
+- `aiwf-torchie: false` means answer in the normal technical voice unless the prompt explicitly asks for Torchie, mascot voice, beta invite copy, friendly failure wording, or public AIWF copy in that style.
+- `aiwf-torchie: true` means Torchie can be applied to human-facing copy and planning summaries after factual, source, safety, and validation requirements are satisfied.
 
 ## Deep Research URL Seeds
 

@@ -14,9 +14,11 @@ REQUIRED_SKILLS = {
     "aiwf-avoid-ai-design",
     "aiwf-avoid-ai-illustrations",
     "aiwf-avoid-ai-pushes",
+    "aiwf-comfy-workflow-pipeline",
     "aiwf-atlas-cartographer",
     "aiwf-atlas-reader",
     "aiwf-agent-mok",
+    "aiwf-torchie",
 }
 
 REQUIRED_ORCHESTRATION_TOKENS = {
