@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "skill": "aiwf-aeo-geo",
+  "verified_on": "2026-07-10",
+  "sources": [
+    {"id":"google-ai-guide","title":"AI features and your website","publisher":"Google Search Central","url":"https://developers.google.com/search/docs/fundamentals/ai-optimization-guide","status":"current official guidance","version":"live","retrieved_at":"2026-07-10","volatility":"high","supports":["AI search fundamentals","unsupported optimization claims"]},
+    {"id":"google-genai","title":"Google Search guidance about AI-generated content","publisher":"Google Search Central","url":"https://developers.google.com/search/docs/fundamentals/using-gen-ai-content","status":"current official guidance","version":"live","retrieved_at":"2026-07-10","volatility":"high","supports":["automation","quality","scaled content abuse"]},
+    {"id":"google-helpful","title":"Creating helpful, reliable, people-first content","publisher":"Google Search Central","url":"https://developers.google.com/search/docs/fundamentals/creating-helpful-content","status":"current official guidance","version":"live","retrieved_at":"2026-07-10","volatility":"high","supports":["original value","authorship","trust"]},
+    {"id":"schema-org","title":"Schema.org documentation","publisher":"Schema.org Community Group","url":"https://schema.org/docs/documents.html","status":"current vocabulary documentation","version":"live","retrieved_at":"2026-07-10","volatility":"medium","supports":["structured vocabulary","visible-content consistency"]}
+  ]
+}

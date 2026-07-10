@@ -1,0 +1,6 @@
+interface:
+  display_name: "aiwf_software-ai-supply-chain-security"
+  short_description: "Dependencies, builds, releases, and AI artifact trust"
+  default_prompt: "Use $aiwf-software-ai-supply-chain-security to inventory and verify dependencies, builds, releases, models, datasets, and other executable artifacts."
+policy:
+  allow_implicit_invocation: false

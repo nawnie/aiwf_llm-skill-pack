@@ -3,4 +3,4 @@ interface:
   short_description: "Audit local model serving runtimes"
   default_prompt: "Use $aiwf-inference-serving to plan or audit vLLM, llama.cpp, Ollama, OpenAI-compatible APIs, telemetry, queueing, reloads, and latency."
 policy:
-  allow_implicit_invocation: true
+  allow_implicit_invocation: false

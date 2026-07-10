@@ -1,6 +1,6 @@
 ---
 name: aiwf-dataset
-description: Coordinate AIWF and MoK local dataset research, curation, validation, and cleanup. Use when sorting daily automated dataset research, validating sources and licenses, cleaning current dataset libraries, generating additive dataset artifacts, planning dataset freshness or media duration gates, curating text/image/video/audio data, captioning multimodal datasets, preparing Data Analytics dashboards or reports, or applying AI-writing guardrails to original research and synthetic guardrail training data.
+description: Use for AIWF and MoK dataset intake, source and license validation, additive curation, cleanup, manifests, receipts, freshness and retention gates, text/image/video/audio data, multimodal captions, synthetic-data labeling, and dataset QA or reporting.
 ---
 
 # AIWF Dataset
@@ -38,10 +38,9 @@ Use this skill as the coordinator for local-first dataset intake, validation, cl
    - Reject or quarantine sources with unclear origin, missing license, broken citations, AI citation markup leaks, placeholder text, or unsupported claims.
 
 4. Curate and clean.
-   - For small local passes, use scripts and standard parsers first.
-   - For large text or multimodal corpora, use the NeMo Curator skill for deduplication, quality filtering, PII redaction, NSFW checks, and GPU-scale processing.
-   - For generic distributed ETL or batch inference, use Ray Data.
-   - For semantic duplicate checks, use sentence-transformers and FAISS.
+   - For small local passes, use repo-native scripts and structured parsers first.
+   - For large text or multimodal corpora, inspect installed tooling and data volume before proposing NeMo Curator, Ray Data, sentence-transformers, FAISS, or another optional dependency.
+   - Do not add a GPU or distributed stack when hashes, metadata, or a bounded CPU pass can answer the task.
 
 5. Caption and label multimodal data.
    - Keep raw file metadata, model captions, verified captions, and source captions in separate fields.
@@ -50,15 +49,15 @@ Use this skill as the coordinator for local-first dataset intake, validation, cl
 
 6. Report outcomes.
    - Summarize reviewed folders, files changed, sources accepted, sources rejected or quarantined, validation results, and judgment calls.
-   - For dashboard/report requests, build a bounded Data Analytics artifact and validate it before rendering.
+   - For dashboard or report requests, use an installed analytics capability when available; otherwise produce a bounded local report from validated counts.
 
 ## Default Local Checks
 
 Use the bundled validator before and after cleanup work:
 
 ```powershell
-python C:\Users\Shawn\.codex\skills\aiwf-dataset\scripts\validate_dataset_receipts.py .\datasets
-python C:\Users\Shawn\.codex\skills\aiwf-dataset\scripts\validate_dataset_receipts.py .\datasets --strict --json
+python <this-skill>\scripts\validate_dataset_receipts.py .\datasets
+python <this-skill>\scripts\validate_dataset_receipts.py .\datasets --strict --json
 ```
 
 The script is read-only. It checks root existence, manifest/source-registry parseability, JSONL parseability, duplicate IDs, missing IDs, common placeholder leaks, common AI citation leaks, and expected receipt files.

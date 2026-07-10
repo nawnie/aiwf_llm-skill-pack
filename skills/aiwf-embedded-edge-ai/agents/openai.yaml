@@ -1,0 +1,6 @@
+interface:
+  display_name: "aiwf_embedded-edge-ai"
+  short_description: "Embedded and edge AI hardware guardrails"
+  default_prompt: "Use $aiwf-embedded-edge-ai for microcontrollers, RTOS, SBCs, Jetson, sensors, power, thermal, edge inference, and embedded deployment planning."
+policy:
+  allow_implicit_invocation: false

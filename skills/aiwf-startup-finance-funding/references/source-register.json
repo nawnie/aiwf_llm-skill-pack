@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "skill": "aiwf-startup-finance-funding",
+  "verified_on": "2026-07-10",
+  "sources": [
+    {"id":"sec-pathways","title":"Offering Pathways","publisher":"U.S. Securities and Exchange Commission","url":"https://www.sec.gov/resources-small-businesses/capital-raising-building-blocks/offering-pathways","status":"current official overview","version":"live","retrieved_at":"2026-07-10","volatility":"high","supports":["US offering exemptions","capital pathways"]},
+    {"id":"sec-reg-cf","title":"Regulation Crowdfunding","publisher":"U.S. Securities and Exchange Commission","url":"https://www.sec.gov/resources-small-businesses/exempt-offerings/regulation-crowdfunding","status":"current official overview","version":"live","retrieved_at":"2026-07-10","volatility":"high","supports":["regulated crowdfunding","intermediary and filing gates"]},
+    {"id":"sba-funding","title":"Funding programs","publisher":"U.S. Small Business Administration","url":"https://www.sba.gov/funding-programs","status":"current program index","version":"live","retrieved_at":"2026-07-10","volatility":"high","supports":["SBA loans","investment programs","disaster assistance"]},
+    {"id":"grants-gov","title":"Learn Grants","publisher":"Grants.gov","url":"https://www.grants.gov/learn-grants","status":"current official guidance","version":"live","retrieved_at":"2026-07-10","volatility":"high","supports":["federal grants","eligibility and application process"]}
+  ]
+}

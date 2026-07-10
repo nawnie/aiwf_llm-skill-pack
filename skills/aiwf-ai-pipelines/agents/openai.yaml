@@ -2,3 +2,5 @@ interface:
   display_name: "aiwf_ai-pipelines"
   short_description: "Audit AIWF pipeline runtime wiring"
   default_prompt: "Use $aiwf-ai-pipelines to audit this AIWF project for pipeline, engine, model-runtime, and UI connector issues."
+policy:
+  allow_implicit_invocation: false

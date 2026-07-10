@@ -1,0 +1,6 @@
+interface:
+  display_name: "aiwf_startup-marketing-growth"
+  short_description: "Startup positioning, funnels, channels, and growth"
+  default_prompt: "Use $aiwf-startup-marketing-growth to build an evidence-based startup marketing plan with positioning, channels, experiments, metrics, budgets, and stop rules."
+policy:
+  allow_implicit_invocation: false

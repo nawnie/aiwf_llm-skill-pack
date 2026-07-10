@@ -1,0 +1,6 @@
+interface:
+  display_name: "aiwf_c-coding"
+  short_description: "C toolchain, ABI, and memory guardrails"
+  default_prompt: "Use $aiwf-c-coding for C source, headers, build flags, ABI, memory safety, and ISO C compatibility work."
+policy:
+  allow_implicit_invocation: false

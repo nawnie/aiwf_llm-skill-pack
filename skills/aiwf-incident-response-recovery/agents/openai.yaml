@@ -1,0 +1,6 @@
+interface:
+  display_name: "aiwf_incident-response-recovery"
+  short_description: "Security triage, evidence, containment, and recovery"
+  default_prompt: "Use $aiwf-incident-response-recovery to create an authorized incident case, preserve evidence, compare containment choices, and validate trusted recovery."
+policy:
+  allow_implicit_invocation: false

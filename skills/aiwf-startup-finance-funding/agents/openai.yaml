@@ -1,0 +1,6 @@
+interface:
+  display_name: "aiwf_startup-finance-funding"
+  short_description: "Startup runway, funding options, and diligence"
+  default_prompt: "Use $aiwf-startup-finance-funding to model runway, compare US funding paths, identify diligence gaps, and state the legal or accounting gates clearly."
+policy:
+  allow_implicit_invocation: false

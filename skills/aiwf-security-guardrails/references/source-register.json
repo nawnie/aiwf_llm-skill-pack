@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "skill": "aiwf-security-guardrails",
+  "verified_on": "2026-07-10",
+  "sources": [
+    {"id":"nist-csf","title":"Cybersecurity Framework 2.0","publisher":"NIST","url":"https://www.nist.gov/publications/nist-cybersecurity-framework-csf-20","status":"final","version":"2.0","retrieved_at":"2026-07-10","volatility":"low","supports":["risk governance","security lifecycle"]},
+    {"id":"nist-ssdf","title":"Secure Software Development Framework","publisher":"NIST","url":"https://csrc.nist.gov/pubs/sp/800/218/final","status":"final","version":"1.1","retrieved_at":"2026-07-10","volatility":"low","supports":["secure development"]},
+    {"id":"cisa-secure-design","title":"Secure by Design","publisher":"CISA","url":"https://www.cisa.gov/securebydesign","status":"current official guidance","version":"live","retrieved_at":"2026-07-10","volatility":"medium","supports":["secure defaults","risk ownership"]}
+  ]
+}

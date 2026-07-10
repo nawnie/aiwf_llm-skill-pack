@@ -2,6 +2,12 @@
 
 Use this checklist when code touches trust boundaries.
 
+## Authorization And Evidence
+
+- Record owner, approved targets, prohibited actions, environment, time window, and stop conditions before active testing.
+- Distinguish observed behavior, sourced facts, assumptions, and unknowns.
+- Use confidence and impact reasoning; do not invent CVSS, reachability, breach status, or compliance.
+
 ## Inputs
 
 - Validate user-controlled strings, paths, filenames, URLs, JSON, YAML, archives, and uploaded files.
@@ -37,3 +43,10 @@ Use this checklist when code touches trust boundaries.
 - Check license/provenance for models and datasets when the artifact may be redistributed.
 - Do not silently replace lockfiles or dependency managers.
 - Record any skipped security validation as a residual risk.
+
+## Recovery And Audit Evidence
+
+- Keep rollback, backup, recovery owner, and negative tests with security-changing work.
+- Preserve originals and hashes during suspected incidents; summaries are not forensic evidence.
+- Record control intent, implementation evidence, validation date, owner, gap, and next review.
+- Audit readiness does not establish SOC 2, ISO 27001, legal compliance, or certification.

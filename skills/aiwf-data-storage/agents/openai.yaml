@@ -1,0 +1,6 @@
+interface:
+  display_name: "aiwf_data-storage"
+  short_description: "Database, vector store, and migration guardrails"
+  default_prompt: "Use $aiwf-data-storage for SQLite, Room, Postgres, Chroma, pgvector, Qdrant, Milvus, schemas, migrations, and data integrity."
+policy:
+  allow_implicit_invocation: false

@@ -19,6 +19,9 @@ $skills = Get-ChildItem -Directory -LiteralPath $skillsDir | Sort-Object Name
 foreach ($skill in $skills) {
   Write-Output "Validating $($skill.Name)"
   python -X utf8 $validator $skill.FullName
+  if ($LASTEXITCODE -ne 0) {
+    throw "Skill validation failed for $($skill.Name) with exit code $LASTEXITCODE"
+  }
 }
 
 Write-Output "Validated $($skills.Count) skills."

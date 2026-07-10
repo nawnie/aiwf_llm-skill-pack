@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "skill": "aiwf-multi-agent-workspace",
+  "verified_on": "2026-07-10",
+  "sources": [
+    {"id":"claude-skills","title":"Extend Claude with skills","publisher":"Anthropic","url":"https://code.claude.com/docs/en/skills","status":"current product documentation","version":"live","retrieved_at":"2026-07-10","volatility":"high","supports":["SKILL.md","user skill paths","symlinks"]},
+    {"id":"claude-memory","title":"Manage Claude memory","publisher":"Anthropic","url":"https://docs.anthropic.com/en/docs/claude-code/memory","status":"current product documentation","version":"live","retrieved_at":"2026-07-10","volatility":"high","supports":["CLAUDE.md","user and project instructions"]},
+    {"id":"grok-skills","title":"Skills, Plugins and Marketplaces","publisher":"xAI","url":"https://docs.x.ai/build/features/skills-plugins-marketplaces","status":"current product documentation","version":"live","retrieved_at":"2026-07-10","volatility":"high","supports":["Grok skill paths","Claude compatibility","AGENTS.md"]},
+    {"id":"nist-ai-rmf","title":"AI Risk Management Framework","publisher":"NIST","url":"https://www.nist.gov/itl/ai-risk-management-framework","status":"released framework","version":"1.0","retrieved_at":"2026-07-10","volatility":"medium","supports":["agent risk governance","human oversight"]}
+  ]
+}

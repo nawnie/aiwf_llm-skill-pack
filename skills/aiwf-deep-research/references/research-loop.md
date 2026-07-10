@@ -123,7 +123,7 @@ Write `research_brief.md` with:
 Run:
 
 ```powershell
-python .\skills\aiwf-deep-research\scripts\validate_research_receipt.py "<run_dir>"
+python <this-skill>\scripts\validate_research_receipt.py "<run_dir>"
 ```
 
 If validation fails, fix the receipt before using the findings as final.

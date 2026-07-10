@@ -1,40 +1,32 @@
-# AIWF SEO And AEO Notes
+# Public Discovery Notes
 
-## Primary Positioning
+## Positioning
 
-AIWF LLM Skill Pack is a skills-only Codex plugin for local open-source AI development. It routes AIWF work across research, datasets, model loading, ComfyUI conversion, training plans, evals, serving, GPU diagnostics, repository guardrails, and public-release hygiene.
+AIWF LLM Skill Pack is a provider-portable Agent Skills pack and skills-only Codex plugin for local AI, startup growth, security, coding, and embedded-system projects. One bounded router selects focused owners without loading the whole pack.
 
-## Short Search Snippet
+## Search Snippet
 
-AIWF LLM Skill Pack is a Codex plugin for local AI builders who need source-backed research, dataset provenance, model workflow planning, ComfyUI conversion, eval gates, and GitHub release hygiene.
+AIWF LLM Skill Pack gives coding agents focused, source-aware workflows for local AI, startup funding and marketing, security and privacy, C/C++/Python, CUDA, web apps, RAG, robotics, and embedded systems.
 
-## Answer Engine Summary
+## Target Topics
 
-AIWF LLM Skill Pack helps Codex work on local AI projects without guessing the workflow. It selects AIWF skills for research, datasets, model loaders, quantization, training plans, evals, serving, ComfyUI workflow conversion, GPU diagnostics, security checks, and public copy review. It is skills-only: no MCP server, no app bundle, and no large model downloads by default.
+- Codex skills for local AI development
+- C, C++, Python, CUDA, FastAPI, React, Vue, Gradio, and Android coding skills
+- RAG retrieval and vector database guardrails
+- NVIDIA runtime and model serving diagnostics
+- robotics, ROS 2, IoT, Jetson, and edge AI planning
+- source-backed AI research and dataset provenance
+- technical SEO and evidence-backed website workflows
+- answer-engine and generative-search visibility without ranking hacks
+- Meta, Google Ads, YouTube, and AdSense company workflows
+- startup runway, funding readiness, and measurable growth experiments
+- application, infrastructure, device, data, supply-chain, and incident security
+- shared Codex, Claude, and Grok coordination with resource leases
 
-## Target Queries
+## Claim Rules
 
-- AIWF local AI skill pack
-- Codex plugin for local AI development
-- Codex skills for AI workflows
-- local LLM workflow guardrails
-- ComfyUI workflow JSON to Python pipeline
-- QLoRA planning Codex skill
-- local AI dataset provenance workflow
-- AI eval gates and smoke receipts
-- AIWF Studio skills
-- Torchie AIWF voice
-
-## Reusable Public Copy
-
-AIWF LLM Skill Pack is the routing and guardrail layer for AIWF-style local AI work. It helps Codex stay grounded while working on models, datasets, ComfyUI graphs, research claims, evals, serving, docs, and release hygiene.
-
-For builders, the value is simple: fewer vague AI answers, more checked paths, receipts, source notes, hardware reality, and repo-safe changes.
-
-## Brand Guardrails
-
-- Say "local-first" and "open-source" only where the project actually supports that claim.
-- Do not call routes production-ready without current validation receipts.
-- Prefer "helps route and validate work" over "automates everything."
-- Keep Torchie copy useful and technical, not mascot-first.
-- Ask testers for logs, failures, and edge cases.
+- Say `skills-only` because the plugin currently bundles no MCP servers or apps.
+- Say `routes`, `checks`, or `helps validate`; do not claim the pack autonomously guarantees correctness.
+- Do not promise rankings, answer-engine placement, funding, ad results, platform approval, certification, production readiness, universal model compatibility, or hardware support without direct evidence.
+- Use current validation counts only when the release receipt proves them.
+- Keep Torchie voice opt-in and out of safety, legal, privacy, security, and formal audit copy.

@@ -1,0 +1,6 @@
+interface:
+  display_name: "aiwf_react-coding"
+  short_description: "React components, hooks, state, and UI checks"
+  default_prompt: "Use $aiwf-react-coding for React components, hooks, state, accessibility, builds, and browser UI validation."
+policy:
+  allow_implicit_invocation: false

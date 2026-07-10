@@ -1,6 +1,6 @@
 interface:
   display_name: "aiwf_orchestrator"
-  short_description: "Route AIWF prompts to the right skill"
-  default_prompt: "Use $aiwf-orchestrator to infer the right AIWF skill route from this prompt before doing non-trivial local AI work."
+  short_description: "Route work to focused AIWF skills"
+  default_prompt: "Use $aiwf-orchestrator to select the smallest focused AIWF skill route for this task before acting."
 policy:
   allow_implicit_invocation: true

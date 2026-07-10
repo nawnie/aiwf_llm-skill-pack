@@ -1,98 +1,48 @@
 ---
 name: aiwf-avoid-ai-pushes
-description: AIWF commit and push hygiene skill, alias aiwf_avoid-ai-pushes. Use before committing or pushing AIWF Studio changes, especially when ignored local files, agent notes, root-layout cleanup, README edits, release docs, or GitHub-facing updates are involved. Prevents accidentally staging ignored/local-only files and pairs scope checks with public prose scans.
+description: Use before committing, pushing, or publishing AIWF and related project changes to verify intended scope, preserve user and local-only files, inspect ignored and tracked state, avoid broad staging, validate public prose, confirm remotes and branches, and report an exact release receipt.
 ---
 
-# Aiwf Avoid AI Pushes
+# AIWF Avoid AI Pushes
 
-Use this skill before any AIWF Studio commit or push that touches docs, root files, release notes, or agent guidance.
+## Core Rule
 
-## Runtime Defaults
+Publish only the files Shawn intended, from the verified repo and branch, after inspecting staged content and relevant validation. Ignore status is evidence, not permission to delete or untrack a file.
 
-Use normal reasoning by default; raise reasoning only for complex release hygiene, messy staged changes, or repeated CI/review failures.
+## Workflow
 
-When the host supports `/goal`, create or continue a goal for active commit, push, or release-hygiene work. Use no fixed token ceiling, the largest available context limit, and unlimited or expanded tool-call limits where those controls exist. If the host requires finite settings, choose the highest available values except for reasoning, which stays normal unless the task warrants escalation.
-
-Expanded budgets apply to the active repo inspection, staging, prose audit, validation, and push workflow, not to broad chat-history review. Use standard context length to decide which prior chat instructions matter, then focus on the live git state, changed files, ignore rules, and requested release scope.
-
-## Required Checks
-
-Run these before staging:
+1. Verify the real git root, current branch, requested destination, and whether the user authorized commit, push, release, or only a review.
+2. Inspect before staging:
 
 ```powershell
 git status --short --branch --untracked-files=all
 git diff --stat
 git diff --check
+git remote -v
 ```
 
-For any file that looks local-only or agent-only, check ignore and tracked state:
+3. For uncertain files, inspect both ignore and tracked state:
 
 ```powershell
 git check-ignore -v --no-index <path>
 git ls-files -- <path>
 ```
 
-Common AIWF local-only paths:
+4. Stage explicit paths. Use broad staging only when Shawn explicitly confirms the whole worktree is in scope.
+5. Inspect `git diff --cached --stat`, `git diff --cached --check`, and the staged patch before committing.
+6. Run the narrow tests or validators required by the changed files.
+7. Confirm branch and remote immediately before push, then report commit hash and pushed ref.
 
-- `AGENTS.md`
-- `plan.md`
-- `_trash/`
-- `_local/`
-- `.codex/`
-- `.codex-remote-attachments/`
-- `models/`
-- `outputs/`
-- `logs/`
-- `cache/`
-- `venv/`
+## Guardrails
 
-If a file is ignored but already tracked by mistake, remove only the tracked copy:
+- Do not assume `AGENTS.md`, plans, receipts, models, outputs, logs, caches, or local configuration are ignored or publishable. Check the live repo.
+- Do not delete, untrack, force-add, or rewrite ignored/tracked state unless Shawn explicitly asks and the exact path is verified.
+- Do not use destructive git commands or rewrite history as cleanup.
+- Do not stage unrelated user changes.
+- Keep secrets, credentials, private datasets, customer data, machine paths, generated archives, and local caches out of public commits.
+- For README, release notes, UI copy, commit messages, and PR text, remove unsupported claims, fake metrics, placeholder text, and repetitive AI-style filler without rewriting quoted source material.
+- Do not claim a push succeeded without the command result or remote receipt.
 
-```powershell
-git rm --cached <path>
-```
+## Output
 
-Do not delete the local file unless Shawn explicitly asks.
-
-## Staging Rule
-
-Stage explicit intended paths only. Do not use `git add -A` in AIWF unless Shawn confirms the whole worktree belongs in the push.
-
-Good:
-
-```powershell
-git add README.md docs/FEATURES.md
-```
-
-Use `git add -f` only when Shawn explicitly wants an ignored path tracked. If that happens, say which ignore rule is being bypassed.
-
-## Public Prose Rule
-
-For README, docs, UI copy, release notes, commit messages, and PR text, run a public-prose scan before staging or publishing. Keep it narrow: fix newly edited prose and leave quoted examples, code, and source text alone.
-
-At minimum scan for:
-
-```powershell
-rg -n 'delve|robust|comprehensive|leverage|seamless|pivotal|at its core|worth noting|game-changer|transformative|cutting-edge|utilize|showcasing|foster|empower|moreover|furthermore|additionally|in conclusion|to summarize|--' <files>
-```
-
-Fix only the new or edited prose unless Shawn asks for a broader rewrite.
-
-## Pre-Push Receipt
-
-Before commit, show or inspect:
-
-```powershell
-git diff --cached --stat
-git diff --cached --check
-git status --short --branch
-```
-
-Before push, confirm the remote and branch:
-
-```powershell
-git remote -v
-git branch --show-current
-```
-
-After push, report the commit hash, pushed branch, files staged, validation commands, and anything intentionally left local or ignored.
+Report the repo, branch, remote, staged files, validation commands, commit hash, pushed ref, and anything intentionally left local. For review-only requests, report findings without staging or publishing.

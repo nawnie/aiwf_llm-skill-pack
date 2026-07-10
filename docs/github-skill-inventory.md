@@ -1,25 +1,26 @@
-# GitHub Skill Inventory
+# Public Skill Inventory Review
 
-Checked on 2026-07-06 against Shawn's `nawnie` GitHub repositories. Refreshed on 2026-07-07 against installed local AIWF-prefixed skills.
+Updated: 2026-07-10
 
-Repos reviewed for skill-like files by name or intent:
+The public package vendors only Shawn-owned `aiwf-` skills. External GitHub skills may inform implementation when their license and provenance are verified, but their files, branding, and licenses are not copied into this pack.
 
-- `nawnie/aiwf_llm-skill-pack`
-- `nawnie/AIWF-Studio`
-- `nawnie/ai-without-fear`
-- `nawnie/Model-Operating-Kernel`
-- `nawnie/MOKSHA`
-- `nawnie/atlas-lora-adapter`
+## Current Result
 
-Result:
+- 56 source skills match `manifest.json` exactly.
+- One implicit router selects up to four focused downstream skills.
+- Thirteen `#techstartup` instruction modules cover growth, funding, platforms, security, privacy, incidents, and multi-agent coordination.
+- All skill-owned Python helpers are bundled and path-portable.
+- Overlapping umbrella instructions were consolidated into focused owners.
+- The README four-column catalog lists every skill exactly once and is validator-enforced.
 
-- Added `aiwf-avoid-ai-design`, `aiwf-avoid-ai-pushes`, `aiwf-dataset`, and `aiwf-orchestration` from the existing public skill-pack and installed local AIWF sources.
-- Confirmed `aiwf-atlas-cartographer` and `aiwf-agent-mok` are included in this pack.
-- Imported the Atlas Reader protocol skill from `nawnie/atlas-lora-adapter/plugins/aiwf-atlas-protocol/skills/atlas-reader/SKILL.md` as `aiwf-atlas-reader`.
-- Added installed local AIWF-owned lanes `aiwf-comfy-workflow-pipeline` and `aiwf-torchie`.
-- Left the global `aiwf` router out of the vendored pack because `aiwf-orchestration` and `aiwf-orchestrator` are the pack-level routers.
-- No other `SKILL.md` files were found in the reviewed AIWF, MoK, MOKSHA, or Atlas-related GitHub repos.
+## Reuse Rule
 
-Packaging rule:
+Before borrowing from a public skill:
 
-- Only Shawn-owned `aiwf-` skills are vendored here.
+1. Verify the repository, current commit, license, and relevant source file.
+2. Prefer a link or attribution over vendoring.
+3. Reimplement only the small behavior needed for Shawn's projects.
+4. Keep third-party names out of Shawn-owned frontmatter and plugin branding.
+5. Run `python .\scripts\validate_pack.py` before export.
+
+The canonical current inventory is `manifest.json`; this note is not a second manifest.

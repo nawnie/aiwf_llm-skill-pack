@@ -1,56 +1,48 @@
 ---
 name: aiwf-ui-electrician
-description: "AIWF middle-layer UI/API connector audit skill. Use when debugging the wiring between backend APIs and frontend UI state: FastAPI routes, Gradio callbacks, React fetch/SSE/WebSocket/polling clients, request/response normalization, runtime progress, cancellation, error presentation, client logs, cache/no-store behavior, settings/bootstrap contracts, and button/state synchronization."
+description: "Use when debugging the contract between backend APIs or model runtimes and visible UI state: FastAPI routes, Gradio callbacks, React or Vue clients, fetch, SSE, WebSockets, polling, request and response normalization, progress, cancellation, errors, telemetry, settings bootstrap, files, and output links."
 ---
 
-# UI Electrician
+# AIWF UI Electrician
 
-Use this skill for the middle layer between model/backend runtime code and the visible UI. It is not a visual design audit and it is not a model-runtime audit; it checks whether routes, callbacks, clients, polling, events, progress, errors, resources, and generated outputs actually travel end to end.
+## Core Rule
+
+Trace one user action end to end. Compare the backend contract, transport, client parsing, state transition, rendered state, logs, and terminal cleanup before changing either side.
 
 ## Workflow
 
-1. Read project instruction boundaries. The parent agent may read full project rules. Subagents should only receive the `Known Issues` section of `AGENTS.md`, `SUB_AGENTS.md` if present, or a parent-written `_context.md`.
-2. Read `references/debug-pass-protocol.md` before spawning subagents.
-3. Create a debug pass folder:
+1. Read project guidance and identify the failing action, expected UI state, backend route or callback, transport, and current logs.
+2. Create a debug-pass folder when the investigation spans independent lanes:
 
 ```powershell
-python C:\Users\Shawn\.codex\skills\aiwf-ui-electrician\scripts\scaffold_debug_pass.py --root F:\AIWF_Studio --slug ui-api
+python <this-skill>\scripts\scaffold_debug_pass.py --root <project-root> --slug <short-slug>
 ```
 
-4. Inspect the contract from both sides: backend route/callback definitions, request models, response shapes, frontend fetch/client code, state reducers, polling or stream handlers, and user-visible error surfaces.
-5. Spawn subagents only for independent lanes. Subagents are read-only issue loggers by default and must write Markdown reports into the debug pass folder.
-6. Parent agent reads every report, deduplicates, verifies high-impact claims, researches framework behavior when confidence is below 90, then implements the smallest coherent fixes.
-7. Verify with targeted API tests, frontend builds/tests, callback smokes, endpoint probes, and log inspection. Avoid GPU-heavy generation unless the user explicitly asks.
+3. Read `references/middle-layer-checklist.md`. Read `references/debug-pass-protocol.md` before using subagents.
+4. Capture the contract on both sides: request fields, defaults, enum values, response and error shapes, stream events, terminal states, file paths, and cache behavior.
+5. Reproduce with the smallest endpoint, callback, or browser flow. Determine whether the fault is backend, transport, client normalization, stale cache, state ownership, or rendering.
+6. Patch the owning layer and update generated/shared types or tests when the contract changes.
+7. Verify API behavior, client build/tests, visible loading/error/empty states, cancellation, and cleanup.
 
-## Middle-Layer Lanes
+## Lanes
 
-- API contract shape: payload names, aliases, enum values, defaults, response keys, and error status shapes.
-- Runtime progress stream: job states, phases, progress percentages, terminal state, and stale event cleanup.
-- Cancellation and concurrency: stop buttons, second-generation behavior, active job ownership, duplicate submit guards, and cleanup after failure.
-- Error propagation: backend exceptions, route errors, client log ingestion, toast/status text, and failures hidden only in terminal or console.
-- Resource telemetry: GPU/RAM/CPU polling, endpoint freshness, task-manager style utilization fields, and UI refresh cadence.
-- Settings and bootstrap: launch defaults, feature flags, selected model, precision, backend, and route readiness.
-- File and media paths: image/video uploads, output thumbnails, download links, relative/static paths, and missing asset handling.
-- Fetch/cache behavior: when volatile endpoints require `cache: "no-store"`, whether cached data is causing stale UI, and whether the reason is documented.
+- Request and response shape, aliases, defaults, status codes, and generated types.
+- Job progress, streaming events, polling freshness, terminal state, and stale event cleanup.
+- Cancellation, duplicate submit prevention, concurrency ownership, and failure recovery.
+- Error propagation from backend logs to useful user-visible states.
+- Runtime telemetry and settings/bootstrap synchronization.
+- Upload, static, output, thumbnail, and download paths.
+- Cache and proxy behavior for volatile endpoints.
 
-## Subagent Protocol
+## Guardrails
 
-Use the shared debug-pass protocol:
+- Do not hide backend failures behind optimistic UI state or console-only errors.
+- Do not duplicate request types when the repo has generated or shared contracts.
+- Preserve auth, origin, and tenant boundaries while debugging.
+- Keep subagents read-only issue reporters unless Shawn explicitly assigns write ownership.
+- Add the focused FastAPI, Gradio, React, Vue/VitePress, TypeScript, JavaScript, or CSS skill for code in that layer.
+- Avoid GPU-heavy generation when a mocked job, tiny prompt, fixture, or route probe can prove the connector.
 
-- Default role is `explorer`: read-only issue discovery, no patches.
-- Subagents write one Markdown report per lane under the selected `debug_pass` folder.
-- Reports state the issue, evidence, user-visible impact, affected files/routes, confidence, and whether source research was used.
-- Reports do not include implementation recipes or broad patch plans. The parent agent owns the fix.
-- A subagent may make a simple syntax fix only when the entire repair is three changed lines or fewer. It must record the exact file and lines changed in its report.
+## Output
 
-## Research And Confidence
-
-- Use project notes, current logs, tests, and route definitions before guessing.
-- Use official docs or primary sources for framework behavior when the claim depends on FastAPI, Starlette, Gradio, React, browser fetch, SSE, WebSocket, or process/window integration details.
-- If no source research is used for a claimed fix, confidence must be at least 90/100 and the report must say why the local evidence is enough.
-- If many bugs are found, the parent may request an atlas-style `issues.jsonl` dataset in the same debug pass folder to reduce repeated reading.
-
-## References
-
-- `references/debug-pass-protocol.md`: shared subagent reporting contract.
-- `references/middle-layer-checklist.md`: UI/API connector checks for FastAPI, Gradio, and React work.
+Report the action traced, contract mismatch or root cause, files changed, endpoint and UI checks, visible states verified, and residual risk.

@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "skill": "aiwf-online-infrastructure-security",
+  "verified_on": "2026-07-10",
+  "sources": [
+    {"id":"nist-csf","title":"Cybersecurity Framework 2.0","publisher":"NIST","url":"https://www.nist.gov/publications/nist-cybersecurity-framework-csf-20","status":"final","version":"2.0","retrieved_at":"2026-07-10","volatility":"low","supports":["govern","identify","protect","detect","respond","recover"]},
+    {"id":"cisa-secure-design","title":"Secure by Design","publisher":"CISA","url":"https://www.cisa.gov/securebydesign","status":"current official guidance","version":"live","retrieved_at":"2026-07-10","volatility":"medium","supports":["secure defaults","manufacturer responsibility"]},
+    {"id":"cisa-kev","title":"Known Exploited Vulnerabilities Catalog","publisher":"CISA","url":"https://www.cisa.gov/known-exploited-vulnerabilities-catalog","status":"live catalog","version":"live","retrieved_at":"2026-07-10","volatility":"very high","supports":["patch prioritization","observed exploitation"]},
+    {"id":"rfc8446","title":"The Transport Layer Security Protocol Version 1.3","publisher":"IETF","url":"https://www.rfc-editor.org/info/rfc8446","status":"Internet Standard","version":"RFC 8446","retrieved_at":"2026-07-10","volatility":"low","supports":["TLS 1.3 protocol"]}
+  ]
+}

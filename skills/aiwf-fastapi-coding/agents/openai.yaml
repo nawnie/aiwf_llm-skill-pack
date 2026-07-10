@@ -1,0 +1,6 @@
+interface:
+  display_name: "aiwf_fastapi-coding"
+  short_description: "FastAPI routes, models, and API contracts"
+  default_prompt: "Use $aiwf-fastapi-coding for FastAPI routes, Pydantic models, OpenAPI contracts, async boundaries, auth/CORS, and API tests."
+policy:
+  allow_implicit_invocation: false

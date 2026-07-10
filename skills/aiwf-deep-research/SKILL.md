@@ -9,15 +9,9 @@ description: AIWF deep research workflow for source-backed, weighted, multi-doma
 
 Use this skill to run research as an evidence pipeline, not a search session. Build a source plan first, weight every source by what it can actually prove, keep a claim ledger, and validate the receipt before using findings in an answer, plan, code change, or training data.
 
-## Runtime Defaults
-
-Default to the highest available reasoning for every non-trivial deep-research run.
-
-When the host supports `/goal`, create or continue a goal for the active research run. Use no fixed token ceiling, the largest available context limit, and unlimited or expanded tool-call limits where those controls exist. If the host requires finite settings, choose the highest available values. If the host does not expose those controls, proceed with the same intent and do not block the research workflow.
-
-Apply expanded budgets to active research work: source planning, source retrieval, evidence review, claim ledgers, contradictions, synthesis, and validation. Do not spend expanded budget on broad chat-history review. Use standard context length to decide how much past chat is relevant, then rely on the user's current request, local receipts, and source-backed research artifacts.
-
 Use `AIWF_DEEP_RESEARCH_EXTRA_URLS` for required seed URLs that must appear in the source plan. The value is comma-separated. `scripts/init_research_run.py` also accepts repeated `--extra-url` flags and writes all required seed URLs to `source_plan.json`.
+
+Continue an active `/goal` when the host exposes one, but do not claim the skill can change model, context, or tool budgets controlled by the host.
 
 ## Routing
 
@@ -30,7 +24,7 @@ Use other AIWF skills after this one when research becomes implementation:
 - Training, LoRA, QLoRA, checkpoints, export: `aiwf-local-ai-training`.
 - Evals, benchmark receipts, promotion gates: `aiwf-ai-evals`.
 - Serving and endpoint checks: `aiwf-inference-serving`.
-- Repo edits after research: `aiwf-ai-coding-guardrails`.
+- Repo edits after research: `aiwf-repo-sentinel`, then the focused implementation skill.
 
 ## Required Workflow
 
@@ -63,20 +57,20 @@ Do not treat sources as interchangeable.
 Create a run:
 
 ```powershell
-python .\skills\aiwf-deep-research\scripts\init_research_run.py --title "wan attention research" --request "Compare WAN attention runtimes for AIWF Studio."
-python .\skills\aiwf-deep-research\scripts\init_research_run.py --title "wan attention research" --request "Compare WAN attention runtimes for AIWF Studio." --extra-url "https://arxiv.org/abs/2405.00000"
+python <this-skill>\scripts\init_research_run.py --title "wan attention research" --request "Compare WAN attention runtimes for AIWF Studio."
+python <this-skill>\scripts\init_research_run.py --title "wan attention research" --request "Compare WAN attention runtimes for AIWF Studio." --extra-url "https://arxiv.org/abs/2405.00000"
 ```
 
 Route a prompt to source targets:
 
 ```powershell
-python .\skills\aiwf-deep-research\scripts\source_target_router.py --prompt "Research Civitai LoRA metadata and verify against Hugging Face and GitHub."
+python <this-skill>\scripts\source_target_router.py --prompt "Research Civitai LoRA metadata and verify against Hugging Face and GitHub."
 ```
 
 Validate a run:
 
 ```powershell
-python .\skills\aiwf-deep-research\scripts\validate_research_receipt.py "research runs\20260701-120000-wan-attention-research"
+python <this-skill>\scripts\validate_research_receipt.py "research runs\20260701-120000-wan-attention-research"
 ```
 
 ## Output Contract

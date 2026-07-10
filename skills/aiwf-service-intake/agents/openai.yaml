@@ -1,0 +1,6 @@
+interface:
+  display_name: "aiwf_service-intake"
+  short_description: "Service lead scoping and AI fit checks"
+  default_prompt: "Use $aiwf-service-intake to scope Ai Embedded Systems website leads for websites, workflows, bots, AI fit, marketing, SEO, and staff training."
+policy:
+  allow_implicit_invocation: false

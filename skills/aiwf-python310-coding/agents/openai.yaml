@@ -1,0 +1,6 @@
+interface:
+  display_name: "aiwf_python310-coding"
+  short_description: "Python 3.10 compatibility guardrails"
+  default_prompt: "Use $aiwf-python310-coding for Python 3.10 compatibility, packaging, typing, async, and validation work."
+policy:
+  allow_implicit_invocation: false

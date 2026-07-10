@@ -1,0 +1,6 @@
+interface:
+  display_name: "aiwf_data-privacy-protection"
+  short_description: "Data inventory, privacy, retention, and audit evidence"
+  default_prompt: "Use $aiwf-data-privacy-protection to map sensitive data flows, minimize collection, define access and lifecycle controls, and build honest audit-ready evidence."
+policy:
+  allow_implicit_invocation: false

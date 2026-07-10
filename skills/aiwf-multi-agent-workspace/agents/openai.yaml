@@ -1,0 +1,6 @@
+interface:
+  display_name: "aiwf_multi-agent-workspace"
+  short_description: "Shared agent state, leases, context, and handoffs"
+  default_prompt: "Use $aiwf-multi-agent-workspace to coordinate agents through private shared status, rolling visible context, handoffs, writer leases, and resource-aware execution."
+policy:
+  allow_implicit_invocation: false
