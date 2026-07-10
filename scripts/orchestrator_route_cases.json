@@ -7,7 +7,7 @@
   {
     "name": "python-cmake-security",
     "prompt": "debug a Python CMake native extension and avoid unsafe serialization",
-    "expected": ["aiwf-repo-sentinel", "aiwf-security-guardrails", "aiwf-cpp-coding"]
+    "expected": ["aiwf-repo-sentinel", "aiwf-security-guardrails", "aiwf-application-api-security", "aiwf-cpp-coding"]
   },
   {
     "name": "gpu-runtime",
@@ -62,7 +62,7 @@
   {
     "name": "fastapi-security",
     "prompt": "check FastAPI auth CORS and Pydantic security boundaries",
-    "expected": ["aiwf-security-guardrails", "aiwf-fastapi-coding"]
+    "expected": ["aiwf-security-guardrails", "aiwf-application-api-security", "aiwf-fastapi-coding"]
   },
   {
     "name": "gradio-coding",
@@ -188,5 +188,75 @@
     "name": "push-hygiene",
     "prompt": "check staging commit push and public README release notes before publishing",
     "expected": ["aiwf-repo-sentinel", "aiwf-avoid-ai-pushes"]
+  },
+  {
+    "name": "application-api-security",
+    "prompt": "review application security object-level authorization webhook signature and file upload security",
+    "expected": ["aiwf-security-guardrails", "aiwf-application-api-security"]
+  },
+  {
+    "name": "online-infrastructure-security",
+    "prompt": "audit public exposure DNS TLS certificate cloud IAM and exposed ports",
+    "expected": ["aiwf-security-guardrails", "aiwf-online-infrastructure-security"]
+  },
+  {
+    "name": "local-device-security",
+    "prompt": "audit Windows hardening BitLocker device encryption UAC and application control",
+    "expected": ["aiwf-security-guardrails", "aiwf-local-device-security"]
+  },
+  {
+    "name": "data-privacy-protection",
+    "prompt": "build a customer data privacy inventory with minimization retention deletion and audit evidence",
+    "expected": ["aiwf-security-guardrails", "aiwf-data-privacy-protection"]
+  },
+  {
+    "name": "software-supply-chain-security",
+    "prompt": "audit software supply chain SBOM build provenance artifact signing and malicious dependency risk",
+    "expected": ["aiwf-security-guardrails", "aiwf-software-ai-supply-chain-security"]
+  },
+  {
+    "name": "incident-response-recovery",
+    "prompt": "respond to a ransomware security incident with evidence containment and trusted recovery",
+    "expected": ["aiwf-security-guardrails", "aiwf-incident-response-recovery"]
+  },
+  {
+    "name": "focused-security-cap",
+    "prompt": "application security review an internet-facing API handling customer data after a data breach",
+    "expected": ["aiwf-security-guardrails", "aiwf-application-api-security", "aiwf-online-infrastructure-security"]
+  },
+  {
+    "name": "multi-agent-workspace",
+    "prompt": "coordinate Codex and Claude in a shared agent workspace with writer leases and rolling chat context",
+    "expected": ["aiwf-multi-agent-workspace"]
+  },
+  {
+    "name": "aeo-geo",
+    "prompt": "audit answer-engine optimization generative search citation readiness and AI-search visibility",
+    "expected": ["aiwf-aeo-geo"]
+  },
+  {
+    "name": "startup-marketing-growth",
+    "prompt": "build a startup marketing go-to-market ICP positioning funnel and growth experiment plan",
+    "expected": ["aiwf-startup-marketing-growth"]
+  },
+  {
+    "name": "startup-finance-funding",
+    "prompt": "model runway burn rate and use of funds then compare SBA funding angel investors and venture capital",
+    "expected": ["aiwf-startup-finance-funding"]
+  },
+  {
+    "name": "meta-business",
+    "prompt": "audit Meta Business Facebook Ads Instagram Business Meta Pixel and Conversions API",
+    "expected": ["aiwf-meta-business"]
+  },
+  {
+    "name": "google-ads-business",
+    "prompt": "audit Google Ads GA4 Google Tag Manager conversion actions and Google Business Profile",
+    "expected": ["aiwf-google-ads-business"]
+  },
+  {
+    "name": "youtube-adsense",
+    "prompt": "plan a YouTube channel YouTube Partner Program and AdSense monetization review",
+    "expected": ["aiwf-youtube-adsense"]
   }
 ]

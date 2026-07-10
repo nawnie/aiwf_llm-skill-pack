@@ -1,14 +1,14 @@
 {
   "schema_version": 1,
   "project": "Agent Skills",
-  "generated_on": "2026-07-09",
+  "generated_on": "2026-07-10",
   "routing_policy": {
     "standing_rule": "Use aiwf-orchestrator for every non-trivial task.",
     "selection_rule": "Select the smallest focused route and no more than four downstream skills.",
     "conflict_rule": "AGENTS.md and HANDOFF.md override generic skill guidance."
   },
   "project_signals": [
-    "Skills-only personal Codex plugin.",
+    "Provider-portable Agent Skills and skills-only personal Codex plugin.",
     "Canonical inventory is manifest.json.",
     "Only aiwf-orchestrator is implicit.",
     "Referenced Python helpers must be bundled with their owning skill."
@@ -21,7 +21,7 @@
       "use_when": "Use for skill creation, metadata, routing, packaging, installation, or export.",
       "project_guardrails": ["Keep one implicit router.", "Keep helper scripts inside their owning skill."],
       "outputs": ["skills/<name>/", "manifest.json", ".codex-plugin/plugin.json"],
-      "verification": ["python .\\scripts\\validate_pack.py", "python .\\scripts\\test_orchestrator_routes.py"]
+      "verification": ["python .\\scripts\\validate_pack.py", "python .\\scripts\\validate_instruction_modules.py", "python .\\scripts\\test_orchestrator_routes.py"]
     },
     {
       "id": "repo-security-release",
@@ -30,6 +30,31 @@
       "use_when": "Use for repository changes, security boundaries, and release hygiene.",
       "project_guardrails": ["Preserve unrelated changes.", "Stage explicit paths only."],
       "verification": ["Use repo-native tests and git diff checks."]
+    },
+    {
+      "id": "focused-security-family",
+      "signals": ["application security", "online exposure", "device hardening", "privacy", "SBOM", "incident response"],
+      "skills": ["aiwf-security-guardrails", "aiwf-application-api-security", "aiwf-data-privacy-protection", "aiwf-incident-response-recovery"],
+      "use_when": "Use the guardrail plus no more than two focused security owners for an authorized security task.",
+      "project_guardrails": ["Require exact scope before active tests.", "Preserve evidence and approval gates."],
+      "outputs": ["security finding", "audit evidence", "incident case"],
+      "verification": ["Run focused negative tests and record residual risk."]
+    },
+    {
+      "id": "startup-growth-platforms",
+      "signals": ["startup marketing", "runway", "funding", "AEO", "Meta", "Google Ads", "YouTube"],
+      "skills": ["aiwf-startup-marketing-growth", "aiwf-startup-finance-funding", "aiwf-aeo-geo", "aiwf-meta-business"],
+      "use_when": "Use the focused business or platform skill and add security/privacy only when the task crosses those boundaries.",
+      "project_guardrails": ["Draft by default.", "Require approval for spend, publishing, account, or API writes."],
+      "verification": ["Verify current official program, API, platform, and policy sources."]
+    },
+    {
+      "id": "multi-agent-coordination",
+      "signals": ["Codex and Claude", "Grok", "shared context", "handoff", "writer lease", "GPU lease"],
+      "skills": ["aiwf-multi-agent-workspace", "aiwf-repo-sentinel"],
+      "use_when": "Use for shared private project state, six-turn recovery, and resource-aware parallel work.",
+      "project_guardrails": ["One writer by default.", "UI tests do not load a model."],
+      "verification": ["python .\\scripts\\test_agent_workspace.py"]
     },
     {
       "id": "research-datasets-continuity",
@@ -107,7 +132,7 @@
     {
       "id": "website-service-and-seo",
       "signals": ["Ai Embedded Systems", "service lead", "quote", "technical SEO", "structured data", "sitemap"],
-      "skills": ["aiwf-service-intake", "aiwf-web-seo", "aiwf-avoid-ai-design"],
+      "skills": ["aiwf-service-intake", "aiwf-web-seo", "aiwf-aeo-geo", "aiwf-avoid-ai-design"],
       "use_when": "Use for service scoping and evidence-backed website work.",
       "project_guardrails": ["Use the live site for current public claims.", "Do not promise ranking outcomes."],
       "verification": ["Check rendered pages, metadata, crawl controls, structured data, and source links."]

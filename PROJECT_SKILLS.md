@@ -1,85 +1,97 @@
 # Project Skill Routing
 
-Generated: 2026-07-09
+Generated: 2026-07-10
 
 ## Standing Rule
 
-For each non-trivial task, let `aiwf-orchestrator` select the smallest focused route before acting. It is the only implicit pack skill. Use no more than four downstream skills and follow `AGENTS.md` over generic guidance.
+For each non-trivial task, let `aiwf-orchestrator` select the smallest focused route. It is the only implicit skill. Use no more than four downstream skills. For security work, use the guardrail plus at most two focused security owners so the repository or domain owner still fits.
 
-## Workspace Routes
-
-| Task signal | Preferred skills |
-| --- | --- |
-| Add, rename, validate, package, install, or document a skill/plugin | `projectskill-list`, `skill-creator`, `plugin-creator`, `aiwf-orchestrator` |
-| Existing repository edit, debug, refactor, or review | `aiwf-repo-sentinel` plus the focused language/framework skill |
-| Auth, secrets, injection, unsafe serialization, dependency, or public exposure risk | `aiwf-security-guardrails` |
-| Commit, push, release, staging, ignored files, or public docs | `aiwf-avoid-ai-pushes`, `aiwf-repo-sentinel` |
-| Weighted research, source plan, claim ledger, contradiction, or citations | `aiwf-deep-research` |
-| Dataset intake, provenance, curation, validation, or synthetic records | `aiwf-dataset` |
-| Durable plan, verification map, or optional findings dataset | `aiwf-agent-mok` |
-| Continuity cards or compact-chat handoff | `aiwf-atlas-cartographer` |
-| Atlas Reader LoRA records, evals, source protocol, or measured claims | `aiwf-atlas-reader` |
-| Authorized broad read-only debug crawl | `aiwf-debug-agent-swarm`, `aiwf-repo-sentinel` |
-
-## Coding Routes
+## Workspace And Release
 
 | Task signal | Preferred skills |
 | --- | --- |
-| C source, headers, ABI, compiler flags, or memory safety | `aiwf-c-coding` |
-| C++, CMake, ownership, templates, ABI, or native extensions | `aiwf-cpp-coding` |
+| Add, validate, package, install, or document a skill/plugin | `projectskill-list`, `skill-creator`, `plugin-creator`, `aiwf-orchestrator` |
+| Existing repository edit, debug, refactor, or review | `aiwf-repo-sentinel` plus the focused implementation skill |
+| Commit, push, PR, release, staging, or public docs | `aiwf-avoid-ai-pushes`, `aiwf-repo-sentinel` |
+| Shared Codex/Claude/Grok state, context, handoffs, or leases | `aiwf-multi-agent-workspace` |
+
+## Security And Privacy
+
+| Task signal | Preferred skills |
+| --- | --- |
+| Security authorization, threat triage, evidence, or approval gates | `aiwf-security-guardrails` |
+| Application/API auth, permissions, input, browser, webhook, or LLM tools | `aiwf-application-api-security` |
+| Internet exposure, DNS/TLS, IAM, cloud/VPS, containers, or ports | `aiwf-online-infrastructure-security` |
+| Windows/device hardening, encryption, credentials, local services/files | `aiwf-local-device-security` |
+| Personal/customer data, minimization, retention, deletion, audit evidence | `aiwf-data-privacy-protection` |
+| Dependencies, SBOM, build/release provenance, models, datasets, binaries | `aiwf-software-ai-supply-chain-security` |
+| Credential compromise, malware, breach, evidence, containment, recovery | `aiwf-incident-response-recovery` |
+
+## Startup Growth And Platforms
+
+| Task signal | Preferred skills |
+| --- | --- |
+| Positioning, ICP, go-to-market, funnels, channels, experiments, KPIs | `aiwf-startup-marketing-growth` |
+| Burn, runway, unit economics, grants, SBA, angels, VC, diligence | `aiwf-startup-finance-funding` |
+| Answer engines, generative search, AI-search visibility, citation readiness | `aiwf-aeo-geo` |
+| Facebook, Instagram, WhatsApp Business, Meta ads, Pixel/CAPI | `aiwf-meta-business` |
+| Google Ads, GA4, Tag Manager, Business Profile, conversions | `aiwf-google-ads-business` |
+| YouTube channels/APIs, YPP, AdSense, rights, monetization | `aiwf-youtube-adsense` |
+| HTTP crawl/index, rendering, canonicals, sitemaps, structured data | `aiwf-web-seo` |
+
+## Coding
+
+| Task signal | Preferred skills |
+| --- | --- |
+| C source, headers, ABI, compiler flags, memory safety | `aiwf-c-coding` |
+| C++, CMake, ownership, templates, ABI, native extensions | `aiwf-cpp-coding` |
 | Python 3.10 compatibility | `aiwf-python310-coding` |
 | Python 3.12 compatibility | `aiwf-python312-coding` |
-| CUDA, cuDNN, TensorRT, `nvcc`, kernels, or NVIDIA SDKs | `aiwf-nvidia-cuda-cudnn-sdk` |
-| GPU driver/runtime/DLL/VRAM failure | `aiwf-gpu-runtime-diagnostics`, `aiwf-nvidia-cuda-cudnn-sdk` |
-| FastAPI, Pydantic, OpenAPI, ASGI, auth/CORS, or lifespan | `aiwf-fastapi-coding` |
-| Gradio Blocks, events, queues, mounts, or callbacks | `aiwf-gradio-coding` |
-| React components, hooks, state, rendering, or accessibility | `aiwf-react-coding` |
-| Vue 3, Composition API, `.vue`, or VitePress | `aiwf-vue-vitepress-coding` |
-| TypeScript configuration, strict types, JSX/TSX, or generated types | `aiwf-typescript-coding` |
-| JavaScript runtime, modules, async, DOM, browser, or Node behavior | `aiwf-javascript-coding` |
-| CSS cascade, layout, responsive behavior, or rendered polish | `aiwf-css-coding` |
-| Android, Kotlin, Gradle, Compose, Room, Retrofit, ONNX, APK/AAB, or real device | `aiwf-android-kotlin-coding` |
-| Frontend/backend payload, cancellation, progress, or stale-state wiring | `aiwf-ui-electrician` plus the two surface skills |
+| CUDA, cuDNN, TensorRT, kernels, NVIDIA SDKs | `aiwf-nvidia-cuda-cudnn-sdk` |
+| FastAPI, Pydantic, OpenAPI, ASGI | `aiwf-fastapi-coding` |
+| Gradio Blocks, events, queues, mounts, callbacks | `aiwf-gradio-coding` |
+| React components, hooks, state, rendering | `aiwf-react-coding` |
+| Vue 3, Composition API, VitePress | `aiwf-vue-vitepress-coding` |
+| TypeScript config, strict types, JSX/TSX | `aiwf-typescript-coding` |
+| JavaScript runtime, modules, async, DOM, Node | `aiwf-javascript-coding` |
+| CSS cascade, layout, responsive behavior | `aiwf-css-coding` |
+| Android, Kotlin, Gradle, Compose, Room, ADB | `aiwf-android-kotlin-coding` |
+| Frontend/backend payload, progress, cancellation, stale state | `aiwf-ui-electrician` plus surface skills |
+| Windows paths, PowerShell, venvs, ports, processes, WSL/Docker | `aiwf-windows-local-dev` |
 
-## Application And Data Routes
-
-| Task signal | Preferred skills |
-| --- | --- |
-| RAG, embeddings, chunking, hybrid search, reranking, grounding, or retrieval eval | `aiwf-rag-retrieval` |
-| SQLite, Room, Postgres, Chroma, pgvector, Qdrant, Milvus, schemas, or migrations | `aiwf-data-storage` |
-| Windows paths, PowerShell, venvs, ports, processes, Docker Desktop, WSL, or local services | `aiwf-windows-local-dev` |
-| Crawlability, metadata, canonicals, sitemaps, structured data, or web evidence | `aiwf-web-seo` |
-| AI-looking UI, dashboard, PDF, or document layout | `aiwf-avoid-ai-design` |
-| Generated image, logo, diagram, chart, portrait, hands, anatomy, or text artifact QA | `aiwf-avoid-ai-illustrations` |
-| Explicit Torchie voice or AIWF beta copy | `aiwf-torchie` |
-
-## AI Runtime Routes
+## AI And Data
 
 | Task signal | Preferred skills |
 | --- | --- |
-| Pipeline graph, runtime wiring, source mapping, or smoke matrix | `aiwf-ai-pipelines` |
-| Model format, precision, quantization, loader backend, component, or adapter contract | `aiwf-model-loader` |
-| LoRA/QLoRA training plan, dataset split, checkpoint, resume, or export | `aiwf-local-ai-training` |
-| Eval suite, regression, benchmark, acceptance threshold, or promotion gate | `aiwf-ai-evals` |
-| vLLM, llama.cpp, Ollama, OpenAI-compatible endpoint, telemetry, queue, or latency | `aiwf-inference-serving` |
+| Pipeline graph, engines, runtime wiring, smoke matrix | `aiwf-ai-pipelines` |
+| Model format, precision, quantization, backend, components, adapters | `aiwf-model-loader` |
+| LoRA/QLoRA plan, dataset split, checkpoint, resume, export | `aiwf-local-ai-training` |
+| Eval suite, benchmark, regression, threshold, promotion gate | `aiwf-ai-evals` |
+| vLLM, llama.cpp, Ollama, endpoints, queues, latency | `aiwf-inference-serving` |
+| Driver/runtime/DLL/VRAM failure | `aiwf-gpu-runtime-diagnostics` |
+| RAG, embeddings, chunking, hybrid search, reranking, grounding | `aiwf-rag-retrieval` |
+| SQLite, Room, Postgres, vector stores, schemas, migrations | `aiwf-data-storage` |
+| Dataset intake, provenance, curation, validation, synthetic data | `aiwf-dataset` |
 
-## Physical And Business Routes
+## Physical, Research, And Output
 
 | Task signal | Preferred skills |
 | --- | --- |
-| Robotics architecture, ROS 2, sensors, actuators, perception, planning, or controls | `aiwf-robotics-systems` |
-| Units, frames, kinematics, dynamics, Gazebo, MuJoCo, or sim-to-real | `aiwf-physics-simulation` |
-| LAN, Wi-Fi, MQTT, WebSocket, RTSP, telemetry, reconnect, or secure binding | `aiwf-networking-iot` |
-| MCU, RTOS, Jetson, SBC, firmware, buses, power, thermal, or edge inference | `aiwf-embedded-edge-ai` |
-| Customer-site pilot, hazards, operator handoff, rollback, or go/no-go | `aiwf-field-pilot-readiness` |
-| Ai Embedded Systems lead, quote-ready first pass, workflow, bot, SEO, training, or AI fit | `aiwf-service-intake` |
+| Robotics architecture, ROS 2, sensors, control | `aiwf-robotics-systems` |
+| Units, frames, dynamics, Gazebo, MuJoCo, sim-to-real | `aiwf-physics-simulation` |
+| LAN, MQTT, WebSocket, RTSP, IoT, telemetry | `aiwf-networking-iot` |
+| MCU, RTOS, Jetson, firmware, power, thermal, edge inference | `aiwf-embedded-edge-ai` |
+| Customer-site hazards, operator handoff, rollback, go/no-go | `aiwf-field-pilot-readiness` |
+| Lead, quote-ready first pass, service fit | `aiwf-service-intake` |
+| Weighted research, claim ledger, source verification | `aiwf-deep-research` |
+| Durable plan, verification map, findings dataset | `aiwf-agent-mok` |
+| Continuity cards or compact-chat handoff | `aiwf-atlas-cartographer` |
+| Atlas Reader LoRA records, evals, measured claims | `aiwf-atlas-reader` |
+| Authorized broad read-only debug crawl | `aiwf-debug-agent-swarm` |
+| AI-looking UI or document cleanup | `aiwf-avoid-ai-design` |
+| Generated-image artifact and semantic QA | `aiwf-avoid-ai-illustrations` |
+| Explicit Torchie voice | `aiwf-torchie` |
 
 ## Verification
 
-```powershell
-.\scripts\validate_skills.ps1
-python .\scripts\validate_pack.py
-python .\scripts\test_orchestrator_routes.py
-```
-
-Use the project-native test, lint, typecheck, build, device, endpoint, browser, or artifact checks for the selected route. Router policy never substitutes for runtime evidence.
+Run the project-native check for the selected route, then the pack validators in `AGENTS.md`. Router policy never substitutes for runtime evidence.

@@ -1,0 +1,6 @@
+interface:
+  display_name: "aiwf_aeo-geo"
+  short_description: "Answer and generative search visibility workflow"
+  default_prompt: "Use $aiwf-aeo-geo to improve answer-engine and generative-search visibility with clear entities, original evidence, useful answers, and honest measurement."
+policy:
+  allow_implicit_invocation: false

@@ -1,6 +1,6 @@
 ---
 name: aiwf-web-seo
-description: Use for technical SEO and answer-ready website work involving crawlability, indexability, titles and descriptions, canonical URLs, robots directives, sitemaps, structured data, JavaScript rendering, internal links, performance, accessibility, source-backed service copy, and search validation.
+description: Use for technical SEO involving crawlability, indexability, status codes, redirects, titles and descriptions, canonical URLs, robots directives, sitemaps, structured data, JavaScript rendering, internal links, performance, accessibility, and production search validation. Use aiwf-aeo-geo for answer and generative-search visibility.
 ---
 
 # AIWF Web SEO
@@ -20,12 +20,12 @@ Audit the rendered site and its HTTP behavior before rewriting copy. SEO work mu
 ## Guardrails
 
 - Do not promise first-place rankings, indexing, rich results, traffic, or answer-engine citation.
-- Treat "AEO" as clear, source-backed answer presentation, not a separate guaranteed ranking protocol.
+- Route answer-engine, generative-engine, AI-search citation, entity-clarity, and source-worthy content work to `aiwf-aeo-geo`.
 - Do not use `robots.txt` to prevent indexing; use the correct page or response directive when exclusion is intended.
 - Keep one consistent canonical URL per indexable page and use absolute canonical URLs in sitemaps and metadata.
 - Do not generate location, service, FAQ, testimonial, metric, or case-study pages without real supporting content.
 - Keep important information in accessible text, not only images, canvas, or client-side state.
-- Add `aiwf-react-coding` or `aiwf-vue-vitepress-coding` for framework changes and `aiwf-avoid-ai-design` for visual cleanup.
+- Add `aiwf-react-coding` or `aiwf-vue-vitepress-coding` for framework changes, `aiwf-aeo-geo` for answer visibility, and `aiwf-avoid-ai-design` for visual cleanup.
 
 ## Validation
 

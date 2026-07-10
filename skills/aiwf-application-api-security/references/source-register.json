@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "skill": "aiwf-application-api-security",
+  "verified_on": "2026-07-10",
+  "sources": [
+    {"id":"owasp-asvs","title":"Application Security Verification Standard","publisher":"OWASP Foundation","url":"https://owasp.org/www-project-application-security-verification-standard/","status":"stable release","version":"5.0.0","retrieved_at":"2026-07-10","volatility":"medium","supports":["application controls","verification requirements"]},
+    {"id":"owasp-api","title":"OWASP API Security Top 10","publisher":"OWASP Foundation","url":"https://owasp.org/API-Security/","status":"current project guidance","version":"2023","retrieved_at":"2026-07-10","volatility":"medium","supports":["API authorization","resource consumption","inventory"]},
+    {"id":"owasp-llmsvs","title":"LLM Verification Standard","publisher":"OWASP Foundation","url":"https://owasp.org/www-project-llm-verification-standard/","status":"current project guidance","version":"2.0","retrieved_at":"2026-07-10","volatility":"high","supports":["LLM integration controls","tool and data boundaries"]},
+    {"id":"nist-ssdf","title":"Secure Software Development Framework","publisher":"NIST","url":"https://csrc.nist.gov/pubs/sp/800/218/final","status":"final","version":"1.1","retrieved_at":"2026-07-10","volatility":"low","supports":["secure development lifecycle"]}
+  ]
+}

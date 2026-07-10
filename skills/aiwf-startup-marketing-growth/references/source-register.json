@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "skill": "aiwf-startup-marketing-growth",
+  "verified_on": "2026-07-10",
+  "sources": [
+    {"id":"ftc-endorsements","title":"Endorsements, Influencers, and Reviews","publisher":"Federal Trade Commission","url":"https://www.ftc.gov/business-guidance/advertising-marketing/endorsements-influencers-reviews","status":"current guidance","version":"live","retrieved_at":"2026-07-10","volatility":"high","supports":["disclosures","reviews","endorsements"]},
+    {"id":"sba-marketing","title":"Marketing and sales","publisher":"U.S. Small Business Administration","url":"https://www.sba.gov/business-guide/manage-your-business/marketing-sales","status":"current guidance","version":"live","retrieved_at":"2026-07-10","volatility":"medium","supports":["small-business marketing planning"]},
+    {"id":"ga-attribution","title":"Get started with attribution","publisher":"Google Analytics Help","url":"https://support.google.com/analytics/answer/10596866","status":"current product guidance","version":"live","retrieved_at":"2026-07-10","volatility":"high","supports":["attribution limitations","measurement"]},
+    {"id":"nist-privacy","title":"NIST Privacy Framework","publisher":"NIST","url":"https://www.nist.gov/privacy-framework","status":"released framework with newer drafts separately labeled","version":"1.0 baseline","retrieved_at":"2026-07-10","volatility":"medium","supports":["privacy risk","data-aware marketing"]}
+  ]
+}

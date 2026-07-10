@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "skill": "aiwf-data-privacy-protection",
+  "verified_on": "2026-07-10",
+  "sources": [
+    {"id":"nist-privacy","title":"NIST Privacy Framework","publisher":"NIST","url":"https://www.nist.gov/privacy-framework","status":"released baseline; newer drafts must be labeled","version":"1.0 baseline","retrieved_at":"2026-07-10","volatility":"medium","supports":["privacy risk management","data processing"]},
+    {"id":"ftc-protect-data","title":"Protecting Personal Information: A Guide for Business","publisher":"Federal Trade Commission","url":"https://www.ftc.gov/business-guidance/resources/protecting-personal-information-guide-business","status":"current business guidance","version":"live","retrieved_at":"2026-07-10","volatility":"medium","supports":["inventory","minimization","access","disposal"]},
+    {"id":"ftc-privacy-security","title":"Privacy and Security","publisher":"Federal Trade Commission","url":"https://www.ftc.gov/business-guidance/privacy-security","status":"current guidance index","version":"live","retrieved_at":"2026-07-10","volatility":"high","supports":["US sector and breach issue discovery"]},
+    {"id":"nist-storage-encryption","title":"Guide to Storage Encryption Technologies for End User Devices","publisher":"NIST","url":"https://csrc.nist.gov/pubs/sp/800/111/final","status":"final","version":"SP 800-111","retrieved_at":"2026-07-10","volatility":"low","supports":["storage encryption planning"]}
+  ]
+}

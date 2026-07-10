@@ -1,0 +1,6 @@
+interface:
+  display_name: "aiwf_application-api-security"
+  short_description: "Application, API, auth, input, and LLM security"
+  default_prompt: "Use $aiwf-application-api-security to threat-model and review application or API boundaries, produce evidenced findings, and validate bounded secure-code fixes."
+policy:
+  allow_implicit_invocation: false

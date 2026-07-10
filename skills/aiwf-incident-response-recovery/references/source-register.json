@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "skill": "aiwf-incident-response-recovery",
+  "verified_on": "2026-07-10",
+  "sources": [
+    {"id":"nist-ir","title":"Incident Response Recommendations and Considerations for Cybersecurity Risk Management","publisher":"NIST","url":"https://csrc.nist.gov/pubs/sp/800/61/r3/final","status":"final; supersedes Rev. 2","version":"SP 800-61 Rev. 3","retrieved_at":"2026-07-10","volatility":"low","supports":["incident preparation","response","recovery"]},
+    {"id":"cisa-ransomware","title":"#StopRansomware Guide","publisher":"CISA","url":"https://www.cisa.gov/stopransomware/ransomware-guide","status":"current official guidance","version":"live","retrieved_at":"2026-07-10","volatility":"high","supports":["ransomware response","reporting resources"]},
+    {"id":"ftc-breach","title":"Data Breach Response: A Guide for Business","publisher":"Federal Trade Commission","url":"https://www.ftc.gov/business-guidance/resources/data-breach-response-guide-business","status":"current business guidance","version":"live","retrieved_at":"2026-07-10","volatility":"high","supports":["breach response","communications","legal issue discovery"]},
+    {"id":"cisa-report","title":"Report a Cyber Issue","publisher":"CISA","url":"https://www.cisa.gov/report","status":"current reporting entrypoint","version":"live","retrieved_at":"2026-07-10","volatility":"high","supports":["federal reporting routes"]}
+  ]
+}

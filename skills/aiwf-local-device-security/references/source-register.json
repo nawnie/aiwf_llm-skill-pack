@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "skill": "aiwf-local-device-security",
+  "verified_on": "2026-07-10",
+  "sources": [
+    {"id":"ms-encryption","title":"Encryption and data protection","publisher":"Microsoft Learn","url":"https://learn.microsoft.com/en-us/windows/security/book/operating-system-security-encryption-and-data-protection","status":"current Windows guidance","version":"live","retrieved_at":"2026-07-10","volatility":"high","supports":["BitLocker","device encryption","removable media"]},
+    {"id":"ms-uac","title":"User Account Control overview","publisher":"Microsoft Learn","url":"https://learn.microsoft.com/en-us/windows/security/application-security/application-control/user-account-control/","status":"current Windows guidance","version":"live","retrieved_at":"2026-07-10","volatility":"medium","supports":["elevation","least privilege"]},
+    {"id":"ms-app-control","title":"App Control and virtualization-based protection","publisher":"Microsoft Learn","url":"https://learn.microsoft.com/en-us/windows/security/application-security/application-control/introduction-to-virtualization-based-security-and-appcontrol","status":"current Windows guidance","version":"live","retrieved_at":"2026-07-10","volatility":"high","supports":["application control","memory integrity","compatibility"]},
+    {"id":"android-security","title":"Security best practices","publisher":"Android Developers","url":"https://developer.android.com/privacy-and-security/security-best-practices","status":"current Android guidance","version":"live","retrieved_at":"2026-07-10","volatility":"high","supports":["Android storage","permissions","networking"]}
+  ]
+}

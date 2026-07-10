@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "skill": "aiwf-meta-business",
+  "verified_on": "2026-07-10",
+  "sources": [
+    {"id":"meta-ad-standards","title":"Advertising Standards","publisher":"Meta Transparency Center","url":"https://transparency.meta.com/policies/ad-standards/","status":"current policy","version":"live","retrieved_at":"2026-07-10","volatility":"high","supports":["ad review","restricted content","business asset restrictions"]},
+    {"id":"meta-marketing-api","title":"Marketing API","publisher":"Meta for Developers","url":"https://developers.facebook.com/docs/marketing-apis/","status":"current API documentation","version":"live","retrieved_at":"2026-07-10","volatility":"high","supports":["campaign and account APIs","permissions"]},
+    {"id":"meta-capi","title":"Conversions API","publisher":"Meta for Developers","url":"https://developers.facebook.com/docs/marketing-api/conversions-api/","status":"current API documentation","version":"live","retrieved_at":"2026-07-10","volatility":"high","supports":["server events","deduplication","data parameters"]},
+    {"id":"meta-platform-terms","title":"Meta Platform Terms","publisher":"Meta","url":"https://developers.facebook.com/terms/","status":"current terms","version":"live","retrieved_at":"2026-07-10","volatility":"high","supports":["platform data and app obligations"]}
+  ]
+}

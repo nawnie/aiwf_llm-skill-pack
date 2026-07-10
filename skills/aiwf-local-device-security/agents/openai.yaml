@@ -1,0 +1,6 @@
+interface:
+  display_name: "aiwf_local-device-security"
+  short_description: "Windows, device, credential, and local-data security"
+  default_prompt: "Use $aiwf-local-device-security to audit a local device, sensitive AI files, accounts, encryption, services, recovery, and reversible hardening gates."
+policy:
+  allow_implicit_invocation: false

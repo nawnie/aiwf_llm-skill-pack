@@ -1,6 +1,6 @@
 ---
 name: aiwf-orchestrator
-description: Implicit routing control for the AIWF skill pack. Use at the start of non-trivial local AI, coding, model, training, dataset, retrieval, robotics, embedded, mobile, web, research, debugging, deployment, documentation, or skill-pack work to select the smallest focused downstream skill route without requiring the user to name skills.
+description: Implicit routing control for the AIWF skill pack. Use at the start of non-trivial local AI, coding, security, startup growth, funding, platform, model, dataset, robotics, embedded, web, research, multi-agent, deployment, documentation, or skill-pack work to select the smallest focused downstream route.
 ---
 
 # AIWF Orchestrator
@@ -46,8 +46,11 @@ Use focused skills instead of the retired broad wrappers:
 - Cross-layer API/UI wiring: `aiwf-ui-electrician` after the relevant backend and frontend skills.
 - Model loading, training, evals, serving, pipelines, GPU failures, RAG, or data stores: the matching runtime skill.
 - Robotics, physics, networking, embedded systems, field pilots, or Windows local runtime work: the matching systems skill.
+- Security work: `aiwf-security-guardrails` plus at most two focused security owners, leaving room for the repo or domain skill.
+- Startup marketing, funding, AEO/GEO, Meta, Google Ads, or YouTube/AdSense: the matching growth or platform skill.
+- Shared Codex, Claude, Grok, context, handoff, or resource coordination: `aiwf-multi-agent-workspace`.
 - External research: `aiwf-deep-research`; durable plan verification: `aiwf-agent-mok` only when needed.
-- Design, generated-image QA, SEO, release hygiene, service intake, or Torchie voice: the matching output skill.
+- Design, generated-image QA, technical SEO, release hygiene, service intake, or Torchie voice: the matching output skill.
 
 If a task spans more than four owners, route in phases instead of loading the whole pack.
 

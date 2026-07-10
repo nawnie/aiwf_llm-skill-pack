@@ -7,6 +7,15 @@ from dataclasses import dataclass
 
 
 MAX_SKILLS = 4
+MAX_FOCUSED_SECURITY_SKILLS = 2
+FOCUSED_SECURITY_SKILLS = {
+    "aiwf-application-api-security",
+    "aiwf-online-infrastructure-security",
+    "aiwf-local-device-security",
+    "aiwf-data-privacy-protection",
+    "aiwf-software-ai-supply-chain-security",
+    "aiwf-incident-response-recovery",
+}
 
 
 @dataclass(frozen=True)
@@ -19,7 +28,14 @@ class Rule:
 
 RULES = [
     Rule(r"\b(fix|debug|patch|refactor|implement|update|change|code review|review .*code|without breaking tests|repo|repository|dirty tree|package manager|lockfile|staging|commit|push)\b", "aiwf-repo-sentinel", "repository preflight and diff integrity", 5),
-    Rule(r"\b(security|auth|authorization|cors|csrf|secret|token|api key|injection|xss|ssrf|path traversal|unsafe (de)?serialization|pickle|yaml\.load|shell=true|supply chain|public exposure|vulnerabilit(?:y|ies))\b", "aiwf-security-guardrails", "security boundary", 10),
+    Rule(r"\b(security|cybersecurity|privacy|auth|authorization|cors|csrf|secret|token|api key|injection|xss|ssrf|path traversal|unsafe (de)?serialization|pickle|yaml\.load|shell=true|supply chain|sbom|public exposure|hardening|incident response|malware|ransomware|data breach|vulnerabilit(?:y|ies))\b", "aiwf-security-guardrails", "security authorization, threat triage, and evidence", 10),
+    Rule(r"\b(application security|api security|object[- ]level authorization|session security|cookie security|csrf|cors|xss|sql injection|command injection|ssrf|webhook signature|file upload security|archive extraction|unsafe (?:de)?serialization|prompt injection|llm tool security)\b", "aiwf-application-api-security", "application and API security", 11),
+    Rule(r"\b(internet[- ]facing|online infrastructure|public exposure|publicly exposed|dns security|tls certificate|reverse proxy security|cloud iam|vps security|security group|exposed ports?|remote administration|service account|container hardening|network scan)\b", "aiwf-online-infrastructure-security", "online infrastructure security", 12),
+    Rule(r"\b(local device security|workstation security|windows hardening|bitlocker|device encryption|secure boot|uac|application control|app control|memory integrity|defender|removable media security|usb security|local credential store)\b", "aiwf-local-device-security", "local device and data security", 13),
+    Rule(r"\b(data privacy|privacy protection|personal data|customer data|employee data|pii|data inventory|data classification|data minimization|consent|retention policy|data deletion|privacy notice|soc 2 readiness|iso 27001 readiness|audit evidence)\b", "aiwf-data-privacy-protection", "data privacy and governance", 14),
+    Rule(r"\b(software supply chain|ai supply chain|sbom|build provenance|artifact attestation|artifact signing|dependency provenance|package provenance|model provenance security|dataset provenance security|malicious dependency|ci/cd security|release signing)\b", "aiwf-software-ai-supply-chain-security", "software and AI artifact supply chain", 15),
+    Rule(r"\b(security incident|incident response|compromised credential|credential leak|account takeover|malware|ransomware|data breach|security containment|forensic evidence|suspicious executable|restore after attack|breach notification)\b", "aiwf-incident-response-recovery", "security incident response and recovery", 16),
+    Rule(r"\b(multi[- ]agent|shared agent workspace|agent workspace|codex and claude|claude and codex|codex.*grok|grok.*codex|writer lease|resource lease|rolling (?:chat )?context|last six exchanges|agent handoff)\b", "aiwf-multi-agent-workspace", "shared agent coordination", 18),
     Rule(r"\b(android|kotlin|jetpack compose|gradle\.kts|build\.gradle|room database|retrofit|okhttp|android app|apk|aab|adb|roborazzi|onnxruntime android)\b", "aiwf-android-kotlin-coding", "Android and Kotlin application work", 20),
     Rule(r"\b(c11|c17|c23|iso c|wg14|c source|c code|c header|c library|\.c file|\.h file)\b", "aiwf-c-coding", "C language and ABI work", 20),
     Rule(r"\b(c\+\+|cxx|iso c\+\+|c\+\+17|c\+\+20|c\+\+23|raii|templates?|pybind|native extension|cmake extension|cpp (?:file|code|source|project)|\.(?:cpp|cc|cxx) file)\b", "aiwf-cpp-coding", "C++ and native toolchain work", 20),
@@ -36,7 +52,13 @@ RULES = [
     Rule(r"\b(rag|retrieval[- ]augmented|embeddings?|chunking|semantic search|hybrid search|rerank(?:er|ing)?|retrieval eval|context pack|citation grounding)\b", "aiwf-rag-retrieval", "retrieval and grounding quality", 22),
     Rule(r"\b(sqlite|android room|room (?:database|schema|migration|dao|entity|app)|postgres|postgresql|pgvector|chroma(?:db)?|qdrant|milvus|vector store|database migration|schema migration|data integrity)\b", "aiwf-data-storage", "persistent data or vector storage", 23),
     Rule(r"\b(windows local|powershell|python venv|virtual environment|dll|path issue|docker desktop|wsl|port owner|process id|localhost boundary|local service)\b", "aiwf-windows-local-dev", "Windows local runtime", 24),
-    Rule(r"\b(seo|technical seo|structured data|json-ld|canonical urls?|sitemaps?|robots meta|crawlability|indexability|search console|answer[- ]engine)\b", "aiwf-web-seo", "technical website discovery", 25),
+    Rule(r"\b(seo|technical seo|structured data|json-ld|canonical urls?|sitemaps?|robots meta|crawlability|indexability|search console|javascript seo|rendered metadata)\b", "aiwf-web-seo", "technical website discovery", 25),
+    Rule(r"\b(answer[- ]engine optimization|generative[- ]engine optimization|aeo|geo optimization|ai[- ]search visibility|generative search|answer visibility|citation readiness|llms\.txt)\b", "aiwf-aeo-geo", "answer and generative search visibility", 26),
+    Rule(r"\b(startup marketing|go[- ]to[- ]market|gtm strategy|ideal customer profile|\bicp\b|positioning statement|channel strategy|growth experiment|marketing funnel|conversion funnel|customer acquisition|activation metric|retention strategy)\b", "aiwf-startup-marketing-growth", "startup marketing and measurable growth", 27),
+    Rule(r"\b(startup funding|fundraising|fundraise|runway|burn rate|unit economics|use of funds|investor diligence|angel investors?|venture capital|accelerator|sba (?:loan|funding)|federal grants?|regulation crowdfunding|reg cf|cap table)\b", "aiwf-startup-finance-funding", "startup finance and funding", 28),
+    Rule(r"\b(meta business|facebook ads?|instagram business|whatsapp business|meta ads manager|business portfolio|meta pixel|conversions api|meta capi|meta lead forms?|meta account quality)\b", "aiwf-meta-business", "Meta business platform work", 29),
+    Rule(r"\b(google ads|adwords|google ads api|google business profile|\bga4\b|google analytics 4|google tag manager|\bgtm container\b|merchant center|google conversion action)\b", "aiwf-google-ads-business", "Google business advertising and measurement", 29),
+    Rule(r"\b(youtube|youtube data api|youtube analytics api|youtube partner program|\bypp\b|adsense|channel monetization|youtube channel)\b", "aiwf-youtube-adsense", "YouTube and AdSense operations", 29),
     Rule(r"\b(rnv1|robotics?|ros\s*2|ros2|robot (?:architecture|system|platform|prototype)|perception stack|path planning|robot control|control stack|mobile robot|manipulator)\b", "aiwf-robotics-systems", "robotics systems work", 30),
     Rule(r"\b(physics|simulation|sim[- ]?to[- ]?real|gazebo|mujoco|kinematics|dynamics|coordinate frames?|inertia|friction|contact model|timestep|rigid body)\b", "aiwf-physics-simulation", "physics or simulation", 31),
     Rule(r"\b(networking|iot|mqtt|websocket|rtsp|telemetry|lan|wi[- ]?fi|firewall|nat|vpn|heartbeat|reconnect|secure binding|device network)\b", "aiwf-networking-iot", "networking or IoT", 32),
@@ -88,8 +110,19 @@ def route(prompt: str) -> list[dict[str, str]]:
     if not matches:
         matches["aiwf-agent-mok"] = (99, "general non-trivial AIWF planning")
 
-    ordered = sorted(matches.items(), key=lambda item: (item[1][0], item[0]))[:MAX_SKILLS]
-    return [{"skill": skill, "reason": reason} for skill, (_, reason) in ordered]
+    ordered = sorted(matches.items(), key=lambda item: (item[1][0], item[0]))
+    selected: list[tuple[str, tuple[int, str]]] = []
+    focused_security_count = 0
+    for item in ordered:
+        skill = item[0]
+        if skill in FOCUSED_SECURITY_SKILLS:
+            if focused_security_count >= MAX_FOCUSED_SECURITY_SKILLS:
+                continue
+            focused_security_count += 1
+        selected.append(item)
+        if len(selected) == MAX_SKILLS:
+            break
+    return [{"skill": skill, "reason": reason} for skill, (_, reason) in selected]
 
 
 def main() -> int:

@@ -10,6 +10,8 @@ Use this policy when creating or changing skills in this pack.
 - Bundle every referenced helper inside the owning skill. Use `<this-skill>` or a relative path; never depend on a hard-coded global skill path.
 - Mention every bundled helper from `SKILL.md` or a linked reference so its purpose is discoverable and validated.
 - Require receipts for research, dataset, validation, and publish workflows when claims need proof.
+- For source-backed instruction modules, keep official URLs, version/status, retrieval date, volatility, and supported claims in `references/source-register.json`.
+- Keep realistic normal, adversarial, action-gate, and false-claim cases in `evals/cases.jsonl`; never put credentials or customer data in evals.
 
 ## Provider Adapters
 
@@ -32,7 +34,10 @@ Run these before committing skill-pack changes:
 ```powershell
 .\scripts\validate_skills.ps1
 python .\scripts\validate_pack.py
+python .\scripts\validate_instruction_modules.py
 python .\scripts\test_orchestrator_routes.py
+python .\scripts\test_agent_workspace.py
+python .\scripts\test_skill_helpers.py
 python "C:\Users\Shawn\.codex\skills\.system\plugin-creator\scripts\validate_plugin.py" .
 git diff --check
 ```

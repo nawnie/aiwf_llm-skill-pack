@@ -1,0 +1,6 @@
+interface:
+  display_name: "aiwf_youtube-adsense"
+  short_description: "YouTube channels, APIs, policy, and monetization"
+  default_prompt: "Use $aiwf-youtube-adsense to plan or audit a YouTube channel, original content, API operations, YPP or AdSense policy, and monetization measurement."
+policy:
+  allow_implicit_invocation: false

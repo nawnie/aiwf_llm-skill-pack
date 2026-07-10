@@ -1,0 +1,6 @@
+interface:
+  display_name: "aiwf_google-ads-business"
+  short_description: "Google Ads, analytics, tracking, and account hygiene"
+  default_prompt: "Use $aiwf-google-ads-business to audit or plan Google Ads, GA4, Tag Manager, Search Console, conversion tracking, budgets, and protected account actions."
+policy:
+  allow_implicit_invocation: false

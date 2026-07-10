@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "skill": "aiwf-youtube-adsense",
+  "verified_on": "2026-07-10",
+  "sources": [
+    {"id":"youtube-data-api","title":"YouTube Data API Overview","publisher":"Google for Developers","url":"https://developers.google.com/youtube/v3","status":"current API documentation","version":"v3","retrieved_at":"2026-07-10","volatility":"high","supports":["resources","OAuth","quota"]},
+    {"id":"youtube-monetization","title":"YouTube channel monetization policies","publisher":"YouTube Help","url":"https://support.google.com/youtube/answer/1311392","status":"current policy","version":"live","retrieved_at":"2026-07-10","volatility":"high","supports":["YPP","inauthentic and reused content","creator responsibility"]},
+    {"id":"adsense-policies","title":"AdSense Program policies","publisher":"Google AdSense Help","url":"https://support.google.com/adsense/answer/48182","status":"current policy","version":"live","retrieved_at":"2026-07-10","volatility":"high","supports":["invalid clicks","traffic sources","ad behavior"]},
+    {"id":"ftc-endorsements","title":"Endorsements, Influencers, and Reviews","publisher":"Federal Trade Commission","url":"https://www.ftc.gov/business-guidance/advertising-marketing/endorsements-influencers-reviews","status":"current guidance","version":"live","retrieved_at":"2026-07-10","volatility":"high","supports":["sponsorship and affiliate disclosure"]}
+  ]
+}

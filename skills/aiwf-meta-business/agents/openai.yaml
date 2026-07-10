@@ -1,0 +1,6 @@
+interface:
+  display_name: "aiwf_meta-business"
+  short_description: "Meta business accounts, ads, tracking, and policy"
+  default_prompt: "Use $aiwf-meta-business to audit or plan Meta business accounts, ads, Pixel or Conversions API tracking, policy checks, and explicit action gates."
+policy:
+  allow_implicit_invocation: false

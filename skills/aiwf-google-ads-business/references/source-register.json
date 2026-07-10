@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "skill": "aiwf-google-ads-business",
+  "verified_on": "2026-07-10",
+  "sources": [
+    {"id":"google-ads-api","title":"Introduction to the Google Ads API","publisher":"Google for Developers","url":"https://developers.google.com/google-ads/api/docs/get-started/introduction","status":"current API documentation","version":"live","retrieved_at":"2026-07-10","volatility":"high","supports":["OAuth","developer tokens","test accounts","mutations"]},
+    {"id":"google-ads-policies","title":"Google Ads policies","publisher":"Google Ads Help","url":"https://support.google.com/adspolicy/answer/6008942","status":"current policy index","version":"live","retrieved_at":"2026-07-10","volatility":"high","supports":["ad and destination policy","enforcement"]},
+    {"id":"ga4-events","title":"About events","publisher":"Google Analytics Help","url":"https://support.google.com/analytics/answer/9322688","status":"current product guidance","version":"live","retrieved_at":"2026-07-10","volatility":"high","supports":["event measurement","conversion inputs"]},
+    {"id":"tag-manager-security","title":"Tag Manager security","publisher":"Google for Developers","url":"https://developers.google.com/tag-platform/tag-manager/web/security","status":"current technical guidance","version":"live","retrieved_at":"2026-07-10","volatility":"high","supports":["container security","CSP"]}
+  ]
+}

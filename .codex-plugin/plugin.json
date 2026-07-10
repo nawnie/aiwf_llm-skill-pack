@@ -1,7 +1,7 @@
 {
   "name": "aiwf-llm-skill-pack",
-  "version": "0.2.0",
-  "description": "Skills-only Codex plugin for AIWF local AI, focused coding, Android, retrieval, data, robotics, embedded, web, research, model workflows, validation, and release hygiene.",
+  "version": "0.3.0",
+  "description": "Skills-only Codex plugin for AIWF local AI, coding, startup growth, funding, platform operations, security, privacy, robotics, embedded systems, research, and coordinated agent workflows.",
   "author": {
     "name": "Shawn",
     "url": "https://github.com/nawnie"
@@ -50,6 +50,20 @@
     "vue",
     "vitepress",
     "technical-seo",
+    "answer-engine-optimization",
+    "startup-marketing",
+    "startup-funding",
+    "meta-business",
+    "google-ads",
+    "youtube",
+    "adsense",
+    "application-security",
+    "infrastructure-security",
+    "device-security",
+    "data-privacy",
+    "software-supply-chain",
+    "incident-response",
+    "multi-agent",
     "robotics",
     "ros2",
     "physics-simulation",
@@ -65,8 +79,8 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "AIWF LLM Skill Pack",
-    "shortDescription": "AIWF skills for local AI, focused coding, model workflows, research, and validation.",
-    "longDescription": "A skills-only Codex plugin for AIWF and Ai Embedded Systems work. One implicit orchestrator routes to focused skills for C, C++, Python, CUDA, FastAPI, Gradio, React, Vue/VitePress, web standards, Android/Kotlin, RAG, vector and relational storage, local model pipelines, training, evals, serving, GPU diagnostics, Windows runtimes, robotics, physics, networking, embedded edge AI, technical SEO, research, datasets, service intake, field pilots, design QA, and release hygiene. It bundles no MCP servers or apps.",
+    "shortDescription": "AIWF skills for local AI, startups, security, coding, and coordinated agents.",
+    "longDescription": "A skills-only Codex plugin for AIWF and Ai Embedded Systems work. One implicit orchestrator routes to focused skills for coding, local AI, model workflows, startup marketing and funding, AEO/GEO, Meta, Google Ads, YouTube and AdSense, application and infrastructure security, local devices, data privacy, supply-chain security, incident response, shared-agent coordination, Android, retrieval, storage, robotics, physics, networking, embedded edge AI, research, design QA, and release hygiene. It bundles no MCP servers or apps.",
     "developerName": "Shawn",
     "category": "Developer Tools",
     "capabilities": [
