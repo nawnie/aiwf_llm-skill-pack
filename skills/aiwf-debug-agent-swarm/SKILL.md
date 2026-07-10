@@ -15,7 +15,7 @@ Coordinate a high-fanout debugging crawl. Maximize useful parallelism: one clear
 4. Create a debug pass folder for subagent Markdown reports. For UI/API work, prefer:
 
 ```powershell
-python C:\Users\Shawn\.codex\skills\aiwf-ui-electrician\scripts\scaffold_debug_pass.py --root <project-root> --slug <short-slug>
+python <this-skill>\scripts\scaffold_debug_pass.py --root <project-root> --slug <short-slug>
 ```
 
 5. Run the inventory helper when the project is large or unfamiliar:

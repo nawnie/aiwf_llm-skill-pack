@@ -1,6 +1,0 @@
-interface:
-  display_name: "aiwf_web-api-ui-guardian"
-  short_description: "FastAPI, Gradio, React, and UI guardrails"
-  default_prompt: "Use $aiwf-web-api-ui-guardian to keep API, UI, types, and build behavior aligned."
-policy:
-  allow_implicit_invocation: false

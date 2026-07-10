@@ -1,74 +1,54 @@
 # Precision And Quantization Policy
 
-Choose precision per component and backend. A single global dtype is usually wrong for mixed image, video, and LLM pipelines.
+Choose precision and quantization per model component, artifact, backend, hardware, and quality target. Do not encode one quant name or dtype as a pack-wide default.
 
 ## Decision Order
 
-1. Source requirement: original docs, model card, config, or known runtime restriction.
-2. Backend support: Diffusers, Transformers, llama.cpp, vLLM, TensorRT, Nunchaku, ONNX, or native code.
-3. Hardware support: CUDA capability, VRAM, CPU fallback, disk speed, and Windows compatibility.
-4. Quality target: release smoke, default user generation, high-quality mode, or low-memory mode.
-5. Failure behavior: unsupported precision must fail in preflight, not halfway through loading.
+1. Confirm model architecture and source requirements from local config and primary documentation.
+2. Confirm the artifact format and the exact runtime that will load it.
+3. Inspect hardware capability, available memory, OS, driver/runtime compatibility, and fallback behavior.
+4. Define the quality, latency, memory, portability, and reproducibility target.
+5. Select only a format and dtype supported by all four layers above.
 
-## Component Defaults
+## Component Contract
 
-| Component | Conservative default | Notes |
-| --- | --- | --- |
-| Diffusion transformer or UNet | FP16 on NVIDIA | BF16 only when source/runtime/GPU support it. FP8 requires explicit runtime support. |
-| VAE | FP16 or FP32 fallback | Keep independent from main model. Some VAEs need FP32 for stability. |
-| Text encoder | FP16/BF16 on GPU or CPU offload | Prompt encoding on GPU can speed small models, but must account for VRAM and unload behavior. |
-| Tokenizer | CPU | Do not treat tokenizer as a GPU precision decision. |
-| LLM base model | Runtime-specific | Transformers, llama.cpp, vLLM, and TensorRT have different quant contracts. |
-| LoRA/adapters | Match base module dtype at attach time | Validate base compatibility before loading. |
+Record each component separately:
 
-## GGUF
+- weights and architecture
+- loader/backend
+- storage format
+- runtime dtype
+- quantization method and metadata
+- device and offload policy
+- memory estimate or measured peak
+- fallback and rejection reason
+- smoke check
 
-Use `gguf-quantization` and `llama-cpp` for detailed GGUF rules.
+Diffusion or language-model weights, VAE, text encoders, tokenizers, projectors, adapters, and postprocessors can have different constraints. A global dtype flag is not proof that every component supports it.
 
-Practical loader policy:
+## Format Rules
 
-- Use GGUF only with runtimes that understand GGUF metadata.
-- Read metadata before choosing context size, tokenizer behavior, architecture, projector requirements, or GPU layer split.
-- Q4_K_M is the usual balanced local default for LLMs when memory is tight.
-- Q5_K_M or Q6_K is preferred when quality matters and VRAM/RAM allows.
-- Q8_0 is useful for near-FP quality checks and debugging, but is not the smallest useful release target.
-- Use imatrix-aware quants for low-bit quality when quantizing yourself.
-- Multimodal GGUF may need a separate projector/mmproj file; preflight must catch missing projector files.
+### GGUF
 
-## Bitsandbytes
+- Use a runtime that understands the artifact's GGUF architecture and metadata.
+- Inspect tokenizer, context, tensor, quantization, and architecture metadata before loading.
+- Multimodal models may require a separate projector; reject incomplete layouts in preflight.
+- Compare quant choices against the actual model family, runtime support, memory budget, and measured quality. Do not assume one Q4/Q5/Q8 label is universally best.
+- Use calibration or importance-matrix workflows only when the selected quantizer and model support them.
 
-Use `quantizing-models-bitsandbytes` and `bitsandbytes` for implementation details.
+### Transformers Quantization
 
-Practical loader policy:
+- Treat bitsandbytes, AWQ, GPTQ, HQQ, and other formats as separate contracts.
+- Confirm the installed Transformers, accelerator, backend, and hardware support before constructing a quantization config.
+- Distinguish training-time QLoRA loading from serving artifacts and merged exports.
 
-- Use 8-bit for simple Transformers memory reduction when supported.
-- Use 4-bit NF4 for QLoRA-style loading or tight VRAM LLM inference when supported.
-- Do not apply bitsandbytes to arbitrary Diffusers components unless the backend officially supports that component path.
-- Keep quantization config visible in model metadata and logs.
+### TensorRT And Other Compiled Artifacts
 
-## AWQ, GPTQ, HQQ, Nunchaku, TensorRT
+- Separate export/build from runtime loading.
+- Record TensorRT version, platform, GPU target or compatibility mode, precision, plugins, and build flags.
+- Do not deserialize untrusted engine files.
+- Treat ONNX, TensorRT, Nunchaku, and other compiled or custom formats as backend-specific artifacts, not generic precision toggles.
 
-- Treat each as a backend-specific artifact, not a generic precision flag.
-- Validate that the selected runtime can load the artifact before exposing it in UI.
-- For vLLM, confirm the exact quantization option supported by the installed vLLM version.
-- For TensorRT or FP8, distinguish export/build steps from runtime loading.
-- For Nunchaku or other custom acceleration formats, use source docs and preflight artifact layout.
+## Failure Behavior
 
-## Image And Video Models
-
-- Prefer source-native loaders when a family has custom optimized inference.
-- Diffusers is appropriate when the model is officially supported or local code confirms compatibility.
-- Keep prompt encoding, denoising, decoding, and postprocessing precision separate.
-- Avoid CPU prompt encoding by default for small models if GPU prompt encoding is supported and faster, but expose offload for low VRAM.
-- Video models often need stricter memory policy than image models: frame count, duration, FPS, latent size, and VAE decode can dominate.
-
-## Unsupported Choices
-
-Unsupported precision or quant choices should produce a clean reason:
-
-- Unsupported by backend.
-- Unsupported by hardware.
-- Missing artifact.
-- Incompatible architecture.
-- Requires export/build step.
-- Not verified for this model family.
+Reject unsupported choices before allocating model weights. Return a specific reason: unsupported backend, unsupported hardware, missing artifact, incompatible architecture, invalid component combination, required export/build step, or unverified model-family support.

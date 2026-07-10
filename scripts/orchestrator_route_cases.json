@@ -2,71 +2,191 @@
   {
     "name": "fastapi-react-bug",
     "prompt": "fix a FastAPI React bug in this repo without breaking tests",
-    "must_include": ["aiwf-ai-coding-guardrails", "aiwf-repo-sentinel", "aiwf-web-api-ui-guardian"]
+    "expected": ["aiwf-repo-sentinel", "aiwf-fastapi-coding", "aiwf-react-coding", "aiwf-ui-electrician"]
   },
   {
-    "name": "python-cmake-debug",
-    "prompt": "debug a Python CMake extension and avoid unsafe serialization",
-    "must_include": ["aiwf-ai-coding-guardrails", "aiwf-security-guardrails", "aiwf-python-cpp-hardener"]
+    "name": "python-cmake-security",
+    "prompt": "debug a Python CMake native extension and avoid unsafe serialization",
+    "expected": ["aiwf-repo-sentinel", "aiwf-security-guardrails", "aiwf-cpp-coding"]
   },
   {
     "name": "gpu-runtime",
     "prompt": "audit CUDA TensorRT install and fix failing GPU inference",
-    "must_include": ["aiwf-ai-coding-guardrails", "aiwf-gpu-runtime-diagnostics"]
+    "expected": ["aiwf-repo-sentinel", "aiwf-nvidia-cuda-cudnn-sdk", "aiwf-gpu-runtime-diagnostics"]
   },
   {
-    "name": "security-auth-cors",
-    "prompt": "check security issue in FastAPI auth and CORS",
-    "must_include": ["aiwf-security-guardrails", "aiwf-web-api-ui-guardian"]
+    "name": "c-coding",
+    "prompt": "fix C source header ABI memory safety in this C17 library",
+    "expected": ["aiwf-repo-sentinel", "aiwf-c-coding"]
+  },
+  {
+    "name": "cpp-coding",
+    "prompt": "review C++23 CMake RAII template ABI code without breaking tests",
+    "expected": ["aiwf-repo-sentinel", "aiwf-cpp-coding"]
+  },
+  {
+    "name": "python310-coding",
+    "prompt": "fix Python 3.10 packaging and typing compatibility for cp310 wheels",
+    "expected": ["aiwf-repo-sentinel", "aiwf-python310-coding"]
+  },
+  {
+    "name": "python312-coding",
+    "prompt": "update Python 3.12 packaging around distutils removal and py -3.12 validation",
+    "expected": ["aiwf-repo-sentinel", "aiwf-python312-coding"]
+  },
+  {
+    "name": "android-kotlin-room",
+    "prompt": "fix this Android Kotlin Jetpack Compose Room app and run Gradle tests",
+    "expected": ["aiwf-repo-sentinel", "aiwf-android-kotlin-coding", "aiwf-data-storage"]
+  },
+  {
+    "name": "vue-vitepress-typescript",
+    "prompt": "update a Vue 3 VitePress TypeScript docs theme and routing",
+    "expected": ["aiwf-repo-sentinel", "aiwf-vue-vitepress-coding", "aiwf-typescript-coding"]
+  },
+  {
+    "name": "react-typescript",
+    "prompt": "fix React hooks TSX state and TypeScript validation",
+    "expected": ["aiwf-repo-sentinel", "aiwf-react-coding", "aiwf-typescript-coding"]
+  },
+  {
+    "name": "css-coding",
+    "prompt": "fix CSS cascade specificity and responsive layout",
+    "expected": ["aiwf-repo-sentinel", "aiwf-css-coding"]
+  },
+  {
+    "name": "javascript-coding",
+    "prompt": "fix JavaScript ESM Node.js async module behavior",
+    "expected": ["aiwf-repo-sentinel", "aiwf-javascript-coding"]
+  },
+  {
+    "name": "fastapi-security",
+    "prompt": "check FastAPI auth CORS and Pydantic security boundaries",
+    "expected": ["aiwf-security-guardrails", "aiwf-fastapi-coding"]
+  },
+  {
+    "name": "gradio-coding",
+    "prompt": "fix Gradio Blocks queue events and mount_gradio_app behavior",
+    "expected": ["aiwf-repo-sentinel", "aiwf-gradio-coding"]
+  },
+  {
+    "name": "rag-vector-storage",
+    "prompt": "debug RAG chunking embeddings and citation grounding in a Chroma vector store",
+    "expected": ["aiwf-repo-sentinel", "aiwf-rag-retrieval", "aiwf-data-storage"]
+  },
+  {
+    "name": "windows-local-runtime",
+    "prompt": "debug a Windows local service Python venv DLL PATH and port owner issue",
+    "expected": ["aiwf-repo-sentinel", "aiwf-windows-local-dev"]
+  },
+  {
+    "name": "web-seo",
+    "prompt": "audit technical SEO canonical URLs sitemap structured data crawlability and indexability",
+    "expected": ["aiwf-web-seo"]
+  },
+  {
+    "name": "nvidia-sdk-code",
+    "prompt": "patch CUDA cuDNN TensorRT nvcc kernel code for NVIDIA SDK Manager",
+    "expected": ["aiwf-repo-sentinel", "aiwf-nvidia-cuda-cudnn-sdk"]
+  },
+  {
+    "name": "robotics-systems",
+    "prompt": "plan an Rnv1 robotics prototype with ROS 2 perception and robot control logging",
+    "expected": ["aiwf-robotics-systems"]
+  },
+  {
+    "name": "physics-simulation",
+    "prompt": "check physics simulation coordinate frames inertia friction Gazebo MuJoCo and sim-to-real assumptions",
+    "expected": ["aiwf-physics-simulation"]
+  },
+  {
+    "name": "networking-iot",
+    "prompt": "design IoT telemetry over MQTT WebSocket LAN Wi-Fi with reconnect heartbeat and secure binding",
+    "expected": ["aiwf-networking-iot"]
+  },
+  {
+    "name": "embedded-edge-ai",
+    "prompt": "scope edge AI on Jetson RTOS firmware sensor bus power budget thermal and edge inference",
+    "expected": ["aiwf-embedded-edge-ai"]
+  },
+  {
+    "name": "service-intake",
+    "prompt": "turn this Ai Embedded Systems website lead into a service intake quote and AI fit first pass",
+    "expected": ["aiwf-service-intake"]
+  },
+  {
+    "name": "field-pilot",
+    "prompt": "prepare a customer-site robotics field pilot with hazards operator handoff e-stop rollback and success criteria",
+    "expected": ["aiwf-robotics-systems", "aiwf-field-pilot-readiness"]
   },
   {
     "name": "training-serving-evals",
-    "prompt": "train a qlora then serve it with vllm and run evals",
-    "must_include": ["aiwf-local-ai-training", "aiwf-ai-evals", "aiwf-inference-serving"]
+    "prompt": "train a QLoRA then serve the model with vLLM and run evals",
+    "expected": ["aiwf-local-ai-training", "aiwf-ai-evals", "aiwf-inference-serving"]
   },
   {
-    "name": "gguf-serve",
-    "prompt": "quantize a model to gguf and serve with llama.cpp",
-    "must_include": ["aiwf-model-loader", "aiwf-inference-serving"]
+    "name": "gguf-serving",
+    "prompt": "quantize a model to GGUF and serve the model with llama.cpp server",
+    "expected": ["aiwf-inference-serving", "aiwf-model-loader"]
   },
   {
-    "name": "deep-research-civitai-academic",
-    "prompt": "deep research Civitai LoRA metadata against arxiv github open source libraries and graduate lab sources",
-    "must_include": ["aiwf-deep-research", "aiwf-agent-mok"]
+    "name": "pipeline-building",
+    "prompt": "convert this workflow JSON API prompt and node graph into a Python pipeline skeleton",
+    "expected": ["aiwf-ai-pipelines"]
   },
   {
-    "name": "avoid-ai-illustrations",
-    "prompt": "generate an image of a woman with natural skin texture, avoid bad hands, extra fingers, pimple-like pores, and make sure the logo text is not misspelled",
-    "must_include": ["aiwf-avoid-ai-illustrations"]
+    "name": "ui-api-connector",
+    "prompt": "trace a payload mismatch in the progress stream and stale polling output link",
+    "expected": ["aiwf-ui-electrician"]
   },
   {
-    "name": "comfy-workflow-conversion",
-    "prompt": "convert this ComfyUI workflow JSON API prompt with custom nodes into a Python pipeline skeleton",
-    "must_include": ["aiwf-comfy-workflow-pipeline"]
+    "name": "deep-research",
+    "prompt": "deep research Civitai metadata against arXiv GitHub and graduate sources with a claim ledger",
+    "expected": ["aiwf-deep-research"]
   },
   {
-    "name": "torchie-personality-copy",
-    "prompt": "write Torchie beta invite copy with friendly local-AI failure wording",
-    "must_include": ["aiwf-torchie"]
+    "name": "agent-mok-plan",
+    "prompt": "repair plan.md as Atlas lanes and a verification map",
+    "expected": ["aiwf-agent-mok"]
+  },
+  {
+    "name": "continuity",
+    "prompt": "write continuity cards for this handoff so I can resume later",
+    "expected": ["aiwf-atlas-cartographer"]
+  },
+  {
+    "name": "atlas-reader",
+    "prompt": "review Atlas Reader LoRA training records and measured logs before claiming a win",
+    "expected": ["aiwf-atlas-reader"]
   },
   {
     "name": "dataset-provenance",
-    "prompt": "validate dataset source provenance and clean synthetic guardrail rows without overwriting existing folders",
-    "must_include": ["aiwf-dataset"]
+    "prompt": "validate dataset source provenance and synthetic guardrail rows without overwriting folders",
+    "expected": ["aiwf-dataset"]
+  },
+  {
+    "name": "debug-agent-swarm",
+    "prompt": "debug this repo with a broad subagent swarm and debug pass",
+    "expected": ["aiwf-repo-sentinel", "aiwf-debug-agent-swarm"]
   },
   {
     "name": "avoid-ai-design",
     "prompt": "audit this default Gradio dashboard for teal everywhere and generated-looking document layout",
-    "must_include": ["aiwf-avoid-ai-design"]
+    "expected": ["aiwf-avoid-ai-design"]
+  },
+  {
+    "name": "avoid-ai-illustrations",
+    "prompt": "generate an image and prevent bad hands extra fingers and misspelled logo text",
+    "expected": ["aiwf-avoid-ai-illustrations"]
+  },
+  {
+    "name": "torchie-copy",
+    "prompt": "write Torchie beta invite copy with friendly failure wording",
+    "expected": ["aiwf-torchie"]
   },
   {
     "name": "push-hygiene",
-    "prompt": "check README release notes, ignored files, staging, commit, and push hygiene before uploading to GitHub",
-    "must_include": ["aiwf-avoid-ai-pushes", "aiwf-repo-sentinel"]
-  },
-  {
-    "name": "atlas-reader-protocol",
-    "prompt": "review Atlas Reader LoRA training records, context-pack construction, and measured logs before claiming a win",
-    "must_include": ["aiwf-atlas-reader", "aiwf-local-ai-training"]
+    "prompt": "check staging commit push and public README release notes before publishing",
+    "expected": ["aiwf-repo-sentinel", "aiwf-avoid-ai-pushes"]
   }
 ]

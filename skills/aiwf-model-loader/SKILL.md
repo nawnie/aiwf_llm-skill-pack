@@ -18,7 +18,7 @@ Use this skill when the hard question is how a model should be loaded. It sits b
 4. Create or update a loader contract. Start with:
 
 ```powershell
-python C:\Users\Shawn\.codex\skills\aiwf-model-loader\scripts\new_loader_contract.py --model-id <id-or-path> --family <family> --backend <backend> --format <format> --out <contract.json>
+python <this-skill>\scripts\new_loader_contract.py --model-id <id-or-path> --family <family> --backend <backend> --format <format> --out <contract.json>
 ```
 
 5. Implement only after the contract is clear: discovery, validation, precision map, quantization path, LoRA policy, fallback behavior, and tests.
@@ -50,11 +50,4 @@ Every loader decision should be traceable to a contract with these fields:
 
 ## Related Skills
 
-Use these skills as supporting references instead of duplicating their full guidance:
-
-- `gguf-quantization` and `llama-cpp` for GGUF names, metadata, imatrix, CPU/GPU split, and llama.cpp runtime.
-- `quantizing-models-bitsandbytes` and `bitsandbytes` for 8-bit, 4-bit, NF4, and QLoRA-style Transformers loading.
-- `awq-quantization`, `hqq-quantization`, `vllm`, and `tensorrt-llm` for serving-oriented quant formats.
-- `stable-diffusion-image-generation` for Diffusers image loader patterns, VAE precision, and LoRA operations.
-- `aiwf-ai-pipelines` for broader model-family route readiness.
-- `aiwf-ui-electrician` for exposing loader state, errors, progress, and telemetry to the UI.
+Use `aiwf-ai-pipelines` for broader route readiness, `aiwf-inference-serving` for server-specific format support, `aiwf-nvidia-cuda-cudnn-sdk` for TensorRT or CUDA implementation details, `aiwf-gpu-runtime-diagnostics` for environment failures, and `aiwf-ui-electrician` for exposing loader state to the UI. Installed external format-specific skills may supplement current official runtime documentation, but this skill must not depend on an unverified external skill name.

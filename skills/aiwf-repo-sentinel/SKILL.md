@@ -1,197 +1,52 @@
 ---
 name: aiwf-repo-sentinel
-description: AIWF repository preflight and diff-discipline guardrail. Use at the start of existing-repository coding tasks to prevent duplicate files, wrong package manager use, wrong shell commands, major upgrade drift, weakened tests, broad diffs, and unverifiable success claims.
+description: Use before coding, debugging, refactoring, review, or generated-code cleanup in an existing repository to protect user changes, detect the real runtime and package manager, prevent duplicate architecture and broad diffs, preserve tests and API contracts, and require honest validation.
 ---
 
 # AIWF Repo Sentinel
 
-## Mission
+## Core Rule
 
-Protect the repository from avoidable agentic coding errors.
+Search before creating. Modify the repo-native path. Prove the result with the cheapest relevant check.
 
-This skill is active before any edit. Its job is to force Codex to understand the repo before changing it.
+## Preflight
 
-```text
-Search before creating. Modify before duplicating. Prove before declaring victory.
-```
+1. Verify the real project root and read `AGENTS.md`, `PROJECT_SKILLS.md`, README, architecture notes, and current handoff or plan.
+2. Inspect existing changes before editing. In git repos, use `git status --short` and a focused diff; never overwrite or revert user work.
+3. Identify language and framework versions, lockfile or package manager, build entrypoint, test commands, shell and OS, generated files, schemas, and CI assumptions.
+4. Search for the existing route, component, service, helper, type, style, config, and tests before adding files.
 
-## Repository preflight checklist
+Read `references/preflight-checklist.md` when the repo is unfamiliar. Read `references/windows-powershell-commands.md` for Windows-safe command patterns.
 
-Before editing, answer these questions from files or commands:
+## Patch Rules
 
-For a compact checklist, read `references/preflight-checklist.md`. For Windows-safe command examples, read `references/windows-powershell-commands.md`.
+- Keep the change inside the requested behavior and existing ownership boundaries.
+- Do not create `*_new`, `*_fixed`, copies, backup trees, parallel routers, duplicate clients, second style systems, or replacement apps to avoid understanding the current code.
+- Obey existing lockfiles and runtimes. Do not switch package manager, generator, framework, language standard, or major dependency as a hidden fix.
+- Preserve public API, schema, serialization, generated-client, and configuration contracts unless the task explicitly changes them.
+- Keep async work non-blocking and resource lifetimes explicit. Add the focused language or framework skill for implementation details.
+- Do not introduce unsafe parsing, shell execution, HTML injection, broad CORS, secret exposure, or untrusted model/data loading. Add `aiwf-security-guardrails` when a security boundary is touched.
+- Stop and explain before a broad rewrite, migration, destructive operation, production change, or edit that weakens security or test coverage.
 
-### Git state
+## Test Integrity
 
-- Is the working tree clean?
-- Which files are already modified?
-- Are there untracked files?
-- Am I about to overwrite user work?
+Do not make checks pass by deleting tests, removing assertions, adding unexplained skips or expected failures, replacing behavior with mocks, increasing timeouts to hide hangs, disabling strict modes, or adding broad ignore directives.
 
-Commands:
+When a test is wrong, show the contract or behavior that proves it before changing the test. Add a regression test for a fixed bug when the repo has a suitable test surface.
 
-```powershell
-git status --short
-git diff --stat
-git diff --name-only
-```
+## Validation
 
-If there are existing user changes, do not overwrite them.
+Choose checks in this order where relevant:
 
-### Package manager ownership
+1. Parse, compile, or format check for touched files.
+2. Narrow typecheck or unit test.
+3. Broader affected suite.
+4. API/schema generation or contract diff.
+5. Browser, device, service, or runtime smoke.
+6. Build or package.
 
-Detect and obey:
+Do not claim success when validation did not run. State the command, result, and reason for any skipped check.
 
-| Lock/config | Package manager |
-|---|---|
-| `pnpm-lock.yaml` | pnpm |
-| `yarn.lock` | Yarn |
-| `package-lock.json` | npm |
-| `poetry.lock` | Poetry |
-| `uv.lock` | uv |
-| `Pipfile.lock` | Pipenv |
+## Output
 
-Never introduce a second lockfile.
-
-### Runtime versions
-
-Inspect:
-
-```text
-.node-version
-.nvmrc
-.python-version
-pyproject.toml
-package.json engines
-Dockerfile
-.github/workflows/*
-CMakePresets.json
-README.md
-```
-
-If local version and repo version conflict, report it rather than patching around it.
-
-### Repo conventions
-
-Find existing patterns before creating:
-
-- Where do routes live?
-- Where do API clients live?
-- Where do React components live?
-- Where does state management live?
-- Where do styles live?
-- Where are tests located?
-- What naming pattern is used?
-- What dependency injection pattern exists?
-- What error handling pattern exists?
-
-## Diff discipline
-
-### Edit in place
-
-Prefer existing files and patterns. Do not create parallel systems.
-
-Block these unless explicitly requested:
-
-```text
-new backend folder
-new frontend folder
-new API client
-new router tree
-new global state system
-new CSS framework
-new test harness
-*_copy.*
-*_new.*
-*_fixed.*
-backup/*
-old/*
-temp/*
-```
-
-### Keep scope narrow
-
-Do not fix unrelated lint, formatting, TODOs, imports, naming, or architecture while solving a specific bug unless required by the change.
-
-### Stop on large diffs
-
-Stop and explain before changes that touch many files or replace a subsystem.
-
-A good stop message:
-
-```text
-This fix crosses into migration territory because it changes the package manager and three build files. I should not do that as a hidden side effect. Proposed next step: make a migration branch or solve the original issue without changing tooling.
-```
-
-## Test integrity rules
-
-Never make tests green by reducing their value.
-
-Forbidden patterns:
-
-```text
-remove test file
-remove assertion
-replace assertion with broad truthiness
-expect(true).toBe(true)
-assert True
-add skip without issue link or explanation
-add xfail without exact reason
-mock the unit under test
-increase timeout to hide a hang
-weaken typecheck settings
-turn off strict mode
-```
-
-Allowed test edits:
-
-- Update expected output when behavior intentionally changed.
-- Add regression test for bug.
-- Fix test setup that no longer matches repo contract.
-- Mark expected failure only when explicitly documenting a known unresolved defect.
-
-## Command discipline
-
-### Windows-safe defaults
-
-When giving commands for this user or a Windows-capable repo, prefer PowerShell.
-
-Use:
-
-```powershell
-$env:PYTHONPATH = "."
-Remove-Item -Recurse -Force .\dist
-Copy-Item -Recurse .\src .\dest
-New-Item -ItemType Directory -Force .\logs
-```
-
-Avoid:
-
-```bash
-export PYTHONPATH=.
-rm -rf dist
-cp -r src dest
-```
-
-### npm script safety
-
-Do not add Unix-specific commands to `package.json` scripts unless the repo already requires Bash.
-
-Use cross-platform packages or Node scripts for cleanup/copying.
-
-## Final response contract
-
-Every coding task ends with:
-
-```text
-Changed:
-- path/to/file.ext: what changed and why
-
-Validated:
-- command -> passed/failed/not run
-
-Risks / follow-up:
-- remaining issue or none
-```
-
-If validation was not run, say so plainly.
+Report changed files and purpose, commands and results, contract impact, and remaining risk. Keep the report proportional to the patch.

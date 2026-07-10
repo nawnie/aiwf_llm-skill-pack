@@ -1,6 +1,0 @@
-interface:
-  display_name: "aiwf_ai-coding-guardrails"
-  short_description: "Repo-safe coding guardrails for AI edits"
-  default_prompt: "Use $aiwf-ai-coding-guardrails before editing this repository and prove the change with relevant checks."
-policy:
-  allow_implicit_invocation: true

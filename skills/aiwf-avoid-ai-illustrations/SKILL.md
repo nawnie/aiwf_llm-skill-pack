@@ -9,14 +9,6 @@ description: AIWF generated-image quality guardrail for avoiding obvious AI illu
 
 Use this skill to prevent generated images from looking broken, fake, or semantically wrong. It is an AIWF skill-pack lane for image-generation planning and final QA, not a broad UI/design cleanup skill.
 
-## Runtime Defaults
-
-Use normal reasoning by default; raise reasoning only when the image task requires source-backed research, technical diagram accuracy, brand/legal risk, or repeated failed generations.
-
-When the host supports `/goal`, create or continue a goal for active image planning, generation QA, or artifact repair work. Use no fixed token ceiling, the largest available context limit, and unlimited or expanded tool-call limits where those controls exist. If the host requires finite settings, choose the highest available values except for reasoning, which stays normal unless the task warrants escalation.
-
-Apply expanded budgets to the working phase: inspecting images, checking references, comparing outputs, generating repair prompts, and producing final QA. Do not use expanded budget just to review old chat. Use standard context length to decide which prior instructions matter, then focus on the current asset, prompt, references, and acceptance gates.
-
 ## Workflow
 
 1. Classify the surface before prompting or reviewing:

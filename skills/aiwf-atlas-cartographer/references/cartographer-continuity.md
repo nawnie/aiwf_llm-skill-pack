@@ -79,25 +79,12 @@ Do not store:
 For a continuation request, search before broad repo exploration:
 
 ```powershell
-python C:\Users\Shawn\.codex\skills\aiwf-atlas-cartographer\scripts\search_continuity_cards.py --query "<task words>" --limit 8
+python <this-skill>\scripts\search_continuity_cards.py --query "<task words>" --limit 8
 ```
 
 If a card points to live-state evidence, verify the live state before making a
 current claim. Memory can preserve where to look; it does not make volatile facts
 current.
-
-## Importing From Project Cartographers
-
-The training-lab cartographer at
-`C:\Users\Shawn\Desktop\sort desktop\AI_Projects\ai project workspace\atlas-lora-adapter\lora_training_lab\scripts\atlas_cartographer.py`
-is for manifest-to-card ingestion and adapter/retrieval experiments. Read it
-before adapting it. Do not copy its generated benchmark/private-source cards into
-the continuity store unless the user asks for that import.
-
-The MoK cartographer at
-`C:\Users\Shawn\Desktop\MoK-Project\src\mok\companion\cartographer.py`
-is a lightweight file/window-title classifier. Treat it as a design reference
-for lane assignment, not as the canonical continuity store.
 
 ## Validation
 

@@ -1,0 +1,6 @@
+interface:
+  display_name: "aiwf_javascript-coding"
+  short_description: "JavaScript runtime and module guardrails"
+  default_prompt: "Use $aiwf-javascript-coding for JavaScript runtime targets, modules, async code, DOM APIs, browser or Node behavior, and validation."
+policy:
+  allow_implicit_invocation: false

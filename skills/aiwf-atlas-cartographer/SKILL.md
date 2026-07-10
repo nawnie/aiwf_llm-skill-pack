@@ -57,7 +57,7 @@ argument when a task needs an alternate local store.
 Record a card:
 
 ```powershell
-python C:\Users\Shawn\.codex\skills\aiwf-atlas-cartographer\scripts\record_continuity_card.py `
+python <this-skill>\scripts\record_continuity_card.py `
   --project "AIWF - ATLAS" `
   --lane atlas_archive `
   --title "Lane 20 refresh handoff" `
@@ -70,7 +70,7 @@ python C:\Users\Shawn\.codex\skills\aiwf-atlas-cartographer\scripts\record_conti
 Search cards:
 
 ```powershell
-python C:\Users\Shawn\.codex\skills\aiwf-atlas-cartographer\scripts\search_continuity_cards.py `
+python <this-skill>\scripts\search_continuity_cards.py `
   --query "retrieval cards schema" `
   --lane atlas_archive `
   --limit 5
@@ -79,23 +79,15 @@ python C:\Users\Shawn\.codex\skills\aiwf-atlas-cartographer\scripts\search_conti
 Read `references/cartographer-continuity.md` before changing card schema,
 storage layout, lane taxonomy, or import/export behavior.
 
-## Project Cartographer Sources
+## Project Boundaries
 
-Existing local implementations that informed this skill:
+Use the bundled continuity scripts for normal Codex handoffs. The current ATLAS
+archive checkout verified during pack maintenance is:
 
-- `C:\Users\Shawn\Desktop\sort desktop\AI_Projects\ai project workspace\atlas-lora-adapter\lora_training_lab\scripts\atlas_cartographer.py`
-- `C:\Users\Shawn\Desktop\MoK-Project\src\mok\companion\cartographer.py`
+`C:\Users\Shawn\Desktop\AI_Projects\ai project workspace\Repos\AIWF - ATLAS`
 
-Use the training-lab `atlas_cartographer.py` when ingesting a manifest of source
-chunks into full Atlas card records for adapter or retrieval experiments. Use
-the lightweight continuity scripts in this skill for normal Codex handoffs.
-
-The active ATLAS archive checkout most recently verified for archive work is:
-
-`C:\Users\Shawn\Desktop\sort desktop\AI_Projects\ai project workspace\Repos\AIWF - ATLAS`
-
-Confirm paths before editing because Shawn keeps stale mirrors and moved
-checkouts.
+Verify that path again before archive edits because mirrors and checkouts can
+move. Project-specific cartographers are not dependencies of this skill.
 
 ## Reporting
 

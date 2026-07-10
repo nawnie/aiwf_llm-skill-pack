@@ -1,84 +1,38 @@
 ---
 name: aiwf-ai-pipelines
-description: AIWF pipeline backend audit skill. Use when reviewing local AI app pipeline wiring, engine/runtime selection, model card or arXiv alignment, GGUF or llama.cpp paths, lm-evaluation-harness readiness, Civitai fine-tune compatibility, UI/API connector bugs, generation route maturity, smoke receipts, model readiness matrices, and backend issue triage across image, video, audio, and LLM pipelines.
+description: Use to audit or build local AI pipeline wiring across model discovery, loader contracts, backend selection, route registration, runtime preflight, generation or inference stages, saved outputs, API exposure, smoke receipts, and source-to-runtime alignment for image, video, audio, LLM, and multimodal workflows.
 ---
 
-# AI Pipelines
+# AIWF AI Pipelines
 
-Use this skill to audit a local AI application from backend to UI connector without spending GPU time by default. Start with local receipts, then compare runtime assumptions against primary model sources, then split independent lanes across subagents when useful.
+## Core Rule
 
-## Operating Rules
-
-- Prefer the project repo, local logs, readiness matrices, receipts, tests, and route definitions over README claims.
-- Do not download large models, run training, or start VRAM-heavy generation unless the user explicitly asks.
-- Treat model formats as first-class runtime contracts: Diffusers snapshot, single-file safetensors, GGUF, Nunchaku, ONNX, llama.cpp server, vLLM, or external API.
-- Separate findings into `bug`, `missing wiring`, `asset/config issue`, `model-runtime mismatch`, `docs/status drift`, and `needs source research`.
-- Verify source claims with primary sources: Hugging Face model cards/files, upstream GitHub, arXiv papers, Civitai model pages for fine-tunes, and local artifact receipts.
-- When using subagents, use debug-pass reporting: subagents log issues to Markdown and the parent agent implements fixes.
+Trace the complete route before changing it: source asset, manifest or registry, loader, runtime stages, preflight, API or callback, output persistence, UI state, and smoke receipt. Prefer local code and receipts over feature-list claims.
 
 ## Workflow
 
-1. Read project instructions (`AGENTS.md`, local skill maps, release plans if current).
-2. Run the local crawler:
+1. Read project guidance, route registries, pipeline factories, model inventories, tests, logs, readiness matrices, and recent receipts.
+2. Run the bundled read-only crawler when it fits:
 
 ```powershell
-python C:\Users\Shawn\.codex\skills\aiwf-ai-pipelines\scripts\audit_backend.py --root F:\AIWF_Studio --out F:\AIWF_Studio\.codex\aiwf-ai-pipelines\latest
+python <this-skill>\scripts\audit_backend.py --root <project-root> --out <audit-dir>
 ```
 
-3. Read the generated `audit.md` and `audit.json`.
-4. If the user authorizes agents, create a debug pass folder and spawn explorer agents only after the local crawl identifies independent lanes. Good lanes are:
-   - Image backend/runtime: Diffusers, Flux, Flux.2, Z-Image, Qwen, Sana image.
-   - Video backend/runtime: Sana Video, Wan Diffusers/GGUF, LTX, RIFE/VSR post stages.
-   - LLM/GGUF/runtime: llama.cpp, Ollama/vLLM paths, lm-evaluation-harness readiness.
-   - UI/API connectors: FastAPI/React Pro, Gradio callbacks, client logs, runtime streams.
-5. For each model family, compare local route assumptions to source truth:
-   - Base model card and files on Hugging Face.
-   - Upstream GitHub or arXiv for architecture/runtime constraints.
-   - Civitai page for fine-tunes when a local checkpoint looks custom or non-standard.
-6. Read any debug-pass reports, deduplicate findings, then convert confirmed issues into a short patch plan. Patch only clear, bounded bugs. Leave model asset/download gaps as explicit follow-up unless the user asks to download or test live generation.
-7. Verify with targeted compile/tests/smokes, not full GPU generation by default.
+3. Classify each route state as `smoked`, `registered`, `metadata-only`, `broken-runtime`, or `blocked-cleanly`.
+4. Identify the first broken contract: missing asset, unsupported format, loader mismatch, stage wiring, API shape, cancellation/progress, output path, or stale status documentation.
+5. Read `references/model-source-checks.md` before making model-card, paper, fine-tune, or quantization claims.
+6. Patch the smallest coherent boundary, then run a no-GPU or tiny probe before any expensive generation.
 
-## Source Research Rules
+## Guardrails
 
-Read `references/model-source-checks.md` before making model-card, paper, Civitai, or quantization claims.
+- Do not download models, start training, or run VRAM-heavy generation unless Shawn asks.
+- Treat Diffusers snapshots, single-file safetensors, GGUF, ONNX, TensorRT plans, adapters, and native upstream runtimes as different contracts.
+- Do not choose a quantization preset as a universal default. Match format, backend, hardware, quality target, calibration requirements, and local support through `aiwf-model-loader`.
+- Keep source facts separate from local inference. Use official model cards, upstream repositories, papers, and current local artifact receipts.
+- Do not advertise a route that only has metadata or clean failure handling as implemented generation.
+- Add `aiwf-ui-electrician` when the backend works but client state, progress, cancellation, errors, or outputs do not travel end to end.
+- Use `aiwf-debug-agent-swarm` only when independent lanes justify subagents; subagents report findings and do not edit by default.
 
-When using research:
-- Cite exact source URLs in the final report.
-- Distinguish confirmed source facts from local inference.
-- For GGUF/llama.cpp paths, use `gguf-quantization` and `llama-cpp` guidance: Q4_K_M as the default balanced check, Q5_K_M/Q6_K/Q8_0 for quality, and imatrix for Q4 and below when quantizing.
-- For LLM benchmark readiness, use `evaluating-llms-harness` guidance: do not run expensive benchmarks unless requested; audit whether model path, tokenizer, dtype, quantization, and server mode can be passed to `lm_eval`.
+## Output
 
-## Subagent Pattern
-
-Use `aiwf-debug-agent-swarm` conventions when the user authorizes agents. Read `C:\Users\Shawn\.codex\skills\aiwf-ui-electrician\references\debug-pass-protocol.md` first so backend, frontend, and connector agents produce the same kind of artifact.
-
-Subagents are read-only issue loggers by default:
-
-- They write one Markdown report per lane into the selected debug pass folder.
-- They describe issues, evidence, impact, affected files/routes, confidence, and research used.
-- They do not write implementation recipes or broad fix plans.
-- They may edit only for a simple syntax fix of three changed lines or fewer, and must record exact lines changed.
-- They read only parent-provided context, `SUB_AGENTS.md` if present, or the `Known Issues` section of `AGENTS.md`.
-- If no source research is used, confidence must be 90/100 or higher.
-
-Recommended prompts:
-
-```text
-Use the AI pipeline audit skill at C:\Users\Shawn\.codex\skills\aiwf-ai-pipelines to inspect F:\AIWF_Studio. Focus only on <lane>. Write your report to <debug-pass>\<lane>.md using the debug-pass protocol. Report issues, evidence, impact, confidence, and source/model mismatches. Do not explain the fix. Do not edit files unless the entire repair is a syntax fix of three changed lines or fewer.
-```
-
-```text
-Use the AI pipeline audit skill at C:\Users\Shawn\.codex\skills\aiwf-ai-pipelines to inspect <bounded issue> in F:\AIWF_Studio. Own only <lane>. Write findings to <debug-pass>\<lane>.md. The parent agent will implement the fix after reading reports.
-```
-
-## Output Format
-
-Report:
-- Local artifacts reviewed.
-- Source URLs checked.
-- Findings ranked by severity.
-- Fixes made, with files changed.
-- Commands run and results.
-- Remaining model/runtime research gaps.
-
-Keep the report explicit about whether a route is `smoked`, `registered`, `metadata-only`, `broken-runtime`, or `blocked-cleanly`.
+Report artifacts and sources reviewed, route state, findings by severity, files changed, checks and results, and remaining asset or runtime gaps.

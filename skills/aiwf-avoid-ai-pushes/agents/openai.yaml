@@ -1,4 +1,6 @@
 interface:
-  display_name: "Aiwf Avoid AI Pushes"
-  short_description: "Prevent ignored or local-only files from being staged or pushed."
-  default_prompt: "Use aiwf-avoid-ai-pushes to audit this repo before committing or pushing."
+  display_name: "aiwf_avoid-ai-pushes"
+  short_description: "Verify commit and push scope"
+  default_prompt: "Use $aiwf-avoid-ai-pushes to audit this repo before committing or pushing."
+policy:
+  allow_implicit_invocation: false

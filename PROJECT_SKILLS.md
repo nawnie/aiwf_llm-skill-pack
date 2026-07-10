@@ -1,69 +1,85 @@
-# Project Skills
+# Project Skill Routing
 
-Standing rule: on every non-trivial task in this project, evaluate implicit skill triggers before acting. Prefer the smallest useful skill set, read selected `SKILL.md` files completely, then proceed with narrow edits and verification.
+Generated: 2026-07-09
 
-## Project Signals
+## Standing Rule
 
-- This is Shawn's project-local workspace and skills-only Codex plugin package for AIWF and agent workflow Codex skills.
-- Work normally stays inside this folder. Syncing to `C:\Users\Shawn\.codex\skills` is deliberate, not automatic.
-- Source skills live under `skills/`; plugin metadata lives in `.codex-plugin/plugin.json`; package scripts live under `scripts/`; generated zips belong in `dist/` and are ignored.
-- Validate changed skills with `scripts/validate_skills.ps1`.
-- Validate orchestrator route behavior with `scripts/test_orchestrator_routes.py`.
-- Validate durable workflow receipts with `scripts/validate_receipt.py`.
-- Export shareable bundles with `scripts/export_agent_skills_pack.ps1`.
-- This repository vendors Shawn-owned `aiwf-` skills only. Do not add outside skill folders, outside license files, or external branding.
+For each non-trivial task, let `aiwf-orchestrator` select the smallest focused route before acting. It is the only implicit pack skill. Use no more than four downstream skills and follow `AGENTS.md` over generic guidance.
 
-## Default Route
+## Workspace Routes
 
-Use `projectskill-list` first for project skill routing and map maintenance. For AIWF or local AI skill-pack work, route through `aiwf-orchestrator`, then choose the smallest downstream set.
-
-## Skill Routes
-
-| Use case | Skills |
+| Task signal | Preferred skills |
 | --- | --- |
-| Add, rename, validate, package, or document skills | `projectskill-list`, `skill-creator`, `aiwf-orchestration`, `aiwf-orchestrator` |
-| Add or update the Codex plugin wrapper, marketplace metadata, or plugin validation | `plugin-creator`, `projectskill-list`, `aiwf-orchestration` |
-| Deep research, source weighting, literature review, source plans, claim ledgers, citations, arXiv/Hugging Face/GitHub/Civitai/Reddit, open-source libraries, academic sources, quantum, robotics, or mechanical engineering | `aiwf-deep-research`, `aiwf-agent-mok` |
-| Dataset intake, source provenance, curation, validation, reporting, multimodal caption QA, or synthetic guardrail dataset boundaries | `aiwf-dataset`, `aiwf-agent-mok` |
-| ComfyUI workflow JSON, API prompts, node graph inspection, custom-node mapping, or Python pipeline skeleton conversion | `aiwf-comfy-workflow-pipeline`, `aiwf-ai-pipelines`, `aiwf-model-loader` |
-| AI-looking UI, default Gradio/shadcn styling, teal-heavy design, generated-looking dashboards, PDFs, document layouts, or web surfaces | `aiwf-avoid-ai-design`, `aiwf-web-api-ui-guardian` |
-| Generated images, AI illustrations, logos, diagrams, charts, visual text, photoreal people, hands, anatomy, skin texture, or final image QA | `aiwf-avoid-ai-illustrations`, `aiwf-deep-research` |
-| Torchie, mascot voice, beta invite copy, friendly local-AI failure wording, or AIWF public copy in the Torchie voice | `aiwf-torchie`, `aiwf-avoid-ai-pushes` |
-| Existing-repo coding or generated-code cleanup | `aiwf-ai-coding-guardrails`, `aiwf-repo-sentinel` |
-| Security, auth, secrets, unsafe inputs, dependency supply chain, or model-source trust | `aiwf-security-guardrails` |
-| CUDA, ROCm, NVIDIA driver, PyTorch GPU, TensorRT, VRAM, DLL/PATH, or GPU smoke failures | `aiwf-gpu-runtime-diagnostics` |
-| Python, C++, or CMake hardening | `aiwf-python-cpp-hardener` |
-| FastAPI, Gradio, React, TypeScript, JavaScript, HTML, or CSS work | `aiwf-web-api-ui-guardian`, `aiwf-ui-electrician` |
-| AIWF backend pipeline or runtime audit | `aiwf-ai-pipelines` |
-| Model loading, precision, quantization, LoRA compatibility, or backend selection | `aiwf-model-loader` |
-| LoRA, QLoRA, fine-tune, dataset, checkpoint, export, or validation planning | `aiwf-local-ai-training`, `aiwf-ai-evals` |
-| vLLM, llama.cpp, Ollama, OpenAI-compatible APIs, telemetry, queueing, or latency checks | `aiwf-inference-serving` |
-| Eval suites, smoke receipts, before/after comparisons, or promotion gates | `aiwf-ai-evals` |
-| Broad debug crawls or explicit subagent swarms | `aiwf-debug-agent-swarm` |
-| Atlas continuity, compaction handoff, local cards, or resume state | `aiwf-atlas-cartographer` |
-| Atlas Reader LoRA repo, Atlas adapter, training records, eval plans, context-pack construction, Qwen LoRA failures, or measured-result claims | `aiwf-atlas-reader`, `aiwf-atlas-cartographer`, `aiwf-agent-mok` |
-| MoK planning, verification, research findings, or findings datasets | `aiwf-agent-mok` |
-| Public docs, release text, commit scope, ignored files, staging, or GitHub push hygiene | `aiwf-avoid-ai-pushes` |
+| Add, rename, validate, package, install, or document a skill/plugin | `projectskill-list`, `skill-creator`, `plugin-creator`, `aiwf-orchestrator` |
+| Existing repository edit, debug, refactor, or review | `aiwf-repo-sentinel` plus the focused language/framework skill |
+| Auth, secrets, injection, unsafe serialization, dependency, or public exposure risk | `aiwf-security-guardrails` |
+| Commit, push, release, staging, ignored files, or public docs | `aiwf-avoid-ai-pushes`, `aiwf-repo-sentinel` |
+| Weighted research, source plan, claim ledger, contradiction, or citations | `aiwf-deep-research` |
+| Dataset intake, provenance, curation, validation, or synthetic records | `aiwf-dataset` |
+| Durable plan, verification map, or optional findings dataset | `aiwf-agent-mok` |
+| Continuity cards or compact-chat handoff | `aiwf-atlas-cartographer` |
+| Atlas Reader LoRA records, evals, source protocol, or measured claims | `aiwf-atlas-reader` |
+| Authorized broad read-only debug crawl | `aiwf-debug-agent-swarm`, `aiwf-repo-sentinel` |
 
-## Guardrails
+## Coding Routes
 
-- Do not download large models, run VRAM-heavy generation, start training, or expose public services unless Shawn explicitly asks.
-- Prefer editing project-local copies first; sync/export deliberately after validation.
-- Keep the pack Shawn-owned only; external helpers may guide work but should not be vendored.
-- Do not include generated zips, caches, debug passes, or temporary work in source control.
-- If global skills are changed, restart Codex so the loaded skill list refreshes.
-- Runtime budget defaults: `aiwf-orchestrator` uses highest available reasoning and maximum context; `aiwf-deep-research` uses highest available reasoning plus `/goal` with no fixed token ceiling, maximum context, and expanded or unlimited tool calls when available; avoid-AI skills use the same `/goal` budget defaults without forcing highest reasoning.
-- `aiwf-torchie` is an optional personality lane. Keep it off unless Shawn asks for Torchie-style output or turns the personality toggle on.
-- Expanded budgets are for active work, not broad chat review. Use standard context length to choose relevant prior chat.
+| Task signal | Preferred skills |
+| --- | --- |
+| C source, headers, ABI, compiler flags, or memory safety | `aiwf-c-coding` |
+| C++, CMake, ownership, templates, ABI, or native extensions | `aiwf-cpp-coding` |
+| Python 3.10 compatibility | `aiwf-python310-coding` |
+| Python 3.12 compatibility | `aiwf-python312-coding` |
+| CUDA, cuDNN, TensorRT, `nvcc`, kernels, or NVIDIA SDKs | `aiwf-nvidia-cuda-cudnn-sdk` |
+| GPU driver/runtime/DLL/VRAM failure | `aiwf-gpu-runtime-diagnostics`, `aiwf-nvidia-cuda-cudnn-sdk` |
+| FastAPI, Pydantic, OpenAPI, ASGI, auth/CORS, or lifespan | `aiwf-fastapi-coding` |
+| Gradio Blocks, events, queues, mounts, or callbacks | `aiwf-gradio-coding` |
+| React components, hooks, state, rendering, or accessibility | `aiwf-react-coding` |
+| Vue 3, Composition API, `.vue`, or VitePress | `aiwf-vue-vitepress-coding` |
+| TypeScript configuration, strict types, JSX/TSX, or generated types | `aiwf-typescript-coding` |
+| JavaScript runtime, modules, async, DOM, browser, or Node behavior | `aiwf-javascript-coding` |
+| CSS cascade, layout, responsive behavior, or rendered polish | `aiwf-css-coding` |
+| Android, Kotlin, Gradle, Compose, Room, Retrofit, ONNX, APK/AAB, or real device | `aiwf-android-kotlin-coding` |
+| Frontend/backend payload, cancellation, progress, or stale-state wiring | `aiwf-ui-electrician` plus the two surface skills |
+
+## Application And Data Routes
+
+| Task signal | Preferred skills |
+| --- | --- |
+| RAG, embeddings, chunking, hybrid search, reranking, grounding, or retrieval eval | `aiwf-rag-retrieval` |
+| SQLite, Room, Postgres, Chroma, pgvector, Qdrant, Milvus, schemas, or migrations | `aiwf-data-storage` |
+| Windows paths, PowerShell, venvs, ports, processes, Docker Desktop, WSL, or local services | `aiwf-windows-local-dev` |
+| Crawlability, metadata, canonicals, sitemaps, structured data, or web evidence | `aiwf-web-seo` |
+| AI-looking UI, dashboard, PDF, or document layout | `aiwf-avoid-ai-design` |
+| Generated image, logo, diagram, chart, portrait, hands, anatomy, or text artifact QA | `aiwf-avoid-ai-illustrations` |
+| Explicit Torchie voice or AIWF beta copy | `aiwf-torchie` |
+
+## AI Runtime Routes
+
+| Task signal | Preferred skills |
+| --- | --- |
+| Pipeline graph, runtime wiring, source mapping, or smoke matrix | `aiwf-ai-pipelines` |
+| Model format, precision, quantization, loader backend, component, or adapter contract | `aiwf-model-loader` |
+| LoRA/QLoRA training plan, dataset split, checkpoint, resume, or export | `aiwf-local-ai-training` |
+| Eval suite, regression, benchmark, acceptance threshold, or promotion gate | `aiwf-ai-evals` |
+| vLLM, llama.cpp, Ollama, OpenAI-compatible endpoint, telemetry, queue, or latency | `aiwf-inference-serving` |
+
+## Physical And Business Routes
+
+| Task signal | Preferred skills |
+| --- | --- |
+| Robotics architecture, ROS 2, sensors, actuators, perception, planning, or controls | `aiwf-robotics-systems` |
+| Units, frames, kinematics, dynamics, Gazebo, MuJoCo, or sim-to-real | `aiwf-physics-simulation` |
+| LAN, Wi-Fi, MQTT, WebSocket, RTSP, telemetry, reconnect, or secure binding | `aiwf-networking-iot` |
+| MCU, RTOS, Jetson, SBC, firmware, buses, power, thermal, or edge inference | `aiwf-embedded-edge-ai` |
+| Customer-site pilot, hazards, operator handoff, rollback, or go/no-go | `aiwf-field-pilot-readiness` |
+| Ai Embedded Systems lead, quote-ready first pass, workflow, bot, SEO, training, or AI fit | `aiwf-service-intake` |
 
 ## Verification
 
-Use these checks after relevant changes:
-
 ```powershell
 .\scripts\validate_skills.ps1
+python .\scripts\validate_pack.py
 python .\scripts\test_orchestrator_routes.py
-.\scripts\export_agent_skills_pack.ps1
 ```
 
-Run export only when a shareable bundle is actually wanted.
+Use the project-native test, lint, typecheck, build, device, endpoint, browser, or artifact checks for the selected route. Router policy never substitutes for runtime evidence.

@@ -1,0 +1,6 @@
+interface:
+  display_name: "aiwf_physics-simulation"
+  short_description: "Physics, units, and robot simulation checks"
+  default_prompt: "Use $aiwf-physics-simulation for physics sanity checks, units, kinematics, dynamics, Gazebo, MuJoCo, and sim-to-real planning."
+policy:
+  allow_implicit_invocation: false

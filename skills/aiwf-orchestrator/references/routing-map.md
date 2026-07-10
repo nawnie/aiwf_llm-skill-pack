@@ -1,29 +1,65 @@
-# AIWF skill routing map
+# AIWF Skill Routing Map
 
-Choose the smallest set that owns the request.
+Choose the smallest route that owns the first risky decision. Add `aiwf-repo-sentinel` for edits in an existing repository and `aiwf-security-guardrails` only when a security boundary is touched.
 
-| Prompt signal | Primary skill | Add when needed |
+## Coding
+
+| Signal | Primary skill | Add only when needed |
 | --- | --- | --- |
-| coding task, bug fix, debug, refactor, generated code cleanup, code review | `aiwf-ai-coding-guardrails` | focused language or repo guardrails |
-| repo state, dirty tree, package manager, lockfile, shell commands, test integrity, broad diff | `aiwf-repo-sentinel` | `aiwf-ai-coding-guardrails` |
-| security, auth, authorization, CORS, secrets, tokens, injection, unsafe deserialization, path traversal, SSRF, public exposure, dependency supply chain, model-source trust | `aiwf-security-guardrails` | `aiwf-web-api-ui-guardian`, `aiwf-repo-sentinel` |
-| CUDA, ROCm, NVIDIA driver, PyTorch GPU, TensorRT, xformers, flash-attn, bitsandbytes, VRAM, OOM, DLL/PATH, GPU smoke, device visibility | `aiwf-gpu-runtime-diagnostics` | `aiwf-model-loader`, `aiwf-inference-serving` |
-| FastAPI, Gradio, React, TypeScript, JavaScript, HTML, CSS, Vite, API contract, OpenAPI, frontend/backend drift, UI validation | `aiwf-web-api-ui-guardian` | `aiwf-repo-sentinel` |
-| Python, C++, CMake, pytest, Ruff, Pyright, mypy, async blocking, serialization, compiler, CMake presets, memory safety | `aiwf-python-cpp-hardener` | `aiwf-repo-sentinel` |
-| image generation, generated images, AI illustration, AI artifacts, logos, icons, signage, visual text, diagrams, flowcharts, charts, infographics, portraits, hands, fingers, anatomy, skin texture, pores, blemishes, photorealism, final image QA | `aiwf-avoid-ai-illustrations` | `aiwf-deep-research`, `aiwf-ai-evals` |
-| deep research, literature review, source plan, source weighting, evidence weight, claim ledger, arXiv, OpenReview, Civitai research, Reddit limits, academic sources, college, graduate, postgraduate, thesis, dissertation, quantum physics, robotics research, mechanical engineering research | `aiwf-deep-research` | `aiwf-agent-mok`, domain skill |
-| train, fine-tune, LoRA, QLoRA, dataset split, checkpoint, resume | `aiwf-local-ai-training` | `aiwf-ai-evals`, `aiwf-model-loader` |
-| eval, benchmark, prompt suite, before/after, regression, promote | `aiwf-ai-evals` | `aiwf-inference-serving`, `aiwf-local-ai-training` |
-| serve, endpoint, API, vLLM, llama.cpp server, Ollama, queue, latency | `aiwf-inference-serving` | `aiwf-model-loader`, `aiwf-ai-evals` |
-| load model, dtype, quant, GGUF, safetensors, Nunchaku, LoRA compatibility | `aiwf-model-loader` | `aiwf-ai-pipelines` |
-| pipeline route, backend wiring, smoke matrix, source mismatch | `aiwf-ai-pipelines` | `aiwf-model-loader`, `aiwf-ui-electrician` |
-| UI button, progress, cancellation, API payload, response shape, telemetry display | `aiwf-ui-electrician` | `aiwf-ai-pipelines` |
-| many agents, broad crawl, debug pass, independent lanes | `aiwf-debug-agent-swarm` | `aiwf-ai-pipelines`, `aiwf-ui-electrician` |
-| source verification, findings dataset, plan.md, research route verification | `aiwf-agent-mok` | `aiwf-deep-research`, any domain skill |
-| handoff, resume, continuity card, compact chat | `aiwf-atlas-cartographer` | any active work skill |
-| Atlas Reader LoRA repo, Atlas adapter, training records, evaluation plans, measured logs, context-pack construction, Qwen LoRA failure | `aiwf-atlas-reader` | `aiwf-atlas-cartographer`, `aiwf-agent-mok`, `aiwf-local-ai-training` |
-| dataset intake, source provenance, curation, synthetic guardrail rows, dashboard/reporting for datasets | `aiwf-dataset` | `aiwf-deep-research`, `aiwf-agent-mok` |
-| AI-looking design, teal everywhere, default Gradio/shadcn, generated-looking PDF, document, dashboard, or web layout | `aiwf-avoid-ai-design` | `aiwf-web-api-ui-guardian`, `aiwf-avoid-ai-pushes` |
-| README, public docs, release text, AI writing patterns, commit scope, push hygiene | `aiwf-avoid-ai-pushes` | domain skill for technical correctness |
+| C source, headers, ABI, ISO C | `aiwf-c-coding` | `aiwf-repo-sentinel` |
+| C++, CMake, RAII, templates, native extension | `aiwf-cpp-coding` | versioned Python skill for extension packaging |
+| Python 3.10 or cp310 | `aiwf-python310-coding` | `aiwf-cpp-coding` for native code |
+| Python 3.12 or cp312 | `aiwf-python312-coding` | `aiwf-cpp-coding` for native code |
+| CUDA, cuDNN, TensorRT, NVIDIA SDK | `aiwf-nvidia-cuda-cudnn-sdk` | `aiwf-gpu-runtime-diagnostics` for runtime failure |
+| FastAPI, Pydantic, OpenAPI | `aiwf-fastapi-coding` | `aiwf-ui-electrician` for client contract drift |
+| Gradio callbacks, queue, mount | `aiwf-gradio-coding` | `aiwf-avoid-ai-design` for visuals |
+| React, hooks, JSX/TSX | `aiwf-react-coding` | `aiwf-typescript-coding`, `aiwf-css-coding` |
+| Vue 3 or VitePress | `aiwf-vue-vitepress-coding` | `aiwf-typescript-coding`, `aiwf-web-seo` |
+| TypeScript config or contracts | `aiwf-typescript-coding` | framework skill for component behavior |
+| JavaScript, Node, ESM/CJS | `aiwf-javascript-coding` | `aiwf-security-guardrails` for unsafe input |
+| CSS layout and responsive behavior | `aiwf-css-coding` | `aiwf-avoid-ai-design` for design direction |
+| Android, Kotlin, Compose, Room, ADB | `aiwf-android-kotlin-coding` | `aiwf-data-storage`, `aiwf-cpp-coding` |
 
-If two skills seem equally likely, choose the one that prevents the first expensive mistake. Security outranks feature work, GPU runtime diagnostics outrank model-runtime edits, repo preflight outranks code patching, training outranks eval, serving outranks UI, model loading outranks pipeline status, and pipeline status outranks docs.
+## AI And Data
+
+| Signal | Primary skill | Add only when needed |
+| --- | --- | --- |
+| Model loading, dtype, quantization, adapters | `aiwf-model-loader` | `aiwf-gpu-runtime-diagnostics` |
+| Pipeline registry, stages, source/runtime wiring | `aiwf-ai-pipelines` | `aiwf-ui-electrician` |
+| Training, LoRA, QLoRA, checkpoints | `aiwf-local-ai-training` | `aiwf-ai-evals` |
+| Benchmarks, prompt suites, promotion | `aiwf-ai-evals` | training or serving owner |
+| vLLM, llama.cpp, Ollama, model endpoint | `aiwf-inference-serving` | `aiwf-model-loader` |
+| GPU driver, ABI, VRAM, DLL, runtime failure | `aiwf-gpu-runtime-diagnostics` | NVIDIA coding skill for source changes |
+| RAG, embeddings, chunking, reranking, citations | `aiwf-rag-retrieval` | `aiwf-data-storage`, `aiwf-ai-evals` |
+| SQLite, Room, Postgres, vector stores, migrations | `aiwf-data-storage` | `aiwf-rag-retrieval` for result quality |
+| Dataset intake, provenance, curation, captions | `aiwf-dataset` | `aiwf-deep-research` for external claims |
+
+## Systems And Projects
+
+| Signal | Primary skill | Add only when needed |
+| --- | --- | --- |
+| Robotics, ROS 2, sensors, control | `aiwf-robotics-systems` | physics, embedded, or field-pilot owner |
+| Units, frames, dynamics, simulation | `aiwf-physics-simulation` | `aiwf-robotics-systems` |
+| LAN, MQTT, WebSocket, RTSP, IoT | `aiwf-networking-iot` | security or field-pilot owner |
+| MCU, RTOS, Jetson, power, thermal | `aiwf-embedded-edge-ai` | NVIDIA or robotics owner |
+| Customer-site test, hazards, rollback | `aiwf-field-pilot-readiness` | robotics, networking, security |
+| Windows paths, venvs, processes, ports, WSL/Docker | `aiwf-windows-local-dev` | GPU or networking diagnostics |
+| Service lead, quote, AI-fit scoping | `aiwf-service-intake` | implementation owner after scope |
+
+## Research, Debugging, And Output
+
+| Signal | Primary skill | Add only when needed |
+| --- | --- | --- |
+| Deep research, claim ledger, source weighting | `aiwf-deep-research` | domain skill; `aiwf-agent-mok` for durable plan |
+| `plan.md`, findings dataset, route verification | `aiwf-agent-mok` | `aiwf-deep-research` for external evidence |
+| Subagents, broad crawl, debug pass | `aiwf-debug-agent-swarm` | owning domain skills |
+| UI/API progress, errors, cancellation, payloads | `aiwf-ui-electrician` | backend and frontend owners |
+| Handoff, continuity cards, resume state | `aiwf-atlas-cartographer` | current work owner |
+| Atlas Reader LoRA protocol or measured claims | `aiwf-atlas-reader` | training or continuity owner |
+| AI-looking UI or document design | `aiwf-avoid-ai-design` | framework skill for code changes |
+| Generated-image artifact QA | `aiwf-avoid-ai-illustrations` | `aiwf-deep-research` for exact references |
+| Crawlability, canonical, sitemap, structured data | `aiwf-web-seo` | site framework and design skills |
+| Commit, push, release, public repo copy | `aiwf-avoid-ai-pushes` | `aiwf-repo-sentinel` |
+| Torchie voice | `aiwf-torchie` | technical owner remains authoritative |
+
+If more than four skills appear relevant, split the work into phases. Do not load broad wrappers that duplicate the focused owners.

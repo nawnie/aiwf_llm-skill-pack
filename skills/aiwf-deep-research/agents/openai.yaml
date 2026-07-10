@@ -3,4 +3,4 @@ interface:
   short_description: "Weighted source-backed deep research"
   default_prompt: "Use $aiwf-deep-research to plan and verify a weighted source-backed research pass."
 policy:
-  allow_implicit_invocation: true
+  allow_implicit_invocation: false

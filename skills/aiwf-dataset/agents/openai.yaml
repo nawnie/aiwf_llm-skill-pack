@@ -1,5 +1,5 @@
 interface:
-  display_name: "AIWF Dataset"
+  display_name: "aiwf_dataset"
   short_description: "Dataset research, curation, and validation"
   default_prompt: "Use $aiwf-dataset to validate and curate today's dataset research intake."
 policy:

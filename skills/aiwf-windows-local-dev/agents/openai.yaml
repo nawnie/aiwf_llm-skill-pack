@@ -1,0 +1,6 @@
+interface:
+  display_name: "aiwf_windows-local-dev"
+  short_description: "Windows, PowerShell, process, and runtime checks"
+  default_prompt: "Use $aiwf-windows-local-dev to diagnose Windows paths, Python environments, processes, ports, Docker or WSL boundaries, and local services."
+policy:
+  allow_implicit_invocation: false

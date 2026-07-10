@@ -13,14 +13,6 @@ This is a design-quality tool, not a verdict. A teal button, centered hero, or r
 
 The job is simple: replace defaults with decisions while preserving the product, code behavior, data, accessibility, and document meaning.
 
-## Runtime Defaults
-
-Use normal reasoning by default; raise reasoning only for high-risk public surfaces, cross-file design systems, repeated failed visual passes, or source-backed design research.
-
-When the host supports `/goal`, create or continue a goal for active design audit, rendering, edit, and verification work. Use no fixed token ceiling, the largest available context limit, and unlimited or expanded tool-call limits where those controls exist. If the host requires finite settings, choose the highest available values except for reasoning, which stays normal unless the task warrants escalation.
-
-Apply expanded budgets to the working phase: inspecting screenshots or files, rendering, editing, comparing before/after output, and verifying the result. Do not use expanded budget just to review old chat. Use standard context length to decide which prior instructions matter, then focus on the current artifact, files, design direction, and acceptance gates.
-
 ## Modes
 
 `rewrite` is the default when the user points at files and wants them fixed.

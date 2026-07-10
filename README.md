@@ -1,157 +1,131 @@
 # AIWF LLM Skill Pack
 
-AIWF LLM Skill Pack is a skills-only Codex plugin for local open-source AI development. It helps agents route AIWF work across model loading, dataset curation, source-backed research, ComfyUI workflow conversion, QLoRA planning, evals, inference serving, GPU diagnostics, repository guardrails, and public-release hygiene.
+A skills-only Codex plugin for Shawn's local AI, coding, Android, retrieval, data, web, robotics, embedded, research, and release workflows.
 
-This repository vendors Shawn-owned `aiwf-` skills only. It does not bundle outside skill folders, external licenses, external branding, MCP servers, or apps. Public prose, design, and push hygiene are handled by AIWF-owned skills and scans in this pack.
+The pack contains 43 focused `aiwf-` skills. `aiwf-orchestrator` is the only implicit entrypoint; all 42 downstream skills are explicit and the router selects at most four for one prompt.
 
-## What It Is
+## Install As A Codex Plugin
 
-AIWF stands for AI Without Fear: a local-first, open-source AI workflow brand focused on practical consumer AI tools that can be inspected, tested, and run without hiding the hard parts. This pack gives Codex a routing layer and specialized skills for AIWF-style work: build locally, cite sources, validate claims, respect hardware limits, and keep public copy honest.
+From the local source workspace:
 
-Use this pack when you want a Codex plugin for:
+```powershell
+cd "C:\Users\Shawn\Desktop\AI_Projects\Agent Skills"
+.\scripts\install_personal_plugin.ps1
+codex plugin list
+```
 
-- local AI app development on Windows or consumer GPUs
-- model loading, quantization, LoRA, QLoRA, and inference planning
-- ComfyUI workflow JSON to Python pipeline analysis
-- dataset provenance, research receipts, and source-weighted claims
-- AIWF Studio docs, beta copy, launch hygiene, and Torchie voice
-- repo-safe coding, security checks, GPU diagnostics, and eval gates
+The installer validates the source, refreshes the personal plugin bundle, updates its cachebuster, writes a validated versioned cache, and ensures the plugin is enabled. It avoids the plugin CLI wrapper that stalls on this machine. Pass `-TryCodexCli` only to test whether that wrapper has been fixed.
 
-## Layout
+For a fresh machine or missing workspace:
+
+```powershell
+git clone https://github.com/nawnie/aiwf_llm-skill-pack.git "C:\Users\Shawn\Desktop\AI_Projects\Agent Skills"
+cd "C:\Users\Shawn\Desktop\AI_Projects\Agent Skills"
+.\scripts\install_personal_plugin.ps1
+```
+
+Direct skill installation is the fallback when plugin commands are unavailable:
+
+```powershell
+.\install.ps1 -Force -PruneRetired
+```
+
+Start a new Codex chat after installation so the loaded skill catalog refreshes.
+
+## Architecture
+
+`aiwf-orchestrator` performs a bounded routing check for non-trivial prompts. It prefers the smallest useful route and caps downstream selection at four skills. Its control values are agent policy only; they do not reconfigure the Codex model, reasoning effort, context window, or tool budgets.
+
+Each skill owns its instructions and supporting resources:
 
 ```text
-Agent Skills/
-  .codex-plugin/
-    plugin.json
-  AGENTS.md
-  HANDOFF.md
-  PROJECT_SKILLS.md
-  README.md
-  LICENSE
-  install.ps1
-  manifest.json
-  skillfindings.md
-  docs/
-    github-skill-inventory.md
-    projectskill-list.use-cases.json
-    receipt-schema.md
-    receipt-schema.v1.json
-    seo-aeo.md
-    skill-authoring-policy.md
-  skills/
-    aiwf-orchestration/
-    aiwf-orchestrator/
-    aiwf-deep-research/
-    aiwf-dataset/
-    aiwf-comfy-workflow-pipeline/
-    aiwf-avoid-ai-design/
-    aiwf-avoid-ai-illustrations/
-    aiwf-avoid-ai-pushes/
-    aiwf-torchie/
-    aiwf-ai-coding-guardrails/
-    aiwf-repo-sentinel/
-    aiwf-security-guardrails/
-    aiwf-gpu-runtime-diagnostics/
-    aiwf-web-api-ui-guardian/
-    aiwf-python-cpp-hardener/
-    aiwf-ai-pipelines/
-    aiwf-ui-electrician/
-    aiwf-model-loader/
-    aiwf-local-ai-training/
-    aiwf-ai-evals/
-    aiwf-inference-serving/
-    aiwf-debug-agent-swarm/
-    aiwf-atlas-cartographer/
-    aiwf-atlas-reader/
-    aiwf-agent-mok/
-  scripts/
-    validate_skills.ps1
-    validate_pack.py
-    test_orchestrator_routes.py
-    validate_receipt.py
-    export_agent_skills_pack.ps1
+skills/<skill-name>/
+  SKILL.md
+  agents/openai.yaml
+  references/       # optional
+  scripts/          # optional deterministic helpers
 ```
 
-## Install
+Every referenced Python helper is bundled under the owning skill. There are no required helper paths into a global skill installation or another project.
 
-Use it as a skills-only Codex plugin through `.codex-plugin/plugin.json`, or install the skills directly with the script below.
+## Skill Catalog
 
-```powershell
-git clone https://github.com/nawnie/aiwf_llm-skill-pack.git
-cd aiwf_llm-skill-pack
-.\install.ps1
-```
+### Routing, Safety, And Release
 
-Replace existing installed copies:
+- `aiwf-orchestrator`: bounded prompt routing across the pack.
+- `aiwf-repo-sentinel`: repository preflight, narrow edits, test integrity, and diff discipline.
+- `aiwf-security-guardrails`: auth, secrets, injection, unsafe serialization, dependencies, and model-source trust.
+- `aiwf-avoid-ai-pushes`: staging, commit, branch, remote, ignored-file, and public-copy checks.
 
-```powershell
-.\install.ps1 -Force
-```
+### Research, Data, And Continuity
 
-Install to a custom skills directory:
+- `aiwf-deep-research`: weighted source plans, claim ledgers, contradictions, citations, and durable receipts.
+- `aiwf-dataset`: dataset intake, provenance, curation, validation, and synthetic boundaries.
+- `aiwf-agent-mok`: proportional verification, planning, and optional findings datasets.
+- `aiwf-atlas-cartographer`: local continuity cards and retrieval.
+- `aiwf-atlas-reader`: Atlas Reader LoRA source, record, eval, and measured-result protocol.
+- `aiwf-debug-agent-swarm`: read-only parallel debug-pass coordination when subagents are authorized.
 
-```powershell
-.\install.ps1 -CodexSkillsDir "D:\codex-skills"
-```
+### Languages And Frameworks
 
-Restart Codex after installation so the loaded skill list refreshes.
+- `aiwf-c-coding`
+- `aiwf-cpp-coding`
+- `aiwf-python310-coding`
+- `aiwf-python312-coding`
+- `aiwf-fastapi-coding`
+- `aiwf-gradio-coding`
+- `aiwf-react-coding`
+- `aiwf-vue-vitepress-coding`
+- `aiwf-typescript-coding`
+- `aiwf-javascript-coding`
+- `aiwf-css-coding`
+- `aiwf-android-kotlin-coding`
 
-## Answer Engine FAQ
+### Retrieval, Storage, Web, And Windows
 
-### What is AIWF LLM Skill Pack?
+- `aiwf-rag-retrieval`: chunking, embeddings, hybrid retrieval, reranking, grounding, and retrieval evaluation.
+- `aiwf-data-storage`: SQLite, Room, Postgres, Chroma, pgvector, Qdrant, Milvus, schemas, and migrations.
+- `aiwf-ui-electrician`: frontend/backend contract and state-flow tracing.
+- `aiwf-web-seo`: crawlability, canonical URLs, sitemaps, structured data, performance, and evidence-backed web copy.
+- `aiwf-windows-local-dev`: PowerShell, paths, environments, ports, processes, Docker/WSL, and local services.
 
-AIWF LLM Skill Pack is a skills-only Codex plugin that adds AIWF routing and guardrails for local AI development, research, datasets, model workflows, ComfyUI conversion, training plans, evals, serving, and GitHub release hygiene.
+### Local AI And NVIDIA
 
-### Who is it for?
+- `aiwf-ai-pipelines`: backend pipeline and runtime audits.
+- `aiwf-model-loader`: model format, backend, precision, quantization, component, and adapter contracts.
+- `aiwf-local-ai-training`: LoRA/QLoRA planning, datasets, checkpoints, export, and validation.
+- `aiwf-ai-evals`: eval suites, before/after comparisons, and promotion gates.
+- `aiwf-inference-serving`: vLLM, llama.cpp, Ollama, endpoint, telemetry, queue, and latency checks.
+- `aiwf-gpu-runtime-diagnostics`: driver, CUDA/ROCm, framework, VRAM, DLL/PATH, and GPU smoke diagnosis.
+- `aiwf-nvidia-cuda-cudnn-sdk`: CUDA, cuDNN, TensorRT, NVIDIA SDKs, `nvcc`, kernels, and compatibility checks.
 
-It is for builders working on local open-source AI tools, especially AIWF Studio-style projects that need practical routing, hardware-aware checks, source-backed claims, and public copy that does not overpromise.
+### Robotics, Embedded, And Field Work
 
-### Does it run models or download large files?
+- `aiwf-robotics-systems`
+- `aiwf-physics-simulation`
+- `aiwf-networking-iot`
+- `aiwf-embedded-edge-ai`
+- `aiwf-field-pilot-readiness`
+- `aiwf-service-intake`
 
-No. The pack gives Codex instructions, scripts, and validation workflows. It should not download large models, run VRAM-heavy generation, start training, or expose services unless the user explicitly asks.
+### Design And Voice
 
-### Is Torchie always enabled?
+- `aiwf-avoid-ai-design`: UI, dashboard, PDF, and document design cleanup.
+- `aiwf-avoid-ai-illustrations`: generated-image artifact and semantic QA.
+- `aiwf-torchie`: opt-in AIWF public-copy voice.
 
-No. `aiwf-torchie` is an optional personality and public-copy voice lane. It stays off unless the prompt asks for Torchie, mascot voice, beta invite copy, friendly failure wording, or the orchestration toggle enables it.
+## Validation
 
-## Core Routes
-
-- `aiwf-orchestration`: portable pack control layer with route variables, loop limits, and AI-avoidance level.
-- `aiwf-orchestrator`: local always-on router across the broader AIWF guardrail pack.
-- `aiwf-deep-research`: weighted research with source plans, claim ledgers, citations, and receipt validation.
-- `aiwf-dataset`: AIWF and MoK dataset intake, provenance checks, curation, validation, and reporting.
-- `aiwf-comfy-workflow-pipeline`: ComfyUI workflow JSON, API prompt, node graph, and custom-node conversion planning for AIWF pipeline skeletons.
-- `aiwf-avoid-ai-design`: design cleanup for AI-looking UI, Gradio, React/web, dashboards, PDFs, and documents.
-- `aiwf-avoid-ai-illustrations`: generated-image artifact guardrails for logos, diagrams, charts, people, hands, skin texture, and visual text.
-- `aiwf-avoid-ai-pushes`: commit, staging, ignored-file, public-prose, remote, and branch hygiene.
-- `aiwf-torchie`: optional Torchie personality and public-copy voice lane for beta invites, friendly local-AI failure wording, and mascot-style planning.
-- `aiwf-atlas-cartographer`: Atlas continuity capture, retrieval, cards, lanes, and handoff state.
-- `aiwf-atlas-reader`: Atlas Reader LoRA, source protocol, training record, eval-plan, context-pack, and measured-result guardrails.
-- `aiwf-agent-mok`: MoK planning, source verification, research findings, and findings-dataset capture.
-
-The remaining AIWF skills cover repo-safe coding, security, GPU/runtime diagnostics, web/API/UI validation, Python/C++ hardening, AI pipelines, UI/API wiring, model loading, local training, evals, inference serving, and debug-agent swarms.
-
-## Authoring Policy
-
-Use `skillfindings.md` and `docs/skill-authoring-policy.md` when changing skills. Keep `SKILL.md` provider-neutral, use `agents/openai.yaml` for OpenAI-facing metadata, and put deterministic checks in scripts.
-
-Runtime defaults are declared in the relevant skill files. `aiwf-orchestration` and `aiwf-orchestrator` use highest available reasoning and maximum context. `aiwf-deep-research` uses highest available reasoning plus `/goal` with no fixed token ceiling, maximum context, and expanded or unlimited tool calls when available. Avoid-AI skills use the same `/goal` budget defaults without forcing highest reasoning. `aiwf-torchie` is an optional personality lane and stays off unless the prompt or orchestration toggle calls for it.
-
-Expanded budgets are for active work: source checks, edits, validation, packaging, and publishing. Use standard context length to decide which prior chat instructions matter.
-
-## Validate
+Run all pack checks before export or installation:
 
 ```powershell
 .\scripts\validate_skills.ps1
 python .\scripts\validate_pack.py
 python .\scripts\test_orchestrator_routes.py
+python "C:\Users\Shawn\.codex\skills\.system\plugin-creator\scripts\validate_plugin.py" .
 ```
 
-Validate workflow receipts with:
-
-```powershell
-python .\scripts\validate_receipt.py <receipt.json>
-```
+`validate_pack.py` checks inventory/manifest parity, naming, metadata, implicit policy, route targets, helper references, stale paths, generated artifacts, and the skills-only plugin boundary.
 
 ## Export
 
@@ -159,8 +133,17 @@ python .\scripts\validate_receipt.py <receipt.json>
 .\scripts\export_agent_skills_pack.ps1
 ```
 
-The export zip is written to `dist/`.
+Archives are written under `dist/`. The export includes the plugin wrapper, skills, scripts, documentation, manifest, installer, and license.
 
-## Discovery Keywords
+## Authoring Rules
 
-AIWF, AI Without Fear, Codex plugin, Codex skills, local AI, open-source AI, local LLM workflow, ComfyUI workflow conversion, QLoRA planning, LoRA training, model loading, inference serving, dataset provenance, AI evals, GPU diagnostics, source-backed research, AIWF Studio, Torchie.
+- Use `aiwf-` folder and frontmatter names, plus `aiwf_` display names.
+- Keep `SKILL.md` focused; move deep references and deterministic code to local resources.
+- Keep external skills external. Do not vendor their files or branding.
+- Verify version-sensitive technical claims against official primary documentation.
+- Never assume a quantization, dtype, SDK, ROS distribution, database metric, or device network route is universally correct.
+- Do not download large models, run training, expose services, flash devices, or start expensive GPU work unless explicitly requested.
+
+## License
+
+MIT. See `LICENSE`.

@@ -1,6 +1,0 @@
-﻿interface:
-  display_name: "AIWF Orchestration"
-  short_description: "Configure and route the AIWF skill pack"
-  default_prompt: "Use $aiwf-orchestration to read the pack variables, choose downstream skills, enforce loop limits, and apply the configured AI-avoidance level."
-policy:
-  allow_implicit_invocation: true

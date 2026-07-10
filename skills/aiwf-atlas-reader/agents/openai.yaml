@@ -2,3 +2,5 @@ interface:
   display_name: "aiwf_atlas-reader"
   short_description: "Atlas Reader LoRA and source-protocol guardrails."
   default_prompt: "Use $aiwf-atlas-reader when working on Atlas Reader LoRA records, eval plans, source docs, or measured-result claims."
+policy:
+  allow_implicit_invocation: false

@@ -1,0 +1,6 @@
+interface:
+  display_name: "aiwf_networking-iot"
+  short_description: "Networking, IoT, and protocol guardrails"
+  default_prompt: "Use $aiwf-networking-iot for LAN, Wi-Fi, HTTP, MQTT, WebSocket, device telemetry, IoT reliability, and secure network binding."
+policy:
+  allow_implicit_invocation: false
