@@ -229,4 +229,4 @@ At the start of non-trivial work, read $workspacePath\AGENTS.md, then use $works
 Write-Host "Installed AIWF $($manifest.version) for providers: $($selectedProviders -join ', ')"
 Write-Host "Shared Agent Skills path: $sharedSkills"
 if ($workspacePath) { Write-Host "Shared agent workspace: $workspacePath" }
-Write-Host "Start a new provider chat so the 56-skill catalog and shared instructions are loaded."
+Write-Host "Start a new provider chat so the 57-skill catalog and shared instructions are loaded."

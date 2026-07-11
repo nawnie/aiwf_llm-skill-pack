@@ -4,7 +4,7 @@ Updated: 2026-07-10
 
 ## Verdict
 
-`#techstartup` release `0.3.0` is a focused 56-skill pack with one implicit router, 55 explicit downstream skills, a four-skill route cap, and 22 self-contained Python helpers. Thirteen instruction modules add official-source registers and realistic eval datasets for startup growth, platform operations, security, privacy, and agent coordination.
+`#techstartup` release `0.4.0` is a focused 57-skill pack with one implicit router, 56 explicit downstream skills, a four-skill route cap, and 23 self-contained Python helpers. Thirteen instruction modules add official-source registers and realistic eval datasets for startup growth, platform operations, security, privacy, and agent coordination. Every browser label uses an all-underscore `aiwf_` name.
 
 ## Gaps Filled
 
@@ -23,6 +23,7 @@ Updated: 2026-07-10
 | Software and AI artifact supply chain | `aiwf-software-ai-supply-chain-security` |
 | Incident evidence, containment, and recovery | `aiwf-incident-response-recovery` |
 | Codex, Claude, and Grok shared state and resources | `aiwf-multi-agent-workspace` |
+| Bounded QA test-fix loops and severity-based exits | `aiwf-qa-convergence` |
 
 ## Corrected Boundaries
 
@@ -39,7 +40,7 @@ Updated: 2026-07-10
 
 `scripts/validate_pack.py` now fails on inventory drift, metadata mismatch, multiple implicit skills, unknown routes, missing or undocumented helpers, missing source/eval modules, invalid eval source IDs, skill-catalog drift, stale active guidance, generated caches, plugin version drift, or non-skill plugin capabilities.
 
-`scripts/test_orchestrator_routes.py` covers every downstream skill and exact cross-boundary routes. `scripts/test_agent_workspace.py` covers six-exchange rotation, pending recovery, redaction, writer/GPU conflicts, resource reserves, stale lease recovery, and ACLs. `scripts/test_skill_helpers.py` verifies deterministic finance, privacy, assessment, and incident helpers.
+`scripts/test_orchestrator_routes.py` covers every downstream skill and exact cross-boundary routes. `scripts/test_agent_workspace.py` covers six-exchange rotation, pending recovery, redaction, writer/GPU conflicts, resource reserves, stale lease recovery, and ACLs. `scripts/test_skill_helpers.py` verifies deterministic finance, privacy, assessment, incident, and QA convergence helpers.
 
 ## Remaining Boundary
 

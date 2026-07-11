@@ -1,5 +1,5 @@
 interface:
-  display_name: "aiwf_robotics-systems"
+  display_name: "aiwf_robotics_systems"
   short_description: "Robotics systems planning and ROS guardrails"
   default_prompt: "Use $aiwf-robotics-systems for robotics architecture, ROS 2, sensors, control, logging, and robot integration planning."
 policy:

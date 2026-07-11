@@ -1,14 +1,14 @@
 {
   "schema_version": 2,
   "project_id": "agent-skills",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "release_codename": "techstartup",
   "display_name": "AIWF LLM Skill Pack",
   "owner": "Shawn",
   "created": "2026-06-30",
   "updated": "2026-07-10",
   "root": "C:/Users/Shawn/Desktop/AI_Projects/Agent Skills",
-  "purpose": "Provider-portable Agent Skills and a skills-only Codex plugin for local AI, coding, embedded, robotics, startup growth, funding, platform operations, security, privacy, research, and release workflows.",
+  "purpose": "Provider-portable Agent Skills and a skills-only Codex plugin for local AI, coding, embedded, robotics, startup growth, funding, platform operations, security, privacy, bounded QA convergence, research, and release workflows.",
   "plugin": {
     "name": "aiwf-llm-skill-pack",
     "manifest_path": ".codex-plugin/plugin.json",
@@ -26,6 +26,8 @@
   "naming_policy": {
     "canonical_prefix": "aiwf-",
     "display_prefix": "aiwf_",
+    "display_transform": "Replace every canonical-name hyphen with an underscore for the browser label.",
+    "invocation_note": "Agent Skills require hyphen-case canonical IDs; browse labels use all-underscore aiwf_ names.",
     "pack_boundary": "Only Shawn-owned AIWF skills are vendored."
   },
   "discovery": {
@@ -79,7 +81,9 @@
       "data-privacy",
       "software-supply-chain",
       "incident-response",
-      "multi-agent"
+      "multi-agent",
+      "qa-convergence",
+      "test-fix-loop"
     ]
   },
   "retired_skills": [
@@ -130,6 +134,7 @@
     "aiwf-physics-simulation",
     "aiwf-python310-coding",
     "aiwf-python312-coding",
+    "aiwf-qa-convergence",
     "aiwf-rag-retrieval",
     "aiwf-react-coding",
     "aiwf-repo-sentinel",

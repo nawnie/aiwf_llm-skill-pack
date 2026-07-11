@@ -1,5 +1,5 @@
 interface:
-  display_name: "aiwf_gradio-coding"
+  display_name: "aiwf_gradio_coding"
   short_description: "Gradio Blocks, Interface, events, and mounts"
   default_prompt: "Use $aiwf-gradio-coding for Gradio Blocks, Interface, component events, queueing, FastAPI mounting, auth, and UI smoke tests."
 policy:

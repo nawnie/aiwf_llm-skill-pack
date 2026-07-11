@@ -1,5 +1,5 @@
 interface:
-  display_name: "aiwf_rag-retrieval"
+  display_name: "aiwf_rag_retrieval"
   short_description: "RAG, embeddings, chunking, and retrieval quality"
   default_prompt: "Use $aiwf-rag-retrieval to design or debug chunking, embeddings, retrieval, citations, and RAG evaluation."
 policy:

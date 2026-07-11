@@ -49,6 +49,7 @@ Use focused skills instead of the retired broad wrappers:
 - Security work: `aiwf-security-guardrails` plus at most two focused security owners, leaving room for the repo or domain skill.
 - Startup marketing, funding, AEO/GEO, Meta, Google Ads, or YouTube/AdSense: the matching growth or platform skill.
 - Shared Codex, Claude, Grok, context, handoff, or resource coordination: `aiwf-multi-agent-workspace`.
+- Repeated QA, bug passes, test-fix loops, or severity-based convergence: `aiwf-qa-convergence` with the repository and domain owners.
 - External research: `aiwf-deep-research`; durable plan verification: `aiwf-agent-mok` only when needed.
 - Design, generated-image QA, technical SEO, release hygiene, service intake, or Torchie voice: the matching output skill.
 

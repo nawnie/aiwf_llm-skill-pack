@@ -1,5 +1,5 @@
 interface:
-  display_name: "aiwf_atlas-cartographer"
+  display_name: "aiwf_atlas_cartographer"
   short_description: "AIWF continuity cards and lanes"
   default_prompt: "Use $aiwf-atlas-cartographer to preserve this AIWF or agent-skill task as local continuity cards before chat compaction."
 policy:

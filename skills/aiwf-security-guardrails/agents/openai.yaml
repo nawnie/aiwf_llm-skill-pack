@@ -1,5 +1,5 @@
 interface:
-  display_name: "aiwf_security-guardrails"
+  display_name: "aiwf_security_guardrails"
   short_description: "Security checks for AIWF code work"
   default_prompt: "Use $aiwf-security-guardrails to check auth, secrets, injection, dependency, and model-source risks."
 policy:

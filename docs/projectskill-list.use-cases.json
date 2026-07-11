@@ -32,6 +32,15 @@
       "verification": ["Use repo-native tests and git diff checks."]
     },
     {
+      "id": "qa-convergence",
+      "signals": ["QA loop", "bug pass", "test-fix loop", "severity gate", "until stable"],
+      "skills": ["aiwf-qa-convergence", "aiwf-repo-sentinel"],
+      "use_when": "Use for bounded repeated QA with clean, accepted-minor, stalled, blocked, escalation, and budget exits.",
+      "project_guardrails": ["Changes reset the qualifying streak.", "Only clean and accepted-minor states are success."],
+      "outputs": ["qa manifest", "convergence state", "issue ledger", "final receipt"],
+      "verification": ["python .\\scripts\\test_skill_helpers.py", "python .\\scripts\\test_orchestrator_routes.py"]
+    },
+    {
       "id": "focused-security-family",
       "signals": ["application security", "online exposure", "device hardening", "privacy", "SBOM", "incident response"],
       "skills": ["aiwf-security-guardrails", "aiwf-application-api-security", "aiwf-data-privacy-protection", "aiwf-incident-response-recovery"],

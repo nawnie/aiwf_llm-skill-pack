@@ -1,5 +1,5 @@
 interface:
-  display_name: "aiwf_avoid-ai-illustrations"
+  display_name: "aiwf_avoid_ai_illustrations"
   short_description: "Avoid AI image and illustration artifacts"
   default_prompt: "Use $aiwf-avoid-ai-illustrations to plan or review generated images, logos, diagrams, charts, and portraits for common AI artifacts."
 policy:

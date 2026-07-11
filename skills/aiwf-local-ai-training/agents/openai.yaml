@@ -1,5 +1,5 @@
 interface:
-  display_name: "aiwf_local-ai-training"
+  display_name: "aiwf_local_ai_training"
   short_description: "Plan local LoRA and QLoRA training"
   default_prompt: "Use $aiwf-local-ai-training to plan a local LoRA or QLoRA run with dataset, VRAM, resume, export, and validation gates."
 policy:

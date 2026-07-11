@@ -1,5 +1,5 @@
 interface:
-  display_name: "aiwf_gpu-runtime-diagnostics"
+  display_name: "aiwf_gpu_runtime_diagnostics"
   short_description: "GPU runtime and driver diagnostics"
   default_prompt: "Use $aiwf-gpu-runtime-diagnostics to diagnose CUDA, ROCm, PyTorch, TensorRT, VRAM, and GPU smoke failures."
 policy:

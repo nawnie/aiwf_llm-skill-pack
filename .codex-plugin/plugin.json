@@ -1,7 +1,7 @@
 {
   "name": "aiwf-llm-skill-pack",
-  "version": "0.3.0",
-  "description": "Skills-only Codex plugin for AIWF local AI, coding, startup growth, funding, platform operations, security, privacy, robotics, embedded systems, research, and coordinated agent workflows.",
+  "version": "0.4.0",
+  "description": "Skills-only Codex plugin for AIWF local AI, coding, startup growth, funding, platform operations, security, privacy, robotics, embedded systems, bounded QA, research, and coordinated agent workflows.",
   "author": {
     "name": "Shawn",
     "url": "https://github.com/nawnie"
@@ -74,13 +74,15 @@
     "jetson",
     "field-pilot",
     "service-intake",
-    "coding-guardrails"
+    "coding-guardrails",
+    "qa-convergence",
+    "software-qa"
   ],
   "skills": "./skills/",
   "interface": {
     "displayName": "AIWF LLM Skill Pack",
-    "shortDescription": "AIWF skills for local AI, startups, security, coding, and coordinated agents.",
-    "longDescription": "A skills-only Codex plugin for AIWF and Ai Embedded Systems work. One implicit orchestrator routes to focused skills for coding, local AI, model workflows, startup marketing and funding, AEO/GEO, Meta, Google Ads, YouTube and AdSense, application and infrastructure security, local devices, data privacy, supply-chain security, incident response, shared-agent coordination, Android, retrieval, storage, robotics, physics, networking, embedded edge AI, research, design QA, and release hygiene. It bundles no MCP servers or apps.",
+    "shortDescription": "AIWF skills for local AI, coding, QA, startups, security, and coordinated agents.",
+    "longDescription": "A skills-only Codex plugin for AIWF and Ai Embedded Systems work. One implicit orchestrator routes to focused skills for coding, local AI, model workflows, bounded QA convergence, startup marketing and funding, AEO/GEO, Meta, Google Ads, YouTube and AdSense, application and infrastructure security, local devices, data privacy, supply-chain security, incident response, shared-agent coordination, Android, retrieval, storage, robotics, physics, networking, embedded edge AI, research, design QA, and release hygiene. It bundles no MCP servers or apps.",
     "developerName": "Shawn",
     "category": "Developer Tools",
     "capabilities": [
@@ -93,6 +95,7 @@
       "Scope this Ai Embedded Systems lead into the right service or technical lane.",
       "Plan a robotics, embedded edge AI, networking, or physics simulation task with AIWF guardrails.",
       "Plan and validate an AIWF model workflow.",
+      "Run a bounded QA test-fix loop with severity-based off-ramps.",
       "Audit this AIWF change before I push it."
     ],
     "brandColor": "#2563EB"

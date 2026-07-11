@@ -1,5 +1,5 @@
 interface:
-  display_name: "aiwf_nvidia-cuda-cudnn-sdk"
+  display_name: "aiwf_nvidia_cuda_cudnn_sdk"
   short_description: "CUDA, cuDNN, TensorRT, and SDK guardrails"
   default_prompt: "Use $aiwf-nvidia-cuda-cudnn-sdk for CUDA, cuDNN, TensorRT, SDK Manager, NVIDIA SDK, nvcc, and GPU kernel work."
 policy:

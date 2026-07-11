@@ -12,6 +12,7 @@ For each non-trivial task, let `aiwf-orchestrator` select the smallest focused r
 | --- | --- |
 | Add, validate, package, install, or document a skill/plugin | `projectskill-list`, `skill-creator`, `plugin-creator`, `aiwf-orchestrator` |
 | Existing repository edit, debug, refactor, or review | `aiwf-repo-sentinel` plus the focused implementation skill |
+| Repeated QA or bug passes until stable | `aiwf-qa-convergence`, `aiwf-repo-sentinel`, and the focused implementation skill |
 | Commit, push, PR, release, staging, or public docs | `aiwf-avoid-ai-pushes`, `aiwf-repo-sentinel` |
 | Shared Codex/Claude/Grok state, context, handoffs, or leases | `aiwf-multi-agent-workspace` |
 

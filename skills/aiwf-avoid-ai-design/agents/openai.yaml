@@ -1,5 +1,5 @@
 interface:
-  display_name: "aiwf_avoid-ai-design"
+  display_name: "aiwf_avoid_ai_design"
   short_description: "Audit AI-looking UI and document design"
   default_prompt: "Use $aiwf-avoid-ai-design to audit this Gradio, PDF, document, React, or web layout for AI design tells and fix the obvious ones."
 policy:

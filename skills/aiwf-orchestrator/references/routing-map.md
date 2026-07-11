@@ -77,6 +77,7 @@ Choose the smallest route that owns the first risky decision. Add `aiwf-repo-sen
 | Deep research, claim ledger, source weighting | `aiwf-deep-research` | domain skill; `aiwf-agent-mok` for durable plan |
 | `plan.md`, findings dataset, route verification | `aiwf-agent-mok` | `aiwf-deep-research` for external evidence |
 | Subagents, broad crawl, debug pass | `aiwf-debug-agent-swarm` | owning domain skills |
+| Repeated QA, bug pass, test-fix loop, convergence gate | `aiwf-qa-convergence` | `aiwf-repo-sentinel`, owning domain skill |
 | UI/API progress, errors, cancellation, payloads | `aiwf-ui-electrician` | backend and frontend owners |
 | Handoff, continuity cards, resume state | `aiwf-atlas-cartographer` | current work owner |
 | Atlas Reader LoRA protocol or measured claims | `aiwf-atlas-reader` | training or continuity owner |

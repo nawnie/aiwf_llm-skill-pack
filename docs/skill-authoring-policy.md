@@ -16,6 +16,7 @@ Use this policy when creating or changing skills in this pack.
 ## Provider Adapters
 
 - Put OpenAI-facing display metadata in `agents/openai.yaml`.
+- Keep the canonical folder and frontmatter ID in valid `aiwf-` hyphen-case. Derive the browser `display_name` by replacing every hyphen with an underscore so every Shawn-owned skill groups under `aiwf_`.
 - Set `allow_implicit_invocation: true` only for `aiwf-orchestrator`; every downstream skill is explicit.
 - Put provider-specific usage notes in references or scripts, not in the core workflow unless they change behavior.
 - Prefer MCP/tools when a provider exposes stable tools or resources. Keep the portable fallback clear.

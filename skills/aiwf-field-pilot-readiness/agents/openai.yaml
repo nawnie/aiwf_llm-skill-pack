@@ -1,5 +1,5 @@
 interface:
-  display_name: "aiwf_field-pilot-readiness"
+  display_name: "aiwf_field_pilot_readiness"
   short_description: "Field pilot safety and readiness gates"
   default_prompt: "Use $aiwf-field-pilot-readiness for robotics or automation pilots, safety gates, site constraints, operator handoff, rollback, and success criteria."
 policy:

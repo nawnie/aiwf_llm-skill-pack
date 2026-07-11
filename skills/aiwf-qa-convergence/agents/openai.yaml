@@ -1,0 +1,6 @@
+interface:
+  display_name: "aiwf_qa_convergence"
+  short_description: "Bounded QA loops with severity-based exits"
+  default_prompt: "Use $aiwf-qa-convergence to run a bounded test-fix loop with severity gates and explicit off-ramps."
+policy:
+  allow_implicit_invocation: false

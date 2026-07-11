@@ -9,8 +9,8 @@ from pathlib import Path
 
 MAX_SKILL_LINES = 160
 IMPLICIT_SKILL = "aiwf-orchestrator"
-EXPECTED_SKILL_COUNT = 56
-EXPECTED_HELPER_COUNT = 22
+EXPECTED_SKILL_COUNT = 57
+EXPECTED_HELPER_COUNT = 23
 CATALOG_BEGIN = "<!-- AIWF-SKILL-CATALOG:BEGIN -->"
 CATALOG_END = "<!-- AIWF-SKILL-CATALOG:END -->"
 INSTRUCTION_MODULES = {
@@ -121,7 +121,7 @@ def validate_skill(skill_dir: Path, implicit: set[str], errors: list[str]) -> No
     else:
         metadata = read_text(metadata_file)
         display_name = yaml_scalar(metadata, "display_name")
-        expected_display = skill_name.replace("aiwf-", "aiwf_", 1)
+        expected_display = skill_name.replace("-", "_")
         if display_name != expected_display:
             errors.append(
                 f"{skill_name}: display_name is {display_name!r}; expected {expected_display!r}"
@@ -303,6 +303,14 @@ def validate(root: Path) -> list[str]:
         errors.append("manifest implicit_skill_count must be 1")
     if runtime_policy.get("max_downstream_skills") != 4:
         errors.append("manifest max_downstream_skills must be 4")
+
+    naming_policy = manifest.get("naming_policy", {})
+    if naming_policy.get("canonical_prefix") != "aiwf-":
+        errors.append("manifest canonical_prefix must be aiwf-")
+    if naming_policy.get("display_prefix") != "aiwf_":
+        errors.append("manifest display_prefix must be aiwf_")
+    if "every canonical-name hyphen" not in str(naming_policy.get("display_transform", "")):
+        errors.append("manifest display_transform must define the all-underscore browser label")
 
     implicit: set[str] = set()
     for skill_dir in sorted(skills_root.iterdir()):

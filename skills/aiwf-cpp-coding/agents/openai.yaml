@@ -1,5 +1,5 @@
 interface:
-  display_name: "aiwf_cpp-coding"
+  display_name: "aiwf_cpp_coding"
   short_description: "C++ ownership, ABI, CMake, and standards"
   default_prompt: "Use $aiwf-cpp-coding for C++ source, CMake, compiler flags, ABI, ownership, templates, and ISO C++ compatibility work."
 policy:

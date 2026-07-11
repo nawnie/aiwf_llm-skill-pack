@@ -1,8 +1,8 @@
 # AIWF LLM Skill Pack
 
-`#techstartup` release `0.3.0` is a provider-portable Agent Skills pack and skills-only Codex plugin for local AI, focused coding, startup growth, funding, platform operations, security, privacy, embedded systems, robotics, and coordinated agent work.
+`#techstartup` release `0.4.0` is a provider-portable Agent Skills pack and skills-only Codex plugin for local AI, focused coding, bounded QA, startup growth, funding, platform operations, security, privacy, embedded systems, robotics, and coordinated agent work.
 
-The pack contains 56 focused `aiwf-` skills. `aiwf-orchestrator` is the only implicit Codex entrypoint; the other 55 skills are explicit, and one prompt selects at most four.
+The pack contains 57 focused AIWF skills. `aiwf-orchestrator` is the only implicit Codex entrypoint; the other 56 skills are explicit, and one prompt selects at most four.
 
 ## Install For Codex, Claude, And Grok
 
@@ -53,7 +53,11 @@ skills/<skill-name>/
   scripts/                # optional deterministic helpers
 ```
 
-Every referenced Python helper is bundled under its owning skill. The 22 skill-owned helpers have no required path into another project or global installation.
+Every referenced Python helper is bundled under its owning skill. The 23 skill-owned helpers have no required path into another project or global installation.
+
+## Skill Names
+
+Every skill Shawn authored for this pack is grouped in browser lists with an all-underscore `aiwf_` label, such as `aiwf_python312_coding` and `aiwf_qa_convergence`. Agent Skills require canonical IDs to remain lowercase hyphen-case, so prompts invoke the same skills as `$aiwf-python312-coding` and `$aiwf-qa-convergence`. The validator enforces both forms for every skill.
 
 ## Skill Map
 
@@ -100,6 +104,7 @@ Every referenced Python helper is bundled under its owning skill. The 22 skill-o
 | Physical AI | `aiwf-physics-simulation` | Validates units, frames, dynamics, contacts, simulators, and sim-to-real. | Robotics or physical behavior depends on simulation correctness. |
 | Coding | `aiwf-python310-coding` | Protects Python 3.10 syntax, typing, packaging, wheels, and tests. | A project must run specifically on Python 3.10. |
 | Coding | `aiwf-python312-coding` | Protects Python 3.12 packaging, removals, typing, wheels, and tests. | A project targets or migrates to Python 3.12. |
+| Debugging | `aiwf-qa-convergence` | Runs bounded test-fix loops with severity gates, stable fingerprints, and explicit exits. | Repeated QA or bug passes must converge without running forever. |
 | Data | `aiwf-rag-retrieval` | Tunes chunking, embeddings, hybrid retrieval, reranking, and grounding. | RAG answer quality or citation support is weak. |
 | Coding | `aiwf-react-coding` | Handles components, hooks, state, effects, rendering, and accessibility. | Building or debugging React and JSX/TSX behavior. |
 | Repository | `aiwf-repo-sentinel` | Enforces repo preflight, narrow diffs, contracts, and honest tests. | Modifying any existing repository. |
@@ -148,11 +153,11 @@ python "C:\Users\Shawn\.codex\skills\.system\plugin-creator\scripts\validate_plu
 .\scripts\export_agent_skills_pack.ps1
 ```
 
-Archives under `dist/` include the plugin wrapper, all 56 skills, source registers, eval cases, deterministic helpers, provider installer, shared-workspace tooling, core documentation, and license.
+Archives under `dist/` include the plugin wrapper, all 57 skills, source registers, eval cases, deterministic helpers, provider installer, shared-workspace tooling, core documentation, and license.
 
 ## Authoring Rules
 
-- Use `aiwf-` folder/frontmatter names and `aiwf_` OpenAI display names.
+- Use valid `aiwf-` folder/frontmatter IDs and all-underscore `aiwf_` browser display names for every Shawn-authored skill.
 - Keep `SKILL.md` concise; place deep sources, evals, and deterministic code in owned resources.
 - Keep third-party skills external. Link official sources rather than copying their instructions or branding.
 - Verify version-sensitive technical, platform, funding, policy, legal, and security claims from current primary sources.

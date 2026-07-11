@@ -1,5 +1,5 @@
 interface:
-  display_name: "aiwf_avoid-ai-pushes"
+  display_name: "aiwf_avoid_ai_pushes"
   short_description: "Verify commit and push scope"
   default_prompt: "Use $aiwf-avoid-ai-pushes to audit this repo before committing or pushing."
 policy:

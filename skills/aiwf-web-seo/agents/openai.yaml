@@ -1,5 +1,5 @@
 interface:
-  display_name: "aiwf_web-seo"
+  display_name: "aiwf_web_seo"
   short_description: "Technical SEO, rendering, indexing, and validation"
   default_prompt: "Use $aiwf-web-seo to audit HTTP behavior, crawlability, rendering, metadata, canonical URLs, sitemaps, structured data, performance, and production indexability."
 policy:

@@ -1,5 +1,5 @@
 interface:
-  display_name: "aiwf_ai-evals"
+  display_name: "aiwf_ai_evals"
   short_description: "Run local AI eval planning and receipts"
   default_prompt: "Use $aiwf-ai-evals to define local eval gates, smoke receipts, before-after comparisons, and acceptance thresholds."
 policy:

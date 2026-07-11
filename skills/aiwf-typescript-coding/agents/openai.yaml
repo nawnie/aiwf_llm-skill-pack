@@ -1,5 +1,5 @@
 interface:
-  display_name: "aiwf_typescript-coding"
+  display_name: "aiwf_typescript_coding"
   short_description: "TypeScript config, strict types, and TSX"
   default_prompt: "Use $aiwf-typescript-coding for TypeScript tsconfig, strict types, module resolution, JSX, generated types, and tsc validation."
 policy:

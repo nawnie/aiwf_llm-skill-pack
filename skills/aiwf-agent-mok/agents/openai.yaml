@@ -1,5 +1,5 @@
 interface:
-  display_name: "aiwf_agent-mok"
+  display_name: "aiwf_agent_mok"
   short_description: "Plan and verify complex AIWF work"
   default_prompt: "Use $aiwf-agent-mok to verify this complex AIWF route and update plan.md only where current evidence requires it."
 policy:

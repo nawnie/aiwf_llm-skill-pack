@@ -4,13 +4,13 @@ Updated: 2026-07-10
 
 ## Current State
 
-`C:\Users\Shawn\Desktop\AI_Projects\Agent Skills` is the source of truth for `#techstartup` release `0.3.0`.
+`C:\Users\Shawn\Desktop\AI_Projects\Agent Skills` is the source of truth for `#techstartup` release `0.4.0`.
 
-- Source skills: 56
+- Source skills: 57
 - Implicit skills: one, `aiwf-orchestrator`
-- Explicit downstream skills: 55
+- Explicit downstream skills: 56
 - Maximum route size: four
-- Bundled Python helpers: 22
+- Bundled Python helpers: 23
 - New instruction modules: 13, each with official-source register and eval cases
 - Plugin capabilities: skills only
 - Provider targets: Codex plugin plus open Agent Skills for Claude and Grok
@@ -23,6 +23,8 @@ The manifest owns inventory and release metadata. The executable router lives in
 - Security: application/API, online infrastructure, local devices, data privacy, software/AI supply chain, and incident recovery.
 - Coordination: provider-neutral shared workspace with six visible exchanges, pending-turn recovery, project registry, handoffs, writer/resource leases, ACLs, redaction, and CPU/RAM/GPU reserves.
 - GitHub docs: a validated four-column table explains every individual skill.
+- Browser naming: every Shawn-authored skill has an all-underscore `aiwf_` display label while valid canonical IDs remain hyphen-case.
+- QA convergence: repeated test-fix passes persist severity, issue fingerprints, source hashes, streaks, and explicit success or non-success exits.
 
 Platform and funding facts are source-gated because policies, APIs, programs, and legal thresholds move. Security output is evidence- and authorization-based; it does not claim certification, compliance, or guaranteed safety.
 

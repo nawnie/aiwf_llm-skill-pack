@@ -1,5 +1,5 @@
 interface:
-  display_name: "aiwf_android-kotlin-coding"
+  display_name: "aiwf_android_kotlin_coding"
   short_description: "Android, Kotlin, Compose, and Gradle guardrails"
   default_prompt: "Use $aiwf-android-kotlin-coding for Android, Kotlin, Jetpack Compose, Gradle, Room, ONNX, and real-device validation work."
 policy:

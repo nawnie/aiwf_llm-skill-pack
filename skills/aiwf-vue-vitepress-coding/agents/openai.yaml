@@ -1,5 +1,5 @@
 interface:
-  display_name: "aiwf_vue-vitepress-coding"
+  display_name: "aiwf_vue_vitepress_coding"
   short_description: "Vue 3 and VitePress coding guardrails"
   default_prompt: "Use $aiwf-vue-vitepress-coding for Vue 3 components, reactivity, TypeScript, VitePress routing, Markdown, themes, and builds."
 policy:

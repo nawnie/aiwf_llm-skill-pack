@@ -1,5 +1,5 @@
 interface:
-  display_name: "aiwf_c-coding"
+  display_name: "aiwf_c_coding"
   short_description: "C toolchain, ABI, and memory guardrails"
   default_prompt: "Use $aiwf-c-coding for C source, headers, build flags, ABI, memory safety, and ISO C compatibility work."
 policy:

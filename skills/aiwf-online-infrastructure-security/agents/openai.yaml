@@ -1,5 +1,5 @@
 interface:
-  display_name: "aiwf_online-infrastructure-security"
+  display_name: "aiwf_online_infrastructure_security"
   short_description: "Internet exposure, IAM, TLS, ports, and monitoring"
   default_prompt: "Use $aiwf-online-infrastructure-security to map an authorized online attack surface, audit controls, and propose reversible evidence-backed hardening."
 policy:

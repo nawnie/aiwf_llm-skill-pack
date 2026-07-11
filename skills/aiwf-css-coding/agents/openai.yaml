@@ -1,5 +1,5 @@
 interface:
-  display_name: "aiwf_css-coding"
+  display_name: "aiwf_css_coding"
   short_description: "CSS cascade, layout, and visual checks"
   default_prompt: "Use $aiwf-css-coding for CSS cascade, layout, responsive behavior, accessibility, and rendered visual validation."
 policy:

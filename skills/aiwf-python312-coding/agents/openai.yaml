@@ -1,5 +1,5 @@
 interface:
-  display_name: "aiwf_python312-coding"
+  display_name: "aiwf_python312_coding"
   short_description: "Python 3.12 compatibility guardrails"
   default_prompt: "Use $aiwf-python312-coding for Python 3.12 code, packaging, typing, stdlib changes, and validation work."
 policy:

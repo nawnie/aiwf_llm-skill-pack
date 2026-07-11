@@ -258,5 +258,10 @@
     "name": "youtube-adsense",
     "prompt": "plan a YouTube channel YouTube Partner Program and AdSense monetization review",
     "expected": ["aiwf-youtube-adsense"]
+  },
+  {
+    "name": "qa-convergence",
+    "prompt": "fix the app with a QA bug pass and test-fix loop until three severity-gated passes are stable",
+    "expected": ["aiwf-repo-sentinel", "aiwf-qa-convergence"]
   }
 ]

@@ -172,4 +172,4 @@ if (-not $SkipCodexAdd) {
 }
 
 Write-Host "Personal plugin source refreshed at $targetPath"
-Write-Host "Start a new Codex chat so the 56-skill #techstartup pack is reloaded."
+Write-Host "Start a new Codex chat so the 57-skill #techstartup pack is reloaded."

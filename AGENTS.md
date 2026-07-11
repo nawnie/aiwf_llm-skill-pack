@@ -75,11 +75,11 @@ python .\scripts\test_skill_helpers.py
 python "C:\Users\Shawn\.codex\skills\.system\plugin-creator\scripts\validate_plugin.py" .
 ```
 
-Expected source inventory: 56 skills, one implicit orchestrator, 55 explicit downstream skills, and 22 bundled Python helpers.
+Expected source inventory: 57 skills, one implicit orchestrator, 56 explicit downstream skills, and 23 bundled Python helpers.
 
 ## Pack Rules
 
-- Shawn-owned folders and frontmatter names use `aiwf-`; `agents/openai.yaml` display names use `aiwf_`.
+- Shawn-owned folders and frontmatter IDs use valid `aiwf-` hyphen-case. Every `agents/openai.yaml` browser label replaces all hyphens with underscores and begins `aiwf_`.
 - Every skill has `SKILL.md` and `agents/openai.yaml`; `#techstartup` modules also have a source register and eval cases.
 - Only `aiwf-orchestrator` may set `allow_implicit_invocation: true`.
 - Keep instructions concise. Put deep references, evals, and deterministic helpers under the owning skill.
@@ -93,7 +93,7 @@ Expected source inventory: 56 skills, one implicit orchestrator, 55 explicit dow
 
 ## Skill Lanes
 
-- Routing and release: `aiwf-orchestrator`, `aiwf-repo-sentinel`, `aiwf-security-guardrails`, `aiwf-avoid-ai-pushes`.
+- Routing, QA, and release: `aiwf-orchestrator`, `aiwf-qa-convergence`, `aiwf-repo-sentinel`, `aiwf-security-guardrails`, `aiwf-avoid-ai-pushes`.
 - Growth and platforms: `aiwf-startup-marketing-growth`, `aiwf-startup-finance-funding`, `aiwf-aeo-geo`, `aiwf-meta-business`, `aiwf-google-ads-business`, `aiwf-youtube-adsense`.
 - Security and privacy: `aiwf-application-api-security`, `aiwf-online-infrastructure-security`, `aiwf-local-device-security`, `aiwf-data-privacy-protection`, `aiwf-software-ai-supply-chain-security`, `aiwf-incident-response-recovery`.
 - Research and coordination: `aiwf-deep-research`, `aiwf-dataset`, `aiwf-agent-mok`, `aiwf-atlas-cartographer`, `aiwf-atlas-reader`, `aiwf-debug-agent-swarm`, `aiwf-multi-agent-workspace`.
@@ -109,4 +109,4 @@ Expected source inventory: 56 skills, one implicit orchestrator, 55 explicit dow
 .\scripts\export_agent_skills_pack.ps1
 ```
 
-Inspect the archive before claiming it is shareable. It must contain the plugin wrapper, 56 skills, source registers, evals, all helper resources, provider installers, shared-workspace tooling, core documentation, and license.
+Inspect the archive before claiming it is shareable. It must contain the plugin wrapper, 57 skills, source registers, evals, all helper resources, provider installers, shared-workspace tooling, core documentation, and license.
